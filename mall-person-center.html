@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>商城个人中心</title>
+    <link rel="stylesheet" href="Public/css/common/public.css">
+	<link rel="stylesheet" href="Public/css/common/weui.css">
+    <link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">
+    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class="msh_product_picture f24">
+    <section class="purchase_certification">
+        <div class="weChat_avatar_info Mall_person_center">
+            <div>
+                <img src="Public/img/common/default/wechat_header.png" alt="" class="weChat_avatar">
+                <div class="weChat_av_r">
+                    <h2 class="person">商城个人中心</h2>
+                    <span>微信昵称/注册实名</span>
+                    <span>13679898888</span>
+                </div>
+            </div>
+            <div class="weChat_av_home">
+                <a>
+                    <i></i>
+                    <span>首页</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="person_center_list bottomLine">
+        <div class="person_center_item">
+            <ul class="person_pending">
+                <li>
+                    <a>
+                        <i class="cart"></i>
+                        购物车
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="person_center_list bottomLine">
+        <div class="person_center_item">
+            <span>我的订单管理</span>
+        </div>
+        <div class="person_center_item">
+            <ul class="person_pending">
+                <li>
+                    <a>
+                        <i class="pay"></i>
+                        待付款
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="receipt"></i>
+                        待收货
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="evaluate"></i>
+                        待评价
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="cancle"></i>
+                        已完成
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="customer_service"></i>
+                        客服
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="person_center_item">
+            <a href="javascript:void(0);" class="consignee_address right-arrow">收货人地址管理</a>
+        </div>
+    </section>
+    <section class="person_center_list bottomLine">
+        <div class="person_center_item">
+            <a href="javascript:void(0);" class="cash_coupon right-arrow">我的代金券</a>
+        </div>
+        <div class="person_center_item">
+            <a href="javascript:void(0);" class="pushing_income right-arrow">我的推客收益</a>
+        </div>
+    </section>
+    <section class="person_center_list">
+        <div class="person_center_item">
+            <a href="javascript:void(0);" class="pushing_income right-arrow">登录账户管理</a>
+        </div>
+    </section>
+</article>
+<script src="Public/js/common/jquery-1.11.3.min.js"></script>
+<script src="Public/js/common/layer.mobile/layer.js"></script>
+<script src="public/js/common/public.js"></script>
+<script src="public/js/common/common.js"></script>
+<script type="text/javascript">
+    $(function(){
+       //星星评分等级
+       $('.five_star').setStar({
+            getFractionValue:3.9,
+            star:'Public/img/home/star.png',
+            starRed:'Public/img/home/starred.png'
+       });
+       console.log($('.five_star').getStar());
+       countDown("2017/09/15 16:56:00","#countDownBox");
+    });
+    //活动倒计时
+    function countDown(time,id){
+        var day_elem = $(id).find('.day');
+        var hour_elem = $(id).find('.hour');
+        var minute_elem = $(id).find('.minute');
+        var second_elem = $(id).find('.second');
+        var end_time = new Date(time).getTime(),//月份是实际月份-1
+        sys_second = (end_time-new Date().getTime())/1000;
+        
+        var timer = setInterval(function(){
+            if (sys_second > 1) {
+                sys_second -= 1;
+                var day = Math.floor((sys_second / 3600) / 24);
+                var hour = Math.floor((sys_second / 3600) % 24);
+                var minute = Math.floor((sys_second / 60) % 60);
+                var second = Math.floor(sys_second % 60);
+                day_elem && $(day_elem).text(day);//计算天
+                $(hour_elem).text(hour<10?"0"+hour:hour);//计算小时
+                $(minute_elem).text(minute<10?"0"+minute:minute);//计算分
+                $(second_elem).text(second<10?"0"+second:second);//计算秒
+            } else { 
+                clearInterval(timer);
+            }
+        }, 1000);
+    }
+</script>
+</body>
+</html>

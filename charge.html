@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>采购账户充值</title>
+    <link rel="stylesheet" href="Public/css/common/public.css">
+	<link rel="stylesheet" href="Public/css/common/weui.css">
+    <link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">
+    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class=" f24">
+    <section class="purchaser_member_module">
+        <img src="Public/img/common/logo.png" alt="">
+        <div>亲爱的采购商会员<span>XXXX</span></div>
+        <div>您的采购账户余额为 <span>￥</span><price>100000.00</price></div>
+    </section>
+    <section class="purchaser_member_module">
+        <p>[微信支付方式]</p>
+        <div class="purchase_weixin_icon">
+            <span></span>微信支付
+        </div>
+        <a href="" class="balance_pay weixin_pay">微信支付充值</a>
+    </section>
+    <section class="purchaser_member_module">
+        <div>
+            <p>[银行转账方式]</p>
+            <div>收款单位：<span>广东美尚网络科技</span></div>
+            <div>开户银行：<span>广州市华景新城支行</span></div>
+            <div>银行账户：<span>XXXXXXXX</span></div>
+            <a href="javascript:void(0);" class="bank_transfer_recharge right-arrow">银行转账支付后将凭证发给平台客服通知账户充值</a>
+        </div>
+    </section>
+    <section class="purchaser_member_module">
+        <a href="javascript:void(0);" class="right-arrow account_details">查看我的采购账户明细</a>
+    </section>
+</article>
+<script src="Public/js/common/jquery-1.11.3.min.js"></script>
+<script src="Public/js/common/layer.mobile/layer.js"></script>
+<script src="public/js/common/public.js"></script>
+<script src="public/js/common/common.js"></script>
+<script type="text/javascript">
+    $(function(){
+       //星星评分等级
+       $('.five_star').setStar({
+            getFractionValue:3.9,
+            star:'Public/img/home/star.png',
+            starRed:'Public/img/home/starred.png'
+       });
+       console.log($('.five_star').getStar());
+       countDown("2017/09/15 16:56:00","#countDownBox");
+    });
+    //活动倒计时
+    function countDown(time,id){
+        var day_elem = $(id).find('.day');
+        var hour_elem = $(id).find('.hour');
+        var minute_elem = $(id).find('.minute');
+        var second_elem = $(id).find('.second');
+        var end_time = new Date(time).getTime(),//月份是实际月份-1
+        sys_second = (end_time-new Date().getTime())/1000;
+        
+        var timer = setInterval(function(){
+            if (sys_second > 1) {
+                sys_second -= 1;
+                var day = Math.floor((sys_second / 3600) / 24);
+                var hour = Math.floor((sys_second / 3600) % 24);
+                var minute = Math.floor((sys_second / 60) % 60);
+                var second = Math.floor(sys_second % 60);
+                day_elem && $(day_elem).text(day);//计算天
+                $(hour_elem).text(hour<10?"0"+hour:hour);//计算小时
+                $(minute_elem).text(minute<10?"0"+minute:minute);//计算分
+                $(second_elem).text(second<10?"0"+second:second);//计算秒
+            } else { 
+                clearInterval(timer);
+            }
+        }, 1000);
+    }
+</script>
+</body>
+</html>

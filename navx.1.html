@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>斜线斜线</title>
+    <script src="Public/js/common/jquery-1.9.1.min.js"></script>
+    <style>
+        *{margin:0;padding:0;}
+        a{letter-spacing: normal;text-decoration: none;display: inline-block;text-align:center; background: #182c70;
+        color:#fff;float:left; height:32px;line-height:32px;}
+        .header_right li.active .right{background:url(Public/img/line1.png) no-repeat center;}
+        .header_right li.active .left{width:36px;background:url(Public/img/line2.png) no-repeat center;position:absolute;
+        left:-36px;}
+        .header_right li.active a{background: #099bdf;}
+        li{float:left;list-style: none;position:relative;}
+        .header_right .right{
+        
+            background:url(Public/img/line.png) no-repeat center;
+            
+        }
+        .header_right .left{
+            width:0;
+        }
+        span{ width:36px;display:inline-block; height:32px;}
+        .left{float:left;}
+        .right{float:left;}
+    </style>
+</head>
+<body>
+    <!-- 导航栏begin -->
+    <nav class="header_right fr">
+       <li class="active">
+           <span class="left"></span>
+           <a>分子公司</a>
+           <span class="right"></span>
+       </li>
+       <li>
+           <span class="left"></span>
+           <a>股份公司</a>
+           <span class="right"></span>
+       </li>
+       <li>
+           <span class="left"></span>
+           <a>营业部</a>
+           <span class="right"></span>
+       </li>
+       <li>
+           <span class="left"></span>
+           <a>海外办</a>
+           <span class="right"></span>
+       </li>
+       <li>
+           <span class="left"></span>
+           <a>航空</a>
+           <span class="right"></span>
+       </li>
+       <li>
+           <span class="left"></span>
+           <a>南方南方南方航空</a>
+           <span class="right"></span>
+       </li>
+    </nav>
+ <!-- 导航栏end -->
+ <script>
+     $(function(){
+         $('li').on('mouseover',function(){
+             $(this).addClass('active').siblings().removeClass('active');
+         })
+     })
+ </script>
+</body>
+</html>

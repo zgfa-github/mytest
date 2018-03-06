@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>编辑我的基本信息</title>
+    <link rel="stylesheet" href="Public/css/common/public.css">
+	<link rel="stylesheet" href="Public/css/common/weui.css">
+    <link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">
+    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
+    <style>
+        input{
+            border:1px solid #d9d9d9;
+            padding:10px 0;
+            background: #fff;
+            
+        }
+    </style>
+</head>
+<body>
+<div class="box" style="display:none;">
+    <form>
+        <div>姓名：
+            <input type="text" name="" value="">
+        </div>
+        <div>密码：
+            <input type="text" name="" value="">
+        </div>
+    </form>
+</div>
+<div class="f24">
+    <ul>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+        <li>11111</li>
+    </ul>
+</div>
+    <a href="javascript:void(0);" class="btn">按钮</a>
+
+<script src="Public/js/common/jquery-1.11.3.min.js"></script>
+<script src="Public/js/common/layer.mobile/layer.js"></script>
+<script src="public/js/common/public.js"></script>
+<script src="public/js/common/common.js"></script>
+<script src="public/js/common/dialog.js"></script>
+<script src="Public/js/common/jquery.area.js"></script>
+<script type="text/javascript">
+    $(function(){
+        
+        $('body').on('click','.btn',function(){
+            window.scrollTo(0,0);
+            var box=$('.box').html();
+            layer.open({
+                title:['测试','border-bottom:1px solid #d9d9d9;'],
+                className:'abc',
+                content:box,
+                btn:['确定','取消'],
+                success:function(){
+                    $.smartScroll($('.abc'),$('form'));
+                },
+                yes:function(index){
+                    layer.close(index);
+                }
+            })
+        });
+         $(window).on('scroll',function(){
+                if($(document).scrollTop()+$(window).height()>=$(document).height()){
+                    alert(1);
+                }
+        });
+        
+    });
+</script>
+</body>
+</html>

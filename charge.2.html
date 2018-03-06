@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>采购账户充值</title>
+    <link rel="stylesheet" href="Public/css/common/public.css">
+	<link rel="stylesheet" href="Public/css/common/weui.css">
+    <link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">
+    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class=" f24">
+    <section class="purchaser_member_module">
+        <div>我的采购账户余额为 <span>￥</span><price>100000.00</price></div>
+        <a href="" class="account_details">查看我的采购账户明细</a>
+    </section>
+    <section class="purchaser_member_module">
+        <p class="recharge_title">账户充值</p>
+        <ul class="recharge_grade">
+            <li><span>1000</span>元</li>
+            <li>2000</li>
+            <li>3000</li>
+            <li>5000</li>
+            <li>8000</li>
+            <li>10000</li>
+        </ul>
+        <div class="purchase_weixin_icon">
+            <span class="wx"></span>微信支付
+        </div>
+        <a href="" class="balance_pay weixin_pay">微信支付充值</a>
+    </section>
+    <section class="purchaser_member_module">
+        <div class="purchase_weixin_icon">
+            <span class="bank"></span>在线支付
+        </div>
+        <a href="" class="balance_pay weixin_pay">银联在线支付充值</a>
+    </section>
+    <section class="purchaser_member_module zfb_pay_module">
+        <div class="purchase_weixin_icon">
+            <span class="zfb"></span>支付宝支付
+        </div>
+        <a href="" class="balance_pay weixin_pay">支付宝支付</a>
+    </section>
+    <section class="purchaser_member_module">
+        <div>
+            <p>[银行转账方式]</p>
+            <div>收款单位：<span>广东美尚网络科技</span></div>
+            <div>开户银行：<span>广州市华景新城支行</span></div>
+            <div>银行账户：<span>XXXXXXXX</span></div>
+            <a href="javascript:void(0);" class="bank_transfer_recharge right-arrow">银行转账支付后将凭证发给平台客服通知账户充值</a>
+        </div>
+    </section>
+</article>
+<script src="Public/js/common/jquery-1.11.3.min.js"></script>
+<script src="Public/js/common/layer.mobile/layer.js"></script>
+<script src="public/js/common/public.js"></script>
+<script src="public/js/common/common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        if(isWeiXin()){ 
+            $('.zfb_pay_module').hide();
+        } 
+        function isWeiXin(){ 
+            var ua = window.navigator.userAgent.toLowerCase(); 
+            if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 
+                return true; 
+            }else{ 
+                return false; 
+            } 
+        }
+    });
+</script>
+</body>
+</html>

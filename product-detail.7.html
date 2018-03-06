@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>已付款的采购单</title>
+    <link rel="stylesheet" href="Public/css/common/public.css">
+	<link rel="stylesheet" href="Public/css/common/weui.css">
+    <link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">
+    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
+</head>
+<body>
+<!--指定收货人模板-->
+<div id="consigneeInfoList" style="display: none;">
+    <ul class="consigneeList">
+        <li class="current" data-address="">
+            <span class="default_address">[默认地址]</span>
+            <div>收货人姓名：<span class="consigneeName">李四</span></div>
+            <div>收货人手机号：<span class="consigneePhone">13688888887</span></div>
+            <div>收货人地址：<span class="consigneeAddress">广东省广州市海珠7区</span></div>
+        </li>
+        <li data-address="">
+            <span class="default_address">[可选地址]</span>
+            <div>收货人姓名：<span class="consigneeName">李四1</span></div>
+            <div>收货人手机号：<span class="consigneePhone">13688888888</span></div>
+            <div>收货人地址：<span class="consigneeAddress">广东省广州市海珠8区</span></div>
+        </li>
+        <li data-address="">
+            <span class="default_address">[可选地址]</span>
+            <div>收货人姓名：<span class="consigneeName">李四2</span></div>
+            <div>收货人手机号：<span class="consigneePhone">13688888889</span></div>
+            <div>收货人地址：<span class="consigneeAddress">广东省广州市海珠9区</span></div>
+        </li>
+    </ul>
+</div>
+<article class="msh_product_picture f24">
+    <section class="purchase_head_title">
+        <h2>采购单详情</h2>
+    </section>
+    <section class="purchase_order_list">
+        <ul>
+            <li>
+                <div>
+                    订单号码：
+                    <span>[124545477]</span>
+                </div>
+                <div>
+                    下单时间：
+                    <span>2017-9-04 9:00AM</span>
+                </div>
+                <div>
+                    订单金额：
+                    <span>￥8089</span>
+                </div>
+                <div>
+                    订单状态：
+                    <span class="order_in_stock">备货中</span>
+                </div>
+                <div>
+                    收货人姓名：
+                    <span class="detailConsigneeName">某某某</span>
+                </div>
+                <div>
+                    收货人手机号：
+                    <span class="detailConsigneePhone">13688898888</span>
+                </div>
+                <div>
+                    收货人地址：
+                    <span class="detailConsigneeAddress">珠江三角洲</span>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <div class="purchase_package_wrapper f24">
+        <div class="purchase_package_list">
+            <ul>
+                <li>
+                    <a class="purchase_goods_img">
+                        <img src="Public/img/common/default/purchase100_default.jpg" alt="">
+                    </a>
+                    <div class="purchase_goods_info">
+                        <p>XXXXXXXXX</p>
+                        <p>采购箱每箱含20单品盒 每盒装12g*20条</p>
+                        <div>
+                            <span class="purchase_price">￥1980.00 /箱</span>
+                            <del>￥2980.00 /箱</del>
+                        </div>
+                        <div class="purchase_goods_num">
+                            <span>33箱</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</article>
+<footer class="bottom-fxied bottom-fxied-flex f24">
+    <a href="javascript:void(0);" class="bottom_btn50 modify">修改收货人</a>
+    <a href="" class="bottom_btn50">通知已收货</a>
+</footer>
+<script src="Public/js/common/jquery-1.11.3.min.js"></script>
+<script src="Public/js/common/layer.mobile/layer.js"></script>
+<script src="public/js/common/public.js"></script>
+<script src="public/js/common/common.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var consigneeInfoList=$('#consigneeInfoList').html();
+        $('body').on('click','.modify',function(){
+            var consigneeInfoObject={};
+            layer.open({
+                btn:['确定','取消'],
+                title:['指定收货人','border-bottom:1px solid #d9d9d9;'],
+                className:'consigneeInfoList_layer',
+                content:consigneeInfoList,
+                success:function(){
+                    $('.consigneeList li').on('click',function(){
+                        $(this).addClass('current').siblings().removeClass('current');
+                        consigneeInfoObject={
+                            consigneeName:$(this).find('.consigneeName').text(),
+                            consigneePhone:$(this).find('.consigneePhone').text(),
+                            consigneeAddress:$(this).find('.consigneeAddress').text()
+                        }
+                        $(this).data('address',consigneeInfoObject);
+                        console.log(consigneeInfoObject);
+                    })
+                    $.each($('.consigneeList li'), function(i,val){ 
+                        // if(tBranchText==$(this).text()){
+                        //     $(this).addClass('current');
+                        //     $(this).parent().siblings().find('.branch_n_inpt').removeClass('current');
+                        //     return false;
+                        // }
+                    });
+                },
+                yes:function(index){
+                    $('.detailConsigneeName').text(consigneeInfoObject.consigneeName);
+                    $('.detailConsigneePhone').text(consigneeInfoObject.consigneePhone);
+                    $('.detailConsigneeAddress').text(consigneeInfoObject.consigneeAddress);
+                    layer.close(index);
+                }
+            })     
+        });
+    })
+</script>
+</body>
+</html>

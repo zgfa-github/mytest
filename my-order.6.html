@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>采购订单</title>
+    <link rel="stylesheet" href="Public/css/common/public.css">
+	<link rel="stylesheet" href="Public/css/common/weui.css">
+    <link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">
+    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class="f24">
+    <section class="order_search_bar">
+        <div>
+            <input type="text" class="order_search_text" placeholder="商品名称/订单号" name="" value="">
+            <input type="button" class="order_search_btn" name="">
+        </div>
+    </section>
+    <nav>
+        <ul class="my_order_nav">
+            <li class="active">
+                <a href="javascript:void(0);" ><i class="w_pay"></i>待付款<span class="count">2</span></a>
+            </li>
+            <li><a href="javascript:void(0);"><i class="w_receipt"></i>待收货<span class="count">2</span></a></li>
+            <li><a href="javascript:void(0);"><i class="w_commit"></i>待评价<span class="count">1</span></a></li>
+            <li><a href="javascript:void(0);"><i class="w_finish"></i>已完成<span></span></a></li>
+            <li><a href="javascript:void(0);"><i class="w_service"></i>客服</a></li>
+            <li><a href="javascript:void(0);"><i class="home"></i>首页</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="order_pay_tipc">
+            提示：请尽快支付，超过3天未支付订单将被自动取消
+        </div> 
+        <div class="order_detail_item">
+            <div class="order_flex">
+                <div class="">订单号：<span>12346467979878</span></div>
+                <div class="pay_order_time"><i></i>支付剩余：
+                    <span class="count_down_box">
+                        <span class="day"></span>天
+                        <span class="hour"></span>小时
+                        <span class="minute"></span>分
+                        <span class="second"></span>秒
+                    </span>
+                </div>
+            </div>
+            <div class="order_flex">
+                <div>
+                    <p>状态：<span class="pay_tag">待支付</span></p>
+                    <p>总价：<span class="pay_tag">￥</span><price class="pay_tag">88555</price></p>
+                </div>
+                <a class="order_pay_btn" href="">去支付</a>
+            </div>
+            <div class="order_flex">
+                <div>
+                    <p>状态：<span class="pay_tag pay_finish">已完成</span></p>
+                    <p>总价：<span class="pay_tag">￥</span><price class="pay_tag">88555</price></p>
+                </div>
+                <a class="order_pay_btn edit_address" href="">再次采购</a>
+            </div>
+            <div class="order_flex">
+                <div>
+                    <p>状态：<span class="pay_tag">备货中</span></p>
+                    <p>总价：<span class="pay_tag">￥</span><price class="pay_tag">88555</price></p>
+                </div>
+                <a class="order_pay_btn edit_address" href="">修改收货人地址</a>
+            </div>
+            <div class="order_flex">
+                <div>
+                    <p>状态：<span class="pay_tag">待评价</span></p>
+                    <p>总价：<span class="pay_tag">￥</span><price class="pay_tag">88555</price></p>
+                </div>
+                <a class="order_pay_btn edit_address" href="">去评分评论</a>
+            </div>
+            <div class="order_flex_single">
+                <p>收货人姓名：<span>阿森纳</span></p>
+                <p>收货人手机号：<span>13430393458</span></p>
+                <p>收货人地址：<span>广州市</span></p>
+            </div>
+            <ul class="orderDetail_list">
+                <li>
+                    <a>
+                        <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                        <div class="orderDetail_r">
+                            <p>XXXXXXXXXXXXXXXX</p>
+                            <div>商品规格：<span>12g*20条/盒</span></div>
+                            <div>采购包装：<span>10盒/箱(整箱采购)</span></div>
+                            <div><span>￥<price>198</price></span><del>￥980</del></div>
+                        </div>
+                        <div class="order_purchase_count">采购数量<span>100</span></div>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                        <div class="orderDetail_r">
+                            <p>XXXXXXXXXXXXXXXX</p>
+                            <div>商品规格：<span>12g*20条/盒</span></div>
+                            <div>采购包装：<span>10盒/箱(整箱采购)</span></div>
+                            <div><span>￥<price>198</price></span><del>￥980</del></div>
+                        </div>
+                        <div class="order_purchase_count">采购数量<span>100</span></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="order_detail_item">
+            <div class="order_flex">
+                <div class="">订单号：<span>12346467979878</span></div>
+                <div class="pay_order_time"><i></i>支付剩余：
+                    <span class="count_down_box">
+                        <span class="day"></span>天
+                        <span class="hour"></span>小时
+                        <span class="minute"></span>分
+                        <span class="second"></span>秒
+                    </span>
+                </div>
+            </div>
+            <div class="order_flex">
+                <div>
+                    <p>状态：<span class="pay_tag">待支付</span></p>
+                    <p>总价：<span class="pay_tag">￥</span><price class="pay_tag">88555</price></p>
+                </div>
+                <a class="order_pay_btn" href="">去支付</a>
+            </div>
+            <div class="order_flex_single">
+                <p>收货人姓名：<span>阿森纳</span></p>
+                <p>收货人手机号：<span>13430393458</span></p>
+                <p>收货人地址：<span>广州市</span></p>
+            </div>
+            <ul class="orderDetail_list">
+                <li>
+                    <a>
+                        <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                        <div class="orderDetail_r">
+                            <p>XXXXXXXXXXXXXXXX</p>
+                            <div>商品规格：<span>12g*20条/盒</span></div>
+                            <div>采购包装：<span>10盒/箱(整箱采购)</span></div>
+                            <div><span>￥<price>198</price></span><del>￥980</del></div>
+                        </div>
+                        <div class="order_purchase_count">采购数量<span>100</span></div>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                        <div class="orderDetail_r">
+                            <p>XXXXXXXXXXXXXXXX</p>
+                            <div>商品规格：<span>12g*20条/盒</span></div>
+                            <div>采购包装：<span>10盒/箱(整箱采购)</span></div>
+                            <div><span>￥<price>198</price></span><del>￥980</del></div>
+                        </div>
+                        <div class="order_purchase_count">采购数量<span>100</span></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</article>
+<script src="Public/js/common/jquery-1.11.3.min.js"></script>
+<script src="Public/js/common/layer.mobile/layer.js"></script>
+<script src="public/js/common/public.js"></script>
+<script src="public/js/common/common.js"></script>
+<script src="public/js/common/dialog.js"></script>
+<script type="text/javascript">
+    $(function(){
+         //倒计时
+         countDown("2017/12/29 15:25:00",$('.count_down_box'));
+
+         $('.my_order_nav li').on('click',function(){
+             $(this).addClass('active').siblings().removeClass('active');
+         })
+    });
+</script>
+</body>
+</html>

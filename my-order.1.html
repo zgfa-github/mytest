@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>采购订单</title>
+    <link rel="stylesheet" href="Public/css/common/public.css">
+	<link rel="stylesheet" href="Public/css/common/weui.css">
+    <link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">
+    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class="f24">
+    <nav>
+        <ul class="my_order_nav">
+            <li>
+                <a href="" ><i class="w_pay"></i>待付款<span class="count">2</span></a>
+            </li>
+            <li><a href="" class="active"><i class="w_receipt"></i>待收货<span class="count">2</span></a></li>
+            <li><a href=""><i class="w_commit"></i>待评价<span class="count">1</span></a></li>
+            <li><a href=""><i class="w_finish"></i>已完成<span></span></a></li>
+            <li><a href=""><i class="w_service"></i>客服</a></li>
+            <li><a href=""><i class="home"></i>首页</a></li>
+        </ul>
+    </nav>
+    <section>
+        <p class="no_order_detail">你暂时还没有订单</p>
+        <div class="order_pay_tipc">
+            提示：请尽快支付，超过3天未支付订单将被自动取消
+        </div> 
+        <div class="order_detail_item">
+            <div class="order_flex">
+                <div class="">订单号：<span>12346467979878</span></div>
+            </div>
+            <div class="order_flex">
+                <div>
+                    <p>状态：<span class="pay_tag">备货中</span></p>
+                    <p>总价：<span class="pay_tag">￥</span><price class="pay_tag">88555</price></p>
+                </div>
+                <a class="order_pay_btn edit_address" href="">修改收货人地址</a>
+            </div>
+            <div class="order_flex_single">
+                <p>收货人姓名：<span>阿森纳</span></p>
+                <p>收货人手机号：<span>13430393458</span></p>
+                <p>收货人地址：<span>广州市</span></p>
+            </div>
+            <ul class="orderDetail_list">
+                <li>
+                    <a>
+                        <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                        <div class="orderDetail_r">
+                            <p>XXXXXXXXXXXXXXXX</p>
+                            <div>单品规格：<span>12g*20条/盒</span></div>
+                            <div>采购包装：<span>10盒/箱(整箱采购)</span></div>
+                            <div>采购单价(元/盒)：<span>￥198</span><del>￥980</del></div>
+                        </div>
+                        <div class="order_purchase_count">采购数量(单位:盒)：<span>100</span></div>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                        <div class="orderDetail_r">
+                            <p>XXXXXXXXXXXXXXXX</p>
+                            <div>单品规格：<span>12g*20条/盒</span></div>
+                            <div>采购包装：<span>10盒/箱(整箱采购)</span></div>
+                            <div>采购单价(元/盒)：<span>￥198</span><del>￥980</del></div>
+                        </div>
+                        <div class="order_purchase_count">采购数量(单位:盒)：<span>100</span></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="order_detail_item">
+            <div class="order_flex">
+                <div class="">订单号：<span>12346467979878</span></div>
+            </div>
+            <div class="order_flex">
+                <div>
+                    <p>状态：<span class="pay_tag">已发货</span></p>
+                    <p>总价：<span class="pay_tag">￥</span><price class="pay_tag">88555</price></p>
+                </div>
+                <a class="order_pay_btn edit_address notice_platform" href="javascript:void(0);">通知平台已收货</a>
+            </div>
+            <div class="order_flex_single">
+                <p>收货人姓名：<span>阿森纳</span></p>
+                <p>收货人手机号：<span>13430393458</span></p>
+                <p>收货人地址：<span>广州市</span></p>
+            </div>
+            <ul class="orderDetail_list">
+                <li>
+                    <a>
+                        <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                        <div class="orderDetail_r">
+                            <p>XXXXXXXXXXXXXXXX</p>
+                            <div>单品规格：<span>12g*20条/盒</span></div>
+                            <div>采购包装：<span>10盒/箱(整箱采购)</span></div>
+                            <div>采购单价(元/盒)：<span>￥198</span><del>￥980</del></div>
+                        </div>
+                        <div class="order_purchase_count">采购数量(单位:盒)：<span>100</span></div>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                        <div class="orderDetail_r">
+                            <p>XXXXXXXXXXXXXXXX</p>
+                            <div>单品规格：<span>12g*20条/盒</span></div>
+                            <div>采购包装：<span>10盒/箱(整箱采购)</span></div>
+                            <div>采购单价(元/盒)：<span>￥198</span><del>￥980</del></div>
+                        </div>
+                        <div class="order_purchase_count">采购数量(单位:盒)：<span>100</span></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</article>
+<script src="Public/js/common/jquery-1.11.3.min.js"></script>
+<script src="Public/js/common/layer.mobile/layer.js"></script>
+<script src="public/js/common/public.js"></script>
+<script src="public/js/common/common.js"></script>
+<script src="public/js/common/dialog.js"></script>
+<script type="text/javascript">
+    $(function(){
+         countDown("2017/11/29 15:25:00","#countDownBox");
+         $('body').on('click','.notice_platform',function(){
+             layer.open({
+                content:'通知平台<br/>我已收到订单货品',
+                btn:'确定'
+             })
+         })
+    });
+</script>
+</body>
+</html>

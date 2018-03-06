@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"  content="width=device-width,initial-scale=1,maximum-scale=1, user-scalable=no,">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>新建地址</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="Public/css/common/public.css">
+    <link rel="stylesheet" href="Public/css/home/mall.css">
+    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
+</head>
+<body class="">
+<!-- Address start -->
+<section class="section-address bg-eae pt-5">
+    <div class="">
+        <h2 class="address_list_title">收货人信息</h2>
+    </div>
+    <form action='#' method="post" class="bg-fff">
+        <div class="form-group box-flex clearfixed">
+            <label class="form-label">收货人：</label>
+            <input type="text" name="" class="input-flex recipient_name" placeholder="请输入姓名">
+        </div>
+        <div class="form-group box-flex clearfixed">
+            <label class="form-label">联系电话：</label>
+            <input type="text" name="" class="input-flex recipient_mobile" placeholder="请输入收件人电话">
+        </div>
+        <!--<div class="form-group box-flex clearfixed">
+            <label class="form-label">配送区域：</label>
+            <div id="address" class="flex address"></div>
+            <i class="icon icon-trangle"></i>
+        </div>-->
+        <div class="express-area ">
+            <a id="expressArea" href="javascript:void(0)" class="f24 form-group box-flex">
+                    <label class="form-label">选择地区：</label>
+                    <div class="area_address">省 &gt; 市 &gt; 区/县</div>
+            </a>
+        </div>
+        <div class="form-group box-flex">
+            <label class="form-label">详细地址：</label>
+            <input type="text" name="" class="input-flex" placeholder="请填写详细地址">
+        </div>
+    </form>
+</section>
+<div class="check-btn-total">
+    <a href="javascript:;" class="f24 address_save">确定</a>
+</div>
+<!--选择地区弹层-->
+<section id="areaLayer" class="express-area-box" style="display:none;">
+    <header>
+        <h3>选择地区</h3>
+        <a id="backUp" class="back" href="javascript:void(0)" title="返回" style="display: none;"></a>
+        <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+    </header>
+    <article id="areaBox">
+        <ul id="areaList" class="area-list">
+        </ul>
+    </article>
+</section>
+<!--遮罩层-->
+<div id="areaMask" class="mask"></div>
+<!-- Address end -->
+<script src="Public/js/common/jquery-1.11.3.min.js"></script>
+<script src="Public/js/common/layer.mobile/layer.js"></script>
+<script src="public/js/common/public.js"></script>
+<script src="public/js/common/common.js"></script>
+<script src="public/js/common/dialog.js"></script>
+<script src="public/js/common/jquery.area.1.js"></script>
+<script type="text/javascript">
+
+     $('.myswitch').on('click',function(){
+            if($(this).hasClass('myswitched')){
+                $(this).removeClass('myswitched');
+            }else{
+                $(this).addClass('myswitched');
+            }
+                
+    })
+        
+    $('body').on('click','.address_save',function(){
+        var content='';
+        var recipientName=$('.recipient_name').val();
+        var recipientMobile=$('.recipient_mobile').val();
+        var areaAddress=$('.area_address').text();
+        if(!recipientName){
+            content='请填写收货人姓名';
+        }else if(!register.phoneCheck(recipientMobile)){
+            content='请填写正确的手机号码';
+        }else if(areaAddress=='省 > 市 > 区/县'){
+            content='请填写详细地址';
+        }
+
+        if(content){
+           dialog.error(content);
+            return false;
+        }
+    })
+</script>
+</body>
+</html>

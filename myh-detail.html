@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>采购订单</title>
+    <link rel="stylesheet" href="Public/css/common/public.css">
+	<link rel="stylesheet" href="Public/css/common/weui.css">
+    <link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">
+    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class="f24">
+    <section class="">
+        <div>
+            <img src="Public/img/common/" alt="">
+        </div>
+        <!--<div class="business_module_intro bottomLine">
+             sfsfsdfsdfdf   
+        </div>-->
+    </section>
+    <section class="bottomLine">
+        <div class="myh_detail_item">
+            <p>全息原液</p>
+            <p>15mlX6瓶/盒</p>
+        </div>
+        <div class="myh_detail_item myh_product_intro">
+            XXXXXXXXXXXXXX
+        </div>
+        <div class="myh_detail_item myh_detail_price">
+            <div>优惠价:
+                <price>￥333.00</price>
+            </div>
+             <div>零售价:
+                <del>￥333.00</del>
+            </div>
+             <div>节省:
+                <price>￥333.00</price>
+            </div>
+        </div>
+        <div class="myh_detail_item myh_detail_price">
+            <span>购买数量</span>
+            <div class="quantity_wrapper business_count">
+                <a href="javascript:void(0);" class="greduce">-</a>
+                <input type="text" value="0" class="f24 gshopping_count">
+                <a href="javascript:void(0);" class="gplus">+</a>
+            </div>
+        </div>
+        <div class="goods_star_score">
+            <div class="five_star">
+                <div class="star_img">
+                    <img src="/Public/img/home/starred.png" id="0">
+                    <img src="/Public/img/home/starred.png" id="1">
+                    <img src="/Public/img/home/starred.png" id="2">
+                    <img src="/Public/img/home/star.png" id="3">
+                    <img src="/Public/img/home/star.png" id="4">
+                </div>
+                <span class="fraction" data-score="3.9">3.9分</span>
+            </div>
+            <a href="javascript:void(0);" class="comment_num">145人评论</a>
+        </div>
+    </section>
+    <section class="bottomLine myh_detail_intro">
+        <h2>商品参数</h2>
+        <div></div>
+    </section>
+    <section class="bottomLine">
+        <div>
+            <img src="" alt="">
+        </div>
+        <ul class="group_purchase">
+            <li>
+                <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                <span>团长</span>
+            </li>
+            <li>
+                <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                <span>成员</span>
+            </li>
+            <li>
+                <img src="Public/img/common/default/no_pic_100.jpg" alt="">
+                <span>成员</span>
+            </li>
+        </ul>
+    </section>
+     <section class="myh_detail_intro">
+          <h2>商品参数</h2>
+     </section>
+</article>
+<footer class="f24 group_cart_nav">
+    <div class="group_btn50 bfff">
+        <span class="goods_total_price amount">收益￥<price>500.00</price></span>
+    </div>                                                                                              
+    <a href="javascript:void(0);" class="bff6482 group_btn50 my_two_code">我的二维码</a>                                                                                                        <!--立即购买-->
+    <a href="javascript:void(0);" class="group_btn50 bff1d25 buy_now">一键分享转发</a>                                                
+</footer>
+<section id="codeLayer" class="express-code-box">
+    <div class="f24">
+        <div class="twitter_code_tipc">
+            <h2>推客二维码</h2>
+            <P>长按图片保存到手机相册</P>
+            <P>然后微信推送给微信好友</P>
+            <span class="closeBtn"></span>
+        </div>
+        <div class="twitter_code_img">
+            <img src="" alt="">
+        </div>
+    </div>
+</section>
+<div id="areaMask" class="mask"></div>
+<script src="Public/js/common/jquery-1.11.3.min.js"></script>
+<script src="Public/js/common/layer.mobile/layer.js"></script>
+<script src="public/js/common/public.js"></script>
+<script src="public/js/common/common.js"></script>
+<script src="public/js/common/dialog.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.five_star').setStar(4.8);
+        console.log($('.five_star').getStar());
+
+        $('body').on('click','.my_two_code',function(){
+            $('.mask,.express-code-box').fadeIn();
+        });
+
+        $("#areaMask,.closeBtn").click(function() {
+            clockArea();
+        });
+    });
+    function clockArea() {
+        $("#areaMask,.express-code-box").fadeOut();
+        // $("#areaLayer").hide().animate({"bottom": "-100%"});
+        $('.twitter_code_img img').attr('src',data);
+    }
+
+</script>
+</body>
+</html>
