@@ -6,6 +6,7 @@
     <title>美尚云厂商登录入口</title>
     <link rel="stylesheet" href="public/static/common/css/base.css">
     <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/vendor/css/main.css">
 	<!--<link rel="stylesheet" href="Public/img/admin-css/common/weui.css">-->
     <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
 </head>
@@ -27,41 +28,33 @@
                 <a class="home">首页</a>
              </div>
         </div>
+        <div class="top_menu_box">
+            <div class="top_menu_list">
+                <a href="" class="current">厂商</a>
+                <a href="">云推客</a>
+                <a href="">培训</a>
+                <a href="" >美尚会</a>
+            </div>
+        </div>
     </section>
-    <section class="">
-        <nav class="columns_flex channel_nav manufacturer_nav">
-            <a href="" class="current">
-                <span class="union_purchase"></span>
-                入驻部署
-            </a>
-            <a href="">
-                <span class="exclusive"></span>
-                采购运营
-            </a>
-            <a href="">
-                <span class="classify"></span>
-                分成运营
-            </a>
-            <a href="">
-                <span class="purchasers"></span>
-                新零售运营
-            </a>
-        </nav>
-    </section>
-    <section class="specific_type bottomLine">
-        <div class="columns_flex f20">
-            <a class="column_type current">登录退出</a>
-            <a>厂商档案</a>
-            <a>厂商资质</a>
-            <a>采购供应</a>
-            <a>分成供应</a>
-            <a>零售供应</a>
-            <a>工号授权</a>
-            <a>收益结算</a>
+    <section class="slider_banner">
+        <div id="slider" >
+            <div class='swipe-wrap'>
+                <div><img src="public/static/common/img/banner/home-banner1.jpg" /></div>
+                <div><img src="public/static/common/img/banner/home-banner1.jpg" /></div>
+                <div><img src="public/static/common/img/banner/home-banner1.jpg" /></div>
+                <div><img src="public/static/common/img/banner/home-banner1.jpg" /></div>
+            </div>
+            <ul class="position">
+                <li class="on"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
     </section>
     <section class="vendor_logon">
-        <span>账号登录</span>
+        <span>厂商登录账号</span>
         <form>
             <div class="v_l_item">
                 <input type="text" class="company_id" placeholder="企业ID">
@@ -76,7 +69,37 @@
         </form>
     </section>
     <section>
-        <a class="account_entry right-arrow">未申请账户？优质厂商免费开通账号</a>
+        <a class="account_entry">未申请账户？优质厂商免费开通账号></a>
+    </section>
+    <section class="explain_nav">
+        <a href="">关于美尚云></a>
+        <a href="">厂商使用帮助></a>
+        <a href="">人才招聘></a>
+        <a href="">版权信息备案号</a>
+    </section>
+    <section class="bottom_nav_fixed">
+        <nav class=" foot_nav_bar">
+            <ul class="columns_flex">
+                <li class="each_column ">
+                    <a>
+                        <span class="store"></span>
+                        店家
+                    </a>
+                </li>
+                <li class="each_column">
+                    <a>
+                        <span class="practitioners"></span>
+                        从业人员
+                    </a>
+                </li>
+                <li class="each_column current">
+                    <a>
+                        <span class="manufacturer"></span>
+                        厂商
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </section>
 </article>
 <script src="public/static/common/js/jquery-1.9.1.min.js"></script>
@@ -87,6 +110,10 @@
 <script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
 <script>
     $(function(){
+        //轮播
+        var elem = document.getElementById('slider');
+            swipe(elem);
+        
         $('body').on('click','.sign_in',function(){
             var companyId=$('.company_id').val();
             var companyName=$('.company_name').val();

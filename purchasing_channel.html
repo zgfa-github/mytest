@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <title>采购频道首页</title>
-    <link rel="stylesheet" href="Public/css/common/public.css">
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
 	<!--<link rel="stylesheet" href="Public/img/admin-css/common/weui.css">-->
-    <link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">
-    <link rel="stylesheet" href="Public/js/common/layer.mobile/need/layer.css">
-    <style>
-       
-        /* 左右滑动菜单 */
-
-    </style>
+    <!--<link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">-->
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
 </head>
 <body>
 <article class="f24">
@@ -52,10 +48,10 @@
     <section class="slider_banner">
         <div id="slider" >
             <div class='swipe-wrap'>
-                <div><img src="Public/img/common/banner/home-banner1.jpg" /></div>
-                <div><img src="Public/img/common/banner/home-banner1.jpg" /></div>
-                <div><img src="Public/img/common/banner/home-banner1.jpg" /></div>
-                <div><img src="Public/img/common/banner/home-banner1.jpg" /></div>
+                <div><img src="public/static/common/img/banner/home-banner1.jpg" /></div>
+                <div><img src="public/static/common/img/banner/home-banner1.jpg" /></div>
+                <div><img src="public/static/common/img/banner/home-banner1.jpg" /></div>
+                <div><img src="public/static/common/img/banner/home-banner1.jpg" /></div>
             </div>
             <ul class="position">
                 <li class="on"></li>
@@ -151,78 +147,11 @@
         </nav>
     </section>
 </article>
-<script src="Public/js/common/jquery-1.11.3.min.js"></script>
-<script src="Public/js/common/public.js"></script>
-<script type="text/javascript" src="Public/js/common/swipe.js"></script>
+<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/swipe.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
 <script>
-    var nav_scroll ={
-            outer:null,
-            $inner:null,
-            hidden_width:0,
-            current_x:0,
-            start_x:0,
-            scale:1,
-            distance:0,
-            init:function(outer,inner){
-                var self =this;
-                self.outer = $(outer)[0];
-                self.$inner = $(inner);
-                var inner_width = 0;
-                self.$inner.children().each(function(){
-                    inner_width += $(this).outerWidth();
-                });
-                self.hidden_width = inner_width-$(self.outer).width();
-                self.$inner.width(inner_width+1);
-                self.outer.addEventListener('touchstart', self.eventlistener, false);
-            },
-            eventlistener:{
-                handleEvent: function(event) {
-                switch (event.type) {
-                    case 'touchstart': this.start(event); break;
-                    case 'touchmove': this.move(event); break;
-                    case 'touchend': this.end(event); break;
-                }
-                },
-                start:function(){
-                    nav_scroll.start_x = event.touches[0].pageX;
-                    nav_scroll.outer.addEventListener('touchmove', this, false);
-                },
-                move:function(){
-                    var this_e = event || window.event;
-                    this_e.preventDefault();
-                    this_e.stopPropagation()
-                    nav_scroll.move_x = event.touches[0].pageX;
-                    nav_scroll.current_x = nav_scroll.current_x+nav_scroll.move_x-nav_scroll.start_x;
-                    nav_scroll.start_x = nav_scroll.move_x;
-                    nav_scroll.transform();
-                },
-                end:function(){
-                    nav_scroll.outer.removeEventListener('touchmove', this, false)
-                    nav_scroll.outer.removeEventListener('touchend', this, false)
-                }
-            },
-            transform:function(x){
-                var self =this;
-                if(-nav_scroll.current_x>=self.hidden_width){
-                    if(-nav_scroll.current_x===self.hidden_width){
-                        return null;
-                    }
-                    nav_scroll.current_x = -self.hidden_width;
-                }
-                else if(nav_scroll.current_x>=0){
-                    if(nav_scroll.current_x===0){
-                        return null;
-                    }
-                    nav_scroll.current_x =0;
-                }
-                $(self.outer).css({
-                    webkitTransform:'translate('+nav_scroll.current_x+'px,0) translateZ(0)',
-                    transitionDuration:0+'ms',
-                    transitionTimingFunction: 'cubic-bezier(0.1, 0.57, 0.1, 1)'
-                });
-            }
-    }
-    nav_scroll.init('.top_menu_box','.top_menu_list');
     $(function(){
         var elem = document.getElementById('slider');
             swipe(elem);
