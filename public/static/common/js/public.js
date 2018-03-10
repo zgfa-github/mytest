@@ -157,10 +157,15 @@ $.fn.tab = function(){
         $(this).addClass("current").siblings().removeClass("current");
     }) 
 };
-
+$('.top_menu_list a').on('click',function(){
+    var index=$(this).index();
+        if(index>0){
+            dialog.error('功能正在开发中,暂未上线,敬请期待');
+        }
+})
 //选项卡切换
 function tab_down(tab_k, tab_con, tab_dz) {
-    alert(tab_k);
+    // alert(tab_k);
     var $div_li = $(tab_k);
     var timeout;
     if (tab_dz == "click") {
