@@ -308,9 +308,14 @@ i{
     z-index:2;
 }
 .top_bar{
+    position:relative;
     background: #fff;
     border-bottom:1px solid #9fa0a0;
     padding:10px 0;
+}
+.top_bar h2{
+    text-align: center;
+    font-size: 0.24rem;
 }
 .top_bar a{
     width:20px;
@@ -321,6 +326,14 @@ i{
     background-size:20px 204px;
     display:block;
     text-indent:-9999rem;
+}
+.top-title{
+    border:none;
+}
+.top-title a{
+    position:absolute;
+    top:10px;
+    right:10px;
 }
 .top_bar a.personal_center{
     background-position:0 -114px;
@@ -790,4 +803,169 @@ color: #ed6d00;
     border-bottom:1px solid #d9d9d9;
     color:#0066cc;
 }
+.vendorInfoLayer .layui-m-layercont{
+    padding:0;
+}
 
+/*机构登记  background:url(../../images/sign-ico.png) repeat-x center 8px;*/
+.login-items{padding:0.30rem 0.28rem;border-top:1px solid #d9d9d9;}
+.msy_sign_title{background-color:#f7f8f8;padding: 0 0 0.15rem;}
+.msy_sign_title h2{text-align:center;background:#fff;padding:0.25rem 0;}
+.page-bd .status{}
+.apply-data-nav{padding:0.40rem 0.4rem;}
+.weui_cells{border:1px solid #d9d9d9;border-radius:0.06rem;}
+.login-items .weui_btn_primary{background-color: #F39800;}
+.login-items .weui_input{font-size:0.24rem;}
+.login-items .msy_cells:before,.login-items .msy_cells:after{border-top:none;border-bottom:none;}
+.page-bd .weui-flex {
+
+    align-items: center;
+    transition: all 0.3s ease 0s;
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: flex;
+}
+.page-bd .weui-flex-item {
+    position:relative;
+    -webkit-flex: 1 1 0;
+    flex: 1 1 0;
+    text-align:center;
+    color:#808080;
+}
+.weui_cell-bd {
+    -webkit-flex: 1 1 0;
+    flex: 1 1 0;
+}
+.page-bd .status .current{color:#0ccaf7;}
+.weui-flex-item span{display:block;height:0.6rem;}
+.weui-flex-item .base_info{
+    background:#fff url(../../common/img/base_s_info.png) no-repeat center 0;
+    background-size:40px auto;
+}
+.weui-flex-item.current .base_info{
+    background:#fff url(../../common/img/base_info.png) no-repeat center 0;
+    background-size:40px auto;
+}
+.weui-flex-item .base_address{background:#fff url(../../common/img/base_address.png) no-repeat center 0;background-size:40px auto;}
+.weui-flex-item .base_s_address{background:#fff url(../../common/img/base_s_address.png) no-repeat center 0;background-size:40px auto;}
+.weui-flex-item .opening{background:#fff url(../../common/img/base_s_finish.png) no-repeat center 0;background-size:40px auto;}
+.weui-flex-item.current .opening{background:#fff url(../../common/img/base_finish.png) no-repeat center 0;background-size:40px auto;}
+.weui-flex-item .upload-prove{
+    background:#fff url(../../common/img/certify_s_info.png) no-repeat center 0;
+    background-size:40px auto;
+}
+.weui-flex-item.current .upload-prove{
+    background:#fff url(../../common/img/certify_info.png) no-repeat center 0;
+    background-size:40px auto;
+}
+.weui-flex-item .certify_s_info{background:#fff url(../../common/img/certify_s_info.png) no-repeat center 0;background-size:40px auto;}
+
+.weui-flex-item em{position: absolute;
+    background: url(../../common/img/icons/sign-icons.png) repeat-x;
+    left: 76%;
+    height: 2px;
+    display: block;
+    width: 48%;
+    top: 14px;
+    z-index: 999;
+}
+.weui_cell .pca{flex:1;-webkit-flex:1;box-sizing:border-box;border: 1px solid #d9d9d9;padding:0.22rem 0 0.22rem 0rem;background:none;}
+/*.weui_cell select option{text-align:center;}*/
+.weui_cell select:nth-of-type(1){border-right:none;}
+.weui_cell select:nth-of-type(2){border-right:none;}
+.weui_address{padding:0;border:none;}
+.weui_address .weui_cell{padding:0;}
+.reg_success{text-align:center;padding:0.8rem 0 0.5rem;}
+/*用户入驻申请2018-3-11*/
+.apply-data-content{
+    padding:0.20rem 0.25rem;
+}
+.apply-module.hide{
+    display: none;
+}
+.apply-items{
+    margin:0 0 0.25rem 0;
+    padding:0 0 0 0.12rem;
+    border:1px solid #d9d9d9;
+    border-radius:5px;
+    box-sizing: border-box;
+}
+.apply-items input{
+    display: block;
+    width:100%;
+    padding:0.15rem 0;
+    background: none;
+}
+.next-step{
+    display: block;
+    width:4rem;
+    height:38px;
+    line-height: 38px;
+    margin:1rem auto 0.5rem;
+    background: #ff7aab;
+    color:#fff;
+    text-align: center;
+    border-radius:5px;
+}
+.upload-data-explain{
+    line-height: 24px;
+    padding:0 0.20rem 0 0.20rem;
+}
+.success-tipc{
+    text-align:center;
+}
+/*图片上传2018-3-11*/
+.uploadImg_map{position:relative;margin:0.18rem 0 0;}
+.register_info .uploadImg_map{margin-top:0;}
+.upload_td .uploadImg {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.uploadImg_map .msy_image_map:after,.uploadImg_map .msy_image_map:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-color: #999;
+    z-index:2;
+}
+.uploadImg_map .msy_image_map{position:relative;width:100%;height:3.5rem;background:#e5e5e5;}
+.uploadImg_map .pg_f_focus{height:4.5rem;}
+.uploadImg_map .msy_image_map:before {
+    width: 2px;
+    height: 39.5px;
+    top:35%;
+    
+}
+.uploadImg_map .msy_image_map.active:before,.uploadImg_map .msy_image_map.active:after,.image_photo .upload_td.active:before,.image_photo .upload_td.active:after{width:0;height: 0;}
+.uploadImg_map .msy_image_map:after {
+    width: 39.5px;
+    height: 2px;
+    top:35%;
+}
+.image_photo .upload_td:before{top:36%;}
+.image_photo .upload_td:after{top:36%;}
+.msy_image_map .uploadImg,.image_photo .upload_td .uploadImg{z-index:3;}
+.msy_image_map .upload_img,.image_photo .upload_td .upload_img{z-index:1;}
+.uploadImg_map span{position: absolute;width:1rem ;height:1rem ;left:50%;top:56%;margin:-0.5rem 0 0 -0.5rem;color:#999;z-index:2;}
+.uploadImg_map .replace_tips{width:;}
+.serivce_pg_layer .uploadImg_map span {
+    top:60%;
+    width: 2.6rem;
+    text-align: center;
+    margin-left: -1.3rem;
+}
+.serivce_pg_layer .uploadImg_map .pic_specify {
+    top: 70%;
+}
+.layui-m-layermain .serivce_pg_layer{width: 90%;}
+.uploadImg_map .msy_image_map.active .upload_img{z-index:2;}
+.uploadImg_map .msy_image_map.active span{z-index:1;}
