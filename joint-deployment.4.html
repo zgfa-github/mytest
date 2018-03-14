@@ -46,13 +46,30 @@
     <form class="">
         <ul class="upload-picture-module multi-picture-module f24"></ul>
     </form>
+    <!--照片添加-->
+    <!--<div class="z_photo">
+        <div class="z_file">
+            <input type="file" name="file" id="file" value="" accept="image/*" multiple="" >
+        </div>
+    </div>-->
     <div class="upload-picture-module f24">
         <div>
             <div class="picture-module">
-                <input type="file" class="uploadMultiImg" name="">
+                <input type="file" class="uploadMultiImg" id="file" name="" accept="image/*" multiple="" >
                 <img class="upload_img" src="" alt="">
                 <input type="hidden" class="business-license" value=""/>
             </div>
+        </div>
+    </div>
+    <!--遮罩层-->
+    <div class="z_mask">
+        <!--弹出框-->
+        <div class="z_alert">
+            <p>确定要删除这张图片吗？</p>
+            <p>
+                <span class="z_cancel">取消</span>
+                <span class="z_sure">确定</span>
+            </p>
         </div>
     </div>
 </section>
