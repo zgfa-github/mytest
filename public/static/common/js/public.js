@@ -189,7 +189,7 @@ function tab_down(tab_k, tab_con, tab_dz) {
     }
 }
 
-//加载图片
+//懒加载图片
 function checkShow(ele){
     var winH=$(window).height(),
         scrollH=$(window).scrollTop();

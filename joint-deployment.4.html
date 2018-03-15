@@ -19,7 +19,7 @@
                 <div class="picture-module">
                     <input type="file" class="uploadImg" name="">
                     <img class="upload_img" src="" alt="">
-                    <input type="hidden" class="business-license" value=""/>
+                    <input type="hidden" class="layer-thumbnail-picture" value=""/>
                 </div>
                 <!--<p>企业营业执照</p>-->
             </div>
@@ -27,7 +27,7 @@
     </form>    
 </section>
 <!--编辑分类标签-->
-<section id="vendorInfoList" style="display:none;">
+<section id="editGoodsLabel" style="display:none;">
     <ul class="vendorInfoList">
         <li data-id="1">标签1</li>   
         <li data-id="2">标签2</li>   
@@ -37,7 +37,7 @@
 <!--编辑商品参数-->
 <section id="editGoodsParameter" style="display: none;">
     <div>
-        <textarea name="" id="" cols="30" rows="10" val=""></textarea>
+        <textarea class="editGoodsText" name="" id="" cols="30" rows="10" val=""></textarea>
     </div>
 </section>
 <!--编辑商品详情-->
@@ -46,12 +46,6 @@
     <form class="">
         <ul class="upload-picture-module multi-picture-module f24"></ul>
     </form>
-    <!--照片添加-->
-    <!--<div class="z_photo">
-        <div class="z_file">
-            <input type="file" name="file" id="file" value="" accept="image/*" multiple="" >
-        </div>
-    </div>-->
     <div class="upload-picture-module f24">
         <div>
             <div class="picture-module">
@@ -61,17 +55,6 @@
             </div>
         </div>
     </div>
-    <!--遮罩层-->
-    <div class="z_mask">
-        <!--弹出框-->
-        <div class="z_alert">
-            <p>确定要删除这张图片吗？</p>
-            <p>
-                <span class="z_cancel">取消</span>
-                <span class="z_sure">确定</span>
-            </p>
-        </div>
-    </div>
 </section>
 <article class="f24">
     <section>
@@ -79,49 +62,54 @@
             <ul>
                 <li>
                     <span class="form-title">商品名称</span>
-                    <input type="text" name="" value="" placeholder="商品名称,字数限18字" class="goods-name input-text">
+                    <input type="text" name="goodsName" value="" placeholder="商品名称,字数限18字" class="goods-name input-text">
                 </li>
                 <li>
                     <span class="form-title">商品特点</span>
-                    <textarea rows="" cols="" name="" placeholder="商品简要说明,字数限28字" class="goods-character input-text"></textarea>
+                    <textarea rows="" cols="" name="goodsCharacter" placeholder="商品简要说明,字数限28字" class="goods-character input-text"></textarea>
                 </li>
                 <li>
                     <span class="form-title">商品价格</span>
                     <span class="price-flex">
                         <label for="">结算价￥</label>
-                        <input type="text" name="" value="" placeholder="68.00" class="settle-price">
+                        <input type="text" name="settlePrice" value="" placeholder="68.00" class="settle-price">
                     </span>
                     <span class="price-flex">
                         <label for="">零售价￥</label>
-                        <input type="text" name="" value="" placeholder="688.00" class="retail-price">
+                        <input type="text" name="retailPrice" value="" placeholder="688.00" class="retail-price">
                     </span>
                 </li>
                 <li >
                     <a href="javascript:void(0);" class="upload-thumbnail right-arrow" >上传商品缩略图</a>
+                    <input type="hidden" class="thumbnail-picture" value="" name="thumbnailPicture">
                 </li>
                 <li class="">
-                    <a href="javascript:void(0);" class="editCommodityLabel right-arrow" >编辑商品分类标签</a>
+                    <a href="javascript:void(0);" class="editGoodsLabel right-arrow" >编辑商品分类标签</a>
+                    <input type="hidden" class="goods-tag" data-id="" value="" name="goodsTag">
                 </li>
                 <li class="">
                     <a href="javascript:void(0);" class="uploadFocusPicture right-arrow">上传商品首焦图</a>
+                    <input type="hidden" class="focus-picture" value="" name="focusPicture">
                 </li>
                 <li class="">
                     <a href="javascript:void(0);" class="editGoodsParameter right-arrow">编辑商品参数</a>
+                    <input type="hidden" class="goods-parameter" value="" name="goodsParameter">
                 </li>
                 <li class="">
                     <a href="javascript:void(0);" class="editDetail right-arrow">编辑商品详情</a>
+                    <input type="hidden" class="goods-detail" data-src="" value="" name="goodsDetail">
                 </li>
             </ul>
-            </form>
+        </form>
     </section>
 </article>
 <a href="javascript:void(0);" class="identifyNewGoods foot-btn f24">确定</a>
-<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
-<script src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
 <script type="text/javascript" src="public/static/common/js/swipe.js"></script>
 <script type="text/javascript" src="public/static/common/js/common.js"></script>
-<script src="public/static/common/js/dialog.js"></script>
-<script src="public/static/factory/js/uploadMultiImg.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/factory/js/uploadMultiImg.js"></script>
 <script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
 <script>
     $(function(){
@@ -132,13 +120,22 @@
                 title:['上传缩略图','border-bottom:1px solid #d9d9d9;'],
                 className:'uploadThumbnailLayer',
                 content:uploadThumbnail,
-                btn:['确定','取消']
+                btn:['确定','取消'],
+                success:function(){
+                    var thumbnailSrc=$('.thumbnail-picture').val();
+                    $('.uploadThumbnailLayer img').attr('src',thumbnailSrc);
+                    
+                },
+                yes:function(index){
+                    var layerThumbnailSrc=$('.uploadThumbnailLayer img').attr('src');
+                    $('.thumbnail-picture').val(layerThumbnailSrc);
+                    layer.close(index);
+                }
             })
         });
         $('body').on('change','.uploadImg',function(){
             var img = event.target.files[0];
             var obj=$(this).parent();
-            console.log(img);
             // 判断是否图片
             if(!img){
                 return false;
@@ -155,33 +152,30 @@
             reader.readAsDataURL(img);
             reader.onload = function(e){
                 var imgUrl=e.target.result;
-                console.log(imgUrl);
                 $(obj).addClass('active');
                 var postData = {img: e.target.result};
                 postData.imgWidth = 145;
                 postData.imgHeight = 100; 
-                $(obj).find('img').attr('src',imgUrl);
-                $(obj).find('.business-license').val(imgUrl);               
-                $(obj).find('.agent-authorization').val(imgUrl);               
+                $(obj).find('img').attr('src',imgUrl);             
             }
         });
 
         //选择商品分类标签
-        var vendorInfoList=$('#vendorInfoList').html();
-        $('body').on('click','.editCommodityLabel',function(){
+        var editGoodsLabel=$('#editGoodsLabel').html();
+        $('body').on('click','.editGoodsLabel',function(){
             var factoryLayerName,factoryLayerId;
             layer.open({
                 title:['商品分类标签','border-bottom:1px solid #d9d9d9'],
-                className:'vendorInfoLayer',
-                content:vendorInfoList,
+                className:'editGoodsLayer',
+                content:editGoodsLabel,
                 btn:['确定','取消'],
                 success:function(){
-                    var factoryId=$('.factoryId').val();
-                    $('.vendorInfoLayer li').on('click',function(){
+                    var factoryId=$('.goods-tag').data('id');
+                    $('.editGoodsLayer li').on('click',function(){
                         var _this=$(this);
                         _this.addClass('current').siblings().removeClass('current');
                     });
-                    $.each($('.vendorInfoLayer li'),function(){
+                    $.each($('.editGoodsLayer li'),function(){
                         var currentId=$(this).data('id');
                         if(factoryId==currentId){
                             $(this).addClass('current');
@@ -189,11 +183,11 @@
                     })
                 },
                 yes:function(index){
-                    var isCurrent=$('.vendorInfoLayer li.current');
-                    factoryLayerName=isCurrent.text();
-                    factoryLayerId  =isCurrent.data('id');
-                    $('.factoryId').val(factoryLayerId);
-                    $('.vendor-name').text(factoryLayerName);
+                    var isCurrent=$('.editGoodsLayer li.current');
+                    goodsTagLayerName=isCurrent.text();
+                    goodsTagLayerId  =isCurrent.data('id');
+                    $('.goods-tag').val(goodsTagLayerName);
+                    $('.goods-tag').data('id',goodsTagLayerId);
                     layer.close(index);
                 }
             })
@@ -204,7 +198,17 @@
                 title:['上传商品首焦图'],
                 className:'uploadFocusLayer',
                 content:uploadThumbnail,
-                btn:['确定','取消']
+                btn:['确定','取消'],
+                success:function(){
+                    var focusPicture=$('.focus-picture').val();
+                    $('.uploadFocusLayer img').attr('src',focusPicture);
+                    
+                },
+                yes:function(index){
+                    var layerFocusSrc=$('.uploadFocusLayer img').attr('src');
+                    $('.focus-picture').val(layerFocusSrc);
+                    layer.close(index);
+                }
             })
         })
         
@@ -215,7 +219,16 @@
                 title:['编辑商品参数','border-bottom:1px solid #d9d9d9;'],
                 className:'editParameterLayer',
                 content:editGoodsParameter,
-                btn:['确定','取消']
+                btn:['确定','取消'],
+                success:function(){
+                    var goodsParameter=$('.goods-parameter').val();
+                    $('.editParameterLayer .editGoodsText').val(goodsParameter);
+                },
+                yes:function(index){
+                    var editGoodsText=$('.editParameterLayer .editGoodsText').val();
+                    $('.goods-parameter').val(editGoodsText);
+                    layer.close(index);
+                }
             })
         })
         //编辑商品详情
@@ -227,9 +240,29 @@
                 content:editDetail,
                 btn:['确定','取消'],
                 success:function(){
+                    var html='';
+                    html+='<li>';
+                    html+='<div class="picture-module active">';
+                    html+='<input type="file" class="uploadImg" name="">';
+                    html+='<span class="delete-picture">X</span>';
+                    html+='<img src="" class="upload_img">';
+                    html+='</div>'
+                    html+='</li>';
+                    var multiImgAttr=$('.goods-detail').data('src');
+                    console.log(multiImgAttr.length);
+                    for(var i=0;i<multiImgAttr.length;i++){
+                        $('.editDetailLayer .multi-picture-module').append(html);
+                        $('.editDetailLayer .upload_img').eq(i).attr('src',multiImgAttr[i]);
+                    }
                 },
                 yes:function(index){
-                  
+                    var layermultiImgAttr=[];
+                    $.each($('.editDetailLayer li'),function(i,val){
+                        var _this=$(this);
+                        var imgSrc=_this.find('img').attr('src');
+                        layermultiImgAttr.push(imgSrc);
+                    })
+                    $('.goods-detail').data('src',layermultiImgAttr);
                     layer.close(index);
                 }
             })
@@ -237,23 +270,38 @@
 
         //增加商品
         $('body').on('click','.identifyNewGoods',function(){
-            var goodsName=$('.goods-name').val();
-            var goodsCharacter=$('.goods-character').val();
-            var settlePrice=$('.settle-price').val();
-            var retailPrice=$('.retail-price').val();
+            var goodsDetail=$('.goods-detail').data('src');
+            var postData={};
+            var postData=$('.addProductContent').serializeObject();
+            postData.goodsDetail=goodsDetail;
+            
             var content='';
-                if(!goodsName){
+                if(!postData.goodsName){
                     content='请填写商品名称';
-                }else if(!goodsCharacter){
+                }else if(!postData.goodsCharacter){
                     content='请填写商品特点';
-                }else if(!isNumber(settlePrice)){
+                }else if(!isNumber(postData.settlePrice)){
                     content='请填写结算价';
-                }else if(!isNumber(retailPrice)){
+                }else if(!isNumber(postData.retailPrice)){
                     content='请填写零售价';
+                }else if(!postData.thumbnailPicture){
+                    content='请上传缩略图';
+                }else if(!postData.goodsTag){
+                    content='请选择标签';
+                }else if(!postData.focusPicture){
+                    content='请上传首焦图';
+                }else if(!postData.goodsParameter){
+                    content='请填写商品参数';
+                }else if(!goodsDetail){
+                    content='请上传商品详情图';
                 }
                 if(content){
                     dialog.error(content);
+                }else{
+                    $.post('',postData,function(){
+                    })
                 }
+            
         })
 
     })
