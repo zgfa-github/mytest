@@ -13,8 +13,21 @@
 <!--新建标签-->
 <section id="addTagForm" style="display:none;">
     <form>
-        <input type="text" placeholder="填写标签名称" class="classify-tag-name"/>
+        <input type="text" placeholder="填写标签名称" class="layer-tag-name"/>
     </form>
+</section>
+<!--新建标签列表-->
+<section id="classifyTagList" style="display: none;">
+    <div class="columns_flex tag-item first-tag">
+        <span class="classify-tag-name"></span>
+        <div class="classify-operate-btn">
+            <a href="javascript:void(0);" class="add-icons">添加</a>
+            <a href="javascript:void(0);" class="edit-icons">编辑</a>
+            <a href="javascript:void(0);" class="del-icons">删除</a>
+            <a href="javascript:void(0);" class="move-icons">上移</a>
+            <a href="javascript:void(0);" class="down-icons">下移</a>
+        </div>
+    </div>
 </section>
 <article class="f24">
     <section class="">
@@ -45,7 +58,7 @@
             <a class="add-type-tag"><span class="add-icons">新建商品分类标签</span></a>
             <p class="set-tag-tipc">未设置标签</p>
             <div class="classify-label-content">
-                <div class="columns_flex tag-item first-tag">
+                <!--<div class="columns_flex tag-item first-tag">
                     <span>分类1</span>
                     <div class="classify-operate-btn">
                         <a href="javascript:void(0);" class="add-icons">添加</a>
@@ -64,7 +77,7 @@
                         <a href="javascript:void(0);" class="move-icons">上移</a>
                         <a href="javascript:void(0);" class="down-icons">下移</a>
                     </div>
-                </div>
+                </div>-->
                 <!--<div class="columns_flex tag-item second-tag">
                     <span>子分类1</span>
                     <div class="classify-operate-btn">
@@ -93,7 +106,24 @@
                 title:['新建商品分类标签','border-bottom:1px solid #d9d9d9;'],
                 content:addTagForm,
                 className:'addTagLayer',
-                btn:['确定','取消']
+                btn:['确定','取消'],
+                yes:function(index){
+                    var layerTagName=$('.addTagLayer .layer-tag-name').val();
+                    var html='';
+                        html+='<div class="columns_flex tag-item first-tag">';
+                        html+='<span class="classify-tag-name">'+layerTagName+'</span>';
+                        html+='<div class="classify-operate-btn">';
+                        html+=' <a href="javascript:void(0);" class="add-icons">添加</a>';
+                        html+=' <a href="javascript:void(0);" class="edit-icons">编辑</a>';
+                        html+=' <a href="javascript:void(0);" class="del-icons">删除</a>';
+                        html+=' <a href="javascript:void(0);" class="move-icons">上移</a>';
+                        html+=' <a href="javascript:void(0);" class="down-icons">下移</a>';
+                        html+='</div>';
+                        html+='</div>';
+                    
+                    $('.classify-label-content').append(classifyTagList); 
+                    layer.close(index);
+                }
             })
         })
     })

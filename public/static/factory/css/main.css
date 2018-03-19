@@ -157,7 +157,7 @@
 .addTagLayer .layui-m-layercont{
     padding:0.20rem;
 }
-.addTagLayer .classify-tag-name{
+.addTagLayer .layer-tag-name{
     width:100%;
     padding:10px 0;
     background: #efefef;
