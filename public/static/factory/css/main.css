@@ -112,7 +112,7 @@
     padding:0 0 0 38px;
     background-image:url(../../common/img/icons/operate-icons.png);
     background-repeat: no-repeat;
-    background-size:32px 175px;
+    background-size:32px 250px;
     color:#39b54a;
 
 }
@@ -136,7 +136,7 @@
     margin:0 0 0 12px;
     background-image:url(../../common/img/icons/operate-icons.png);
     background-repeat: no-repeat;
-    background-size:32px 175px;
+    background-size:32px 250px;
     text-indent:-9999rem;
 }
 .classify-operate-btn a.add-icons{
@@ -149,10 +149,16 @@
     background-position:0 -71px;
 }
 .classify-operate-btn a.move-icons{
-    background-position:0 -106px;
+    background-position:0 -214px;
 }
 .classify-operate-btn a.down-icons{
+    background-position:0 -106px;
+}
+.classify-operate-btn a.move-disabled-icons{
     background-position:0 -142px;
+}
+.classify-operate-btn a.down-disabled-icons{
+    background-position:0 -178px;
 }
 .addTagLayer .layui-m-layercont{
     padding:0.20rem;

@@ -878,7 +878,8 @@ color: #ed6d00;
 }
 .page-bd .status .current{color:#0ccaf7;}
 .weui-flex-item span{display:block;height:0.6rem;}
-.weui-flex-item .base_info{
+.weui-flex-item .base_info,
+.weui-flex-item .brand-name{
     background:#fff url(../../common/img/base_s_info.png) no-repeat center 0;
     background-size:40px auto;
 }
@@ -955,6 +956,7 @@ color: #ed6d00;
 .upload-picture-module{
     display: flex;
     display: -webkit-flex;
+    flex-wrap: wrap;
     margin:0.20rem 0 0;
     overflow: hidden;
 }
@@ -964,6 +966,10 @@ color: #ed6d00;
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 auto;
     flex: 1 1 auto;
+}
+.brand-store-module li{
+    width:50%;
+    margin:0.15rem 0;
 }
 .upload-picture-module li p{
     text-align: center;
