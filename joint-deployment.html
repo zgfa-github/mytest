@@ -13,22 +13,11 @@
 <!--新建标签-->
 <section id="addTagForm" style="display:none;">
     <form>
-        <input type="text" placeholder="填写标签名称" class="layer-tag-name"/>
+        <input type="text" placeholder="填写排序号" class="layer-tag-num" value=""/>
+        <input type="text" placeholder="填写标签名称" class="layer-tag-name" value=""/>
     </form>
 </section>
-<!--新建标签列表-->
-<section id="classifyTagList" style="display: none;">
-    <div class="columns_flex tag-item first-tag">
-        <span class="classify-tag-name"></span>
-        <div class="classify-operate-btn">
-            <a href="javascript:void(0);" class="add-icons">添加</a>
-            <a href="javascript:void(0);" class="edit-icons">编辑</a>
-            <a href="javascript:void(0);" class="del-icons">删除</a>
-            <a href="javascript:void(0);" class="move-disabled-icons">上移</a>
-            <a href="javascript:void(0);" class="down-disabled-icons">下移</a>
-        </div>
-    </div>
-</section>
+
 <article class="f24">
     <section class="">
         <nav class="columns_flex channel_nav manufacturer_nav supply-nav">
@@ -56,146 +45,18 @@
     <section>
         <div>
             <a class="add-type-tag"><span class="add-icons">新建商品分类标签</span></a>
-            <p class="set-tag-tipc">未设置标签</p>
             <div class="classify-label-content">
-                <!--<div class="columns_flex tag-item first-tag">
-                    <span>分类1</span>
-                    <div class="classify-operate-btn">
-                        <a href="javascript:void(0);" class="add-icons">添加</a>
-                        <a href="javascript:void(0);" class="edit-icons">编辑</a>
-                        <a href="javascript:void(0);" class="del-icons">删除</a>
-                        <a href="javascript:void(0);" class="move-icons">上移</a>
-                        <a href="javascript:void(0);" class="down-icons">下移</a>
-                    </div>
-                </div>
-                <div class="columns_flex tag-item first-tag">
-                    <span>分类2</span>
-                    <div class="classify-operate-btn">
-                        <a href="javascript:void(0);" class="add-icons">添加</a>
-                        <a href="javascript:void(0);" class="edit-icons">编辑</a>
-                        <a href="javascript:void(0);" class="del-icons">删除</a>
-                        <a href="javascript:void(0);" class="move-icons">上移</a>
-                        <a href="javascript:void(0);" class="down-icons">下移</a>
-                    </div>
-                </div>-->
-                <!--<div class="columns_flex tag-item second-tag">
-                    <span>子分类1</span>
-                    <div class="classify-operate-btn">
-                        <a href="javascript:void(0);" class="add-icons">添加</a>
-                        <a href="javascript:void(0);" class="edit-icons">编辑</a>
-                        <a href="javascript:void(0);" class="del-icons">删除</a>
-                        <a href="javascript:void(0);" class="move-icons">上移</a>
-                        <a href="javascript:void(0);" class="down-icons">编辑</a>
-                    </div> 
-                </div>-->
+                <p class="set-tag-tipc">未设置标签</p>
             </div>
         </div>
     </section>
 </article>
 <script src="public/static/common/js/jquery-1.9.1.min.js"></script>
 <script src="public/static/common/js/public.js"></script>
-<script type="text/javascript" src="public/static/common/js/swipe.js"></script>
 <script type="text/javascript" src="public/static/common/js/common.js"></script>
 <script src="public/static/common/js/dialog.js"></script>
 <script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
-<script type="text/javascript">
-$(function(){
-    var addTagForm=$('#addTagForm').html();
-    //新增分类标签
-    $('body').on('click','.add-type-tag',function(){
-        layer.open({
-            title:['新建商品分类标签','border-bottom:1px solid #d9d9d9;'],
-            content:addTagForm,
-            className:'addTagLayer',
-            btn:['确定','取消'],
-            yes:function(index){
-                var layerTagName=$('.addTagLayer .layer-tag-name').val();
-                var html='';
-                    html+='<div class="columns_flex tag-item first-tag">';
-                    html+='<span class="classify-tag-name">'+layerTagName+'</span>';
-                    html+='<span class="classify-operate-btn">';
-                    html+=' <a href="javascript:void(0);" class="add-icons">添加</a>';
-                    html+=' <a href="javascript:void(0);" class="edit-icons">编辑</a>';
-                    html+=' <a href="javascript:void(0);" class="del-icons">删除</a>';
-                    html+=' <a href="javascript:void(0);" class="">上移</a>';
-                    html+=' <a href="javascript:void(0);" class="">下移</a>';
-                    html+='</span>';
-                    html+='</div>';
-                
-                $('.classify-label-content').append(html); 
-                var tagListLen=$('.classify-label-content .tag-item').length;
-                alert(tagListLen);
-               if(tagListLen<=1){
-                            $('.classify-label-content div').eq(0).find('a:eq(3)').addClass('move-disabled-icons');
-                            $('.classify-label-content div').eq(0).find('a:eq(4)').addClass('down-disabled-icons');
-                }else if(tagListLen<=tagListLen-1){
-                        $('.classify-label-content div').eq(0).find('a:eq(3)').addClass('move-icons');
-                        $('.classify-label-content div').eq(0).find('a:eq(4)').addClass('down-icons');
-                }
-                $('.classify-label-content div').eq(0).find('a:eq(3)').addClass('move-disabled-icons');
-                        $('.classify-label-content div').eq(0).find('a:eq(4)').removeClass('down-disabled-icons').addClass('down-icons');
-                        $('.classify-label-content div').eq(tagListLen-1).find('a:eq(3)').addClass('move-icons');
-                        $('.classify-label-content div').eq(tagListLen-1).find('a:eq(4)').addClass('down-disabled-icons');
-                layer.close(index);
-            }
-        })
-    });
-    //编辑分类标签
-    $('body').on('click','.edit-icons',function(){
-        var _this=$(this);
-        var tagName=_this.parents('.classify-operate-btn').prev('.classify-tag-name');
-        manageClassifyTag.initLayer(addTagForm,tagName,'修改商品分类标签',_this);
-    });
-    //删除分类标签
-    $('body').on('click','.del-icons',function(){
-        var _this=$(this);
-        var tagName=_this.parents('.classify-operate-btn').prev('.classify-tag-name');
-        manageClassifyTag.initLayer(addTagForm,tagName,'删除商品分类标签',_this);
-    })
-})
-var manageClassifyTag={
-    //初始化弹窗
-    initLayer:function(content,name,title,obj){
-        layer.open({
-            title:[title,'border-bottom:1px solid #d9d9d9;'],
-            content:content,
-            className:'addTagLayer',
-            btn:['确定','取消'],
-            success:function(){
-                $('.addTagLayer .layer-tag-name').val(name.text());
-                if(obj.hasClass('del-icons')){
-                    $('.addTagLayer .layer-tag-name').attr('disabled',true);
-                }
-            },
-            yes:function(index){
-                if(obj.hasClass('edit-icons')){
-                     manageClassifyTag.editTag(name);
-                }else{
-                    manageClassifyTag.deleteTag(name,obj);
-                }
-                
-                layer.close(index);
-            }
-        });
-    },
-    addTag:function(){
-
-    },
-    editTag:function(editObj){
-        var layerTagName=$('.addTagLayer .layer-tag-name').val();
-        editObj.text(layerTagName);
-    },
-    deleteTag:function(delObj){
-        delObj.parents('.tag-item').remove();
-    },
-    moveTag:function(){
-
-    },
-    downTag:function(){
-
-    }
-}
-</script>
+<script type="text/javascript" src="public/static/factory/js/manageTag.js"></script>
 </body>
 
 </html>

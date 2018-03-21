@@ -163,12 +163,25 @@
 .addTagLayer .layui-m-layercont{
     padding:0.20rem;
 }
+.addTagLayer .layui-m-layercont form{
+    display: -webkit-flex;
+    display:flex;
+    justify-content: space-between;
+}
+.addTagLayer form .layer-tag-num{
+    width:40%;
+    margin:0 20px 0 0;
+    background: #efefef;
+    border-radius:5px;
+    text-align:center;
+}
 .addTagLayer .layer-tag-name{
     width:100%;
     padding:10px 0;
     background: #efefef;
     border-radius:5px;
     text-align:center;
+    
 }
 .addProductContent {
     padding:0.25rem 0.15rem 0;
