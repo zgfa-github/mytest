@@ -1,4 +1,5 @@
 $(function(){
+    //图片
     $('body').on('change','#file',function(){
         var file = $(this);
         var fileList = $(this).get(0).files;
@@ -37,16 +38,62 @@ $(function(){
             }
         };
     });
+    //视频
+    $('body').on('change','.uploadSingleVideo',function(){
+        var file = $(this);
+        var fileList = $(this).get(0).files;
+        var imgContainer = $('.multi-picture-module');
+        var imgArr = [];
+        for (var i = 0; i < fileList.length; i++) {                
+            var video = event.target.files[i];
+            console.log(video);
+            var obj=$(this).parent();
+            // 判断是否图片
+            // if(!video){
+            //     return false;
+            // }
+            // // 判断图片格式
+            // var imgRegExp=/\.(?:jpg|jpeg|png|gif)$/;
+            // if(!(video.type.indexOf('image')==0 && video.type && imgRegExp.test(video.name)) ){
+            //     layer.open({
+            //         content:'请上传：jpg、jpeg、png、gif格式图片',
+            //         time:2
+            //     }) ;
+            // }
+
+            var reader = new FileReader();
+            reader.readAsDataURL(video);
+
+            reader.onload = function(e){
+                var videoUrl=e.target.result;
+                var html=$('#img_list').html();
+                //imgArr.push(imgUrl);
+                var video=  $('<video src="" class="upload_img" accept="video/*" autoplay="autoplay"></video>');
+                video.attr("src", videoUrl);
+                var videoAdd = $('<li><div class="picture-module active"><input type="file" class="uploadImg" name=""><span class="delete-picture">X</span></div></li>');
+                videoAdd.find('.picture-module').append(video);
+                imgContainer.append(videoAdd);             
+            }
+        };
+    });
     //删除
     $('body').on('click','.delete-picture',function(){
         $(this).parents('li').remove();
+    });
+     //上传视频
+    
+    $('body').on('click','.uploadGoodsVideo',function(){
+        uploadsMultiVideo();
     })
+        
+
     //编辑商品详情 上传多张图片 确认上传
    
     $('body').on('click','.editDetail',function(){
         alert($('.goods-detail').data('src').length)
         uploadsMultiImg();
     }); 
+
 })
 function uploadsMultiImg(){
     // alert(1);
@@ -100,4 +147,57 @@ function uploadsMultiImg(){
             }
         })
 }
+
+function uploadsMultiVideo(){
+    var goodsVideoList=$('#goodsVideoList').html();
+    layer.open({
+            title:['上传商品视频','border-bottom:1px solid #d9d9d9'],
+            className:'editVideoLayer',
+            content:goodsVideoList,
+            btn:['确定','取消'],
+            success:function(){
+                var html='';
+                html+='<li>';
+                html+='<div class="picture-module active">';
+                html+='<input type="file" class="uploadImg" name="">';
+                html+='<span class="delete-picture">X</span>';
+                html+='<video src="" class="upload_img"></video>';
+                html+='</div>'
+                html+='</li>';
+                
+                var multiImgAttr=$('.goods-detail').data('src');
+                
+                for(var i=0;i<multiImgAttr.length;i++){
+                    console.log(i)
+                    $('.editDetailLayer .multi-picture-module').append(html);
+                    $('.editDetailLayer .upload_img').eq(i).attr('src',multiImgAttr[i]);
+                }
+            },
+            yes:function(index){
+                var layermultiImgAttr=[];
+                alert($('.editDetailLayer li').length);
+                $.each($('.editDetailLayer li'),function(i,val){
+                    var _this=$(this);
+                    var imgSrc=_this.find('img').attr('src');
+                    layermultiImgAttr.push(imgSrc);
+                })
+                $('.goods-detail').data('src',layermultiImgAttr);
+                if(layermultiImgAttr.length==0){
+                    layer.close(index);
+                    return false;
+                }
+                var postDate = {};
+                postDate.imgs = layermultiImgAttr;
+                $.post('uploadMultiImgToTemp',postDate,function(info){
+                   if(info.status == 0){
+                       dialog.error(info.msg);
+                       return false;
+                   }
+                    $('.goods-detail1').data('src',layermultiImgAttr);
+                    layer.close(index);
+                })
+            }
+        })
+}
+
 

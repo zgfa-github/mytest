@@ -155,8 +155,8 @@ var manageClassifyTag={
             if(currentIndex>upperIndex){
                 upperTagName.text(currentTagName.text());
                 currentTagName.text(temp);
-                upperTagId.data('tag-id',currentTagId.data('tag-id'));
-                currentTagId.data('tag-id',tempId);
+                upperTagId.data('tag-id',currentTagId.data('tag-id')).attr('class','classifyTagInfo'+currentTagId.data('tag-id'));
+                currentTagId.data('tag-id',tempId).attr('class','classifyTagInfo'+tempId);
             }
     },
     downTag:function(downObj){
@@ -172,8 +172,8 @@ var manageClassifyTag={
             if(currentIndex<nextIndex){
                 nextTagName.text(currentTagName.text());
                 currentTagName.text(temp);
-                nextTagId.data('tag-id',currentTagId.data('tag-id'));
-                currentTagId.data('tag-id',tempId);
+                nextTagId.data('tag-id',currentTagId.data('tag-id')).attr('class','classifyTagInfo'+currentTagId.data('tag-id'));
+                currentTagId.data('tag-id',tempId).attr('class','classifyTagInfo'+tempId);
             }
     }
 }
