@@ -279,3 +279,37 @@
     width:30%;
     margin:0 0 25px 0;
 }
+.trademark-module{
+    padding:0 0 0 0.35rem;
+}
+.trademark-info li{
+    position:relative;
+    border-bottom:1px solid #d9d9d9;
+    padding:0.12rem 0;
+}
+.trademark-info .trade-logo{
+    max-width:50px;
+    vertical-align: middle;
+}
+.trademark-info .trade-name{
+    margin:0 0.50rem 0 0;
+}
+.trademark-info .recordation{
+    margin:0 0 0 1.5rem;
+}
+.trademark-type{
+    display: block;
+    padding:0 0 0.15rem 0;
+    margin:0.20rem 0 0;
+    border-bottom:1px solid #d9d9d9;
+}
+.trademark-nav li:last-child em{
+    background:none;
+}
+.trademark-tipc{
+    width:90%;
+    margin:0 auto;
+}
+.trademarkTypeLayer .vendorInfoList li{
+    text-align: center;
+}
