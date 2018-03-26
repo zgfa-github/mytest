@@ -1,6 +1,6 @@
 $(function(){
     //多图片上传
-    $('body').on('change','#file',function(){
+    $('body').on('change','.uploadMultiImg',function(){
         var file = $(this);
         var fileList = $(this).get(0).files;
         var imgContainer = $('.multi-picture-module');
@@ -36,8 +36,8 @@ $(function(){
             }
         };
     });
-    //多视频上传
-    $('body').on('change','#video',function(){
+    //选择视频上传
+    $('body').on('change','.multiVideo',function(){
         var file = $(this);
         var fileList = $(this).get(0).files;
         var imgContainer = $('.multi-picture-module');

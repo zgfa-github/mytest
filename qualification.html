@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>档案资质</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+	<link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<!--企业标志截图-->
+<section class="htmleaf-container" style="display: none;">
+    <div id="clipArea">
+        <div class="photo-clip-view" >
+            <div class="photo-clip-moveLayer" >
+                <div class="photo-clip-rotateLayer"></div>
+            </div>
+        </div>
+        <div class="photo-clip-mask">
+            <div class="photo-clip-mask-left"></div>
+            <div class="photo-clip-mask-right" ></div>
+            <div class="photo-clip-mask-top" ></div>
+            <div class="photo-clip-mask-bottom" ></div>
+            <div class="photo-clip-area" ></div>
+        </div>
+        <a href="javascript:void(0);" class="photoClip-close ">X</a>
+    </div>
+    <div class="foot-use f28">
+        <div class="uploader1 blue">
+            <input type="button" name="file" class="button" value="打开图片">
+            <input id="file" type="file" onchange="javascript:void(0);" accept="image/*" multiple="" />
+        </div>
+        <button id="clipBtn">截取</button>
+    </div>
+    <div id="view" class="photoview" ></div>
+</section>
+<!--省市区-->
+<section id="areaLayer" class="express-area-box" style="display:none;">
+    <header>
+        <h3>选择地区</h3>
+        <a id="backUp" class="back" href="javascript:void(0)" title="返回" style="display: none;"></a>
+        <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+    </header>
+    <article id="areaBox">
+        <ul id="areaList" class="area-list"></ul>
+    </article>
+</section>
+<!--视频-->
+<section id="goodsVideoList" style="display: none;">
+    <p class="f20 upload_st_logo"><span class="friend-tipc">*注意</span>：必须上传图片(格式为jpg、jpeg、png、gif)</p>     
+    <form class="">
+        <ul class="upload-picture-module multi-picture-module f24"></ul>
+    </form>               
+    <form>
+        <div class="upload-picture-module f24">
+            <div>
+                <div class="picture-module">
+                    <input type="file" class="uploadImg multiVideo" name="" accept="video/*" multiple="" >
+                    <img class="upload_img" src="" alt="">
+                    <input type="hidden" class="layer-thumbnail-picture" value=""/>
+                </div>
+                <!--<p>企业营业执照</p>-->
+            </div>
+        </div>
+    </form>    
+</section>
+<!--缩略图-->
+<section id="uploadThumbnail" style="display: none;">
+    <p class="f20 upload_st_logo"><span class="friend-tipc">*注意</span>：必须上传图片(格式为jpg、jpeg、png、gif)</p>                    
+    <form>
+        <div class="upload-picture-module f24">
+            <div>
+                <div class="picture-module">
+                    <input type="file" class="uploadImg" name="">
+                    <img class="upload_img" src="" alt="">
+                    <input type="hidden" class="business-license" value=""/>
+                </div>
+                <!--<p>企业营业执照</p>-->
+            </div>
+        </div>
+    </form>    
+</section>
+<!--编辑分类标签-->
+<section id="vendorInfoList" style="display:none;">
+    <ul class="vendorInfoList">
+        <li data-id="1">标签1</li>   
+        <li data-id="2">标签2</li>   
+        <li data-id="3">标签3</li>   
+    </ul>
+</section>
+<!--编辑企业简介-->
+<section id="editGoodsParameter" style="display: none;">
+    <div>
+        <textarea name="" id="" cols="30" rows="10" placeholder="企业简介" class="editGoodsText"></textarea>
+    </div>
+</section>
+<!--编辑商品详情-->
+<section id="editDetail" style="display: none;">
+    <p class="f20 upload_st_logo"><span class="friend-tipc">*注意</span>：必须上传图片(格式为jpg、jpeg、png、gif)</p>                    
+    <form class="">
+        <ul class="upload-picture-module multi-picture-module f24"></ul>
+    </form>
+    <div class="upload-picture-module f24">
+        <div>
+            <div class="picture-module">
+                <input type="file" class="uploadMultiImg " id="file" name="" accept="image/*" multiple="" >
+                <img class="upload_img" src="" alt="">
+                <input type="hidden" class="business-license" value=""/>
+            </div>
+        </div>
+    </div>
+</section>
+<article class="f24">
+    <section>
+        <form class="addProductContent qualificationContent">
+            <div class="upload-company-map f24">
+                <div>
+                    <div class="picture-module company-picture-module">
+                        <input type="file" class="uploadImg uploadSingleImg" name="">
+                        <img class="upload_img" src="" alt="">
+                        <input type="hidden" class="business-license" value=""/>
+                    </div>
+                    <!--<p>企业营业执照</p>-->
+                </div>
+            </div>
+            <ul class="content-marginLeft">
+                <li>
+                    <div class="company-n">
+                        <span>企业全称</span>
+                        维观科技有限公司
+                    </div>
+                </li>
+                <li>
+                    <input type="text" name="" value="" placeholder="填写店铺名称" class=" input-text">
+                </li>
+                <li>
+                    <div class="express-area area-box">
+                        <a id="expressArea" href="javascript:void(0)" class="f24 form-group box-flex">
+                            <label class="form-label">所在地区：</label>
+                            <div class="area_address">省 &gt; 市 &gt; 区/县</div>
+                            <input type="hidden" value="" class="area-address-name" data-key="">
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <input type="text" class="detail-address" name="" value="" placeholder="填写详细地址">
+                </li>
+                <li>
+                     <div class="logo-license">
+                        <div class="half">
+                            <a class="logo" id="logox">
+                                <img id="" src='' />
+                                <input type="hidden" class="logo-src" name="logoSrc">
+                            </a>
+                            <p class="f24">企业标志</p>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </li>
+                <li >
+                    <a href="http://192.168.1.101:8008/demo/trademark.html" class="right-arrow" >企业商标备案</a>
+                    <input type="hidden" class="" name="" value="" />
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);" class="editGoodsParameter right-arrow">编辑企业简介</a>
+                    <input type="hidden" class="goods-parameter" value="" name=""/>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);" class="uploadGoodsVideo right-arrow">上传企业视频</a>
+                    <input type="hidden" class="goods-video" value="" name="focusPicture" data-src="">
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);" class="editDetail right-arrow">上传研发生产照片</a>
+                    <input type="hidden" class="goods-detail" data-src="" value="" name="goodsDetail">
+                </li>
+                 <li class="">
+                    <a href="javascript:void(0);" class="editDetail right-arrow">上传企业专利荣誉</a>
+                    <input type="hidden" class="goods-detail" data-src="" value="" name="goodsDetail">
+                </li>
+            </ul>
+            </form>
+    </section>
+</article>
+<a href="javascript:void(0);" class="identifyNewGoods foot-btn f24">确定</a>
+<div id="areaMask" class="mask"></div>
+<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script src="public/static/common/js/dialog.js"></script>
+<script src="public/static/common/js/uploadImgToTemp.js"></script>
+<script src="public/static/common/js/uploadMultiImg.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script src="public/static/common/js/jquery.area.js"></script>
+<script type="text/javascript" src="public/static/common/js/hammer.js"></script>
+<script type="text/javascript" src="public/static/common/js/iscroll-zoom.js"></script>
+<script type="text/javascript" src="public/static/common/js/jquery.photoClip.js"></script>
+
+<script>
+    $(function(){
+        
+        //编辑商品参数
+        var editGoodsParameter=$('#editGoodsParameter').html();
+        $('body').on('click','.editGoodsParameter',function(){
+            layer.open({
+                title:['编辑企业简介','border-bottom:1px solid #d9d9d9;'],
+                className:'editParameterLayer',
+                content:editGoodsParameter,
+                btn:['确定','取消'],
+                success:function(){
+                    var goodsParameter=$('.goods-parameter').val();
+                    $('.editParameterLayer .editGoodsText').val(goodsParameter);
+                },
+                yes:function(index){
+                    var editGoodsText=$('.editParameterLayer .editGoodsText').val();
+                    $('.goods-parameter').val(editGoodsText);
+                    layer.close(index);
+                }
+            })
+        });
+        //编辑商品详情
+        var editDetail=$('#editDetail').html();
+        $('body').on('click','.editDetail',function(){
+            layer.open({
+                // title:['商品分类标签','border-bottom:1px solid #d9d9d9'],
+                className:'editDetailLayer',
+                content:editDetail,
+                btn:['确定','取消'],
+                success:function(){
+                },
+                yes:function(index){
+                  
+                    layer.close(index);
+                }
+            })
+        });
+        //裁剪商标logo
+        var clipImg = '';
+        $("#clipArea").photoClip({
+            width: 199,
+            height: 166,
+            file: "#file",
+            view: "#view",
+            ok: "#clipBtn",
+            clipFinish: function(img) {
+                clipImg = img;
+                // $.post("uploadImgToTemp", { img: clipImg , compress:false },function(msg){
+                //     if(msg.status == 0){
+                //         layer.open({
+                //             content:msg.info,
+                //             time:2
+                //         });
+                //         return false;
+                //     }else if(msg.status == 1){
+                //         $('body').data('clipAvatar',msg.info);
+                //     }
+                // },'json');
+            }
+        });
+        $(".logo").click(function(){
+            $(".htmleaf-container").show();
+        });
+        $("#clipBtn").click(function(){
+            $('.logo img').attr('src',clipImg).addClass('active');
+            $('.logo-src').val(clipImg);
+            $(".htmleaf-container").hide();
+        });
+        $('.photoClip-close').click(function(){
+            $(".htmleaf-container").hide();
+        });
+        //增加商品
+        $('body').on('click','.identifyNewGoods',function(){
+            var goodsName=$('.goods-name').val();
+            var goodsCharacter=$('.goods-character').val();
+            var settlePrice=$('.settle-price').val();
+            var retailPrice=$('.retail-price').val();
+            var content='';
+                if(!goodsName){
+                    content='请填写商品名称';
+                }else if(!goodsCharacter){
+                    content='请填写商品特点';
+                }else if(!isNumber(settlePrice)){
+                    content='请填写结算价';
+                }else if(!isNumber(retailPrice)){
+                    content='请填写零售价';
+                }
+                if(content){
+                    dialog.error(content);
+                }
+        })
+
+    })
+</script>
+</body>
+
+</html>

@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="public/static/common/css/base.css">
     <link rel="stylesheet" href="public/static/common/css/public.css">
     <link rel="stylesheet" href="public/static/factory/css/main.css">
-	<!--<link rel="stylesheet" href="Public/img/admin-css/common/weui.css">-->
     <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
 </head>
 <body>
@@ -130,11 +129,6 @@
 <script type="text/javascript">
     $(function(){
         tab_down('.apply-data-nav li','.apply-module','click');
-        var factoryFullName,
-            agentName,
-            businessLicense,
-            agentAuthorization,
-            postData={};
         //填写商标资料
         $('body').on('click','.one-step',function(){
             var tardemark=$('.trademark-info').data('trademark');
@@ -162,7 +156,6 @@
         });
         //商标所属分类
         var edittradeMark=$('#edittradeMark').html();
-        
         $('body').on('click','.trademark-type',function(){
              
             layer.open({
@@ -172,14 +165,16 @@
                 btn:['确定','取消'],
                 success:function(){
                     var tardeMarkId=$('.trademark-info').data('trademark');
-                    console.log(tardeMarkId);
                     $('.trademarkTypeLayer li').on('click',function(){
                         var _this=$(this);
-                        var tradeMarkLen=$('.trademarkTypeLayer .current').length;
-                        if(tradeMarkLen>2){
-                           return false;
-                        }
-                        _this.toggleClass('current');                        
+                        var tradeMarkLen=$('.trademarkTypeLayer .current').length;            
+                        if(_this.hasClass('current')||tradeMarkLen<3){
+                            _this.toggleClass('current');
+                           
+                        }else{
+                            return false;
+                        }  
+                                         
                     });
                     for(var i=0;i<tardeMarkId.length;i++){
                         $.each($('.trademarkTypeLayer li'),function(){
@@ -198,7 +193,6 @@
                     
                     $.each($('.trademarkTypeLayer li'),function(){
                         var _this=$(this);
-                        // var tardeMarkData={};
                         if(_this.hasClass('current')){
                             tardeMarkLayerId  =_this.data('id');
                             tardeMarkArr.push(tardeMarkLayerId);
