@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>档案资质</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+	<link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class="f24">
+    <section class="separation-line">
+        <div>
+            <img src="public/static/common/img/default/no_pic_1000.jpg" alt="" class="common_default_img">
+        </div>
+        <div class="columns_flex">
+            <div>企业名称<span>莫某公司</span></div>
+            <a><i></i>收藏厂商店铺</a>
+        </div>
+        <div class="columns_flex">
+            <div>
+                <img src="" alt="">
+                <span>[某某]</span>
+            </div>
+            <a href="">进入厂商确定预览</a>
+        </div>
+    </section>
+    <section class="separation-line">
+        <div>
+            <span>企业简介</span>
+            <div>某某某某某某某某某某某某某某某某某某<a>显示全部</a></div>
+        </div>
+        <div><span>地址：</span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>
+    </section>
+    <section class="separation-line">
+        <span>企业视频</span>
+    </section>
+    <section class="separation-line">
+        <span>研发生产</span>
+    </section>
+    <section class="separation-line">
+        <span>执照资质</span>
+    </section>
+    <section class="separation-line">
+        <span>专利荣誉</span>
+    </section>
+</article>
+<a href="javascript:void(0);" class="identifyNewGoods foot-btn f24">确定预览</a>
+<div id="areaMask" class="mask"></div>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script>
+    $(function(){
+        //编辑企业简介
+        var editGoodsParameter=$('#editGoodsParameter').html();
+        $('body').on('click','.editGoodsParameter',function(){
+            layer.open({
+                title:['编辑企业简介','border-bottom:1px solid #d9d9d9;'],
+                className:'editParameterLayer',
+                content:editGoodsParameter,
+                btn:['确定','取消'],
+                success:function(){
+                    var goodsParameter=$('.company-introduce').val();
+                    $('.editParameterLayer .editGoodsText').val(goodsParameter);
+                },
+                yes:function(index){
+                    var editGoodsText=$('.editParameterLayer .editGoodsText').val();
+                    $('.company-introduce').val(editGoodsText);
+                    layer.close(index);
+                }
+            })
+        });
+        //裁剪商标logo
+        var clipImg = '';
+        $("#clipArea").photoClip({
+            width: 199,
+            height: 166,
+            file: "#file",
+            view: "#view",
+            ok: "#clipBtn",
+            clipFinish: function(img) {
+                clipImg = img;
+                // $.post("uploadImgToTemp", { img: clipImg , compress:false },function(msg){
+                //     if(msg.status == 0){
+                //         layer.open({
+                //             content:msg.info,
+                //             time:2
+                //         });
+                //         return false;
+                //     }else if(msg.status == 1){
+                //         $('body').data('clipAvatar',msg.info);
+                //     }
+                // },'json');
+            }
+        });
+        $(".logo").click(function(){
+            $(".htmleaf-container").show();
+        });
+        $("#clipBtn").click(function(){
+            $('.logo img').attr('src',clipImg).addClass('active');
+            $('.logo-src').val(clipImg);
+            $(".htmleaf-container").hide();
+        });
+        $('.photoClip-close').click(function(){
+            $(".htmleaf-container").hide();
+        });
+        //提交档案信息
+        $('body').on('click','.identifyNewGoods',function(){
+            var postData={};
+                postData=$('.qualificationContent').serializeObject();
+                postData.developmentPicture=$('.development-picture').data('src');
+                postData.LicensePicture=$('.license-picture').data('src');
+                postData.honorPicture=$('.honor-picture').data('src');
+                postData.companyVideo=$('.company-video').data('src');
+            var content='';
+                if(!postData.companyImage){
+                    content='请上传企业形象图片';
+                }else if(!postData.storeName){
+                    content='请填写店铺名称';
+                }else if(!postData.areaName){
+                    content='请选择所在的省市区';
+                }else if(!postData.detailAddress){
+                    content='请填写详细地址';
+                }else if(!postData.logoSrc){
+                    content='请上传企业标志图';
+                }else if(!postData.companyIntroduce){
+                    content='请填写企业简介';
+                }else if(!postData.companyVideo||postData.companyVideo==0){
+                    content='请上传企业视频';
+                }else if(!postData.developmentPicture||postData.developmentPicture==0){
+                    content='请上传企业研发生产图片';
+                }else if(!postData.LicensePicture||postData.LicensePicture==0){
+                    content='请上传执照资质图片';
+                }else if(!postData.honorPicture||postData.honorPicture==0){
+                    content='请上传专利荣誉图片';
+                }
+                
+                
+                if(content){
+                    dialog.error(content);
+                    return false;
+                }
+        })
+
+    })
+</script>
+</body>
+
+</html>
