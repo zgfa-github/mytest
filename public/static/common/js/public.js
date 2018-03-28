@@ -4,6 +4,7 @@
     html.style.fontSize=deviceWidth/6.4+'px';
 
     $.fn.moreText = function(options){
+        console.log(options);
         var defaults = {
             maxLength:50,
             mainCell:".branddesc",
@@ -22,14 +23,14 @@
             var countText = TextBox.html();
             var newHtml = '';
             if(countText.length > maxLength){
-                newHtml = countText.substring(0,maxLength)+'...<span class="more">'+openBtn+'</span>';
+                newHtml = countText.substring(0,maxLength)+'...<a class="more">'+openBtn+'</a>';
             }else{
                 newHtml = countText;
             }
             TextBox.html(newHtml);
             TextBox.on("click",".more",function(){
                 if($(this).text()==openBtn){
-                    TextBox.html(countText+' <span class="more">'+closeBtn+'</span>');
+                    TextBox.html(countText+' <a class="more">'+closeBtn+'</a>');
                 }else{
                     TextBox.html(newHtml);
                 }
@@ -163,7 +164,7 @@ $('.top_menu_list a').on('click',function(){
             dialog.error('功能正在开发中,暂未上线,敬请期待');
         }
 })
-//选项卡切换
+//选项卡切换和对应内容显示
 function tab_down(tab_k, tab_con, tab_dz) {
     // alert(tab_k);
     var $div_li = $(tab_k);
@@ -189,7 +190,7 @@ function tab_down(tab_k, tab_con, tab_dz) {
     }
 }
 
-//懒加载图片
+//懒图片加载
 function checkShow(ele){
     var winH=$(window).height(),
         scrollH=$(window).scrollTop();
@@ -229,7 +230,7 @@ $('body').on('click','.checkitem',function () {
     $('.checkall').prop('checked',sign);
 });
 
-//滑动轮播
+//简单滑动轮播
 function swipe(elemObj){
     window.mySwipe = Swipe(elemObj, {
         auto: 2500,
@@ -238,11 +239,40 @@ function swipe(elemObj){
             $(".position li").eq(index).addClass("on").siblings().removeClass("on");
         }
     });
-     $(".position li").click(
+    $(".position li").click(
         function () {
             mySwipe.slide($(this).index());
         }
     );
+}
+function swiper(elemObj){
+    var swiper = new Swiper(elemObj, {
+        slidesPerView: 5,
+        spaceBetween: 50,
+        // init: false,
+        pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        },
+        breakpoints: {
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+        },
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+        }
+        }
+    });
 }
 //活动倒计时
 function countDown(time,id){
@@ -271,81 +301,81 @@ function countDown(time,id){
 }
 
 var addTimer = function(){
-    var list = [],callback,interval,opt,unix,iStartUp=0;
-    return function(id,timeStamp1,timeStamp2){
-        unix=parseInt(new Date(timeStamp2).getTime());
-        if(!interval){
-            interval = setInterval(function(){
-                go(unix);
-            },1000);
-        }
-        
-        list.push(
-            {
-                ele:document.getElementById(id),
-                otime:timeStamp1,
-                ctime:timeStamp2
+        var list = [],callback,interval,opt,unix,iStartUp=0;
+        return function(id,timeStamp1,timeStamp2){
+            unix=parseInt(new Date(timeStamp2).getTime());
+            if(!interval){
+                interval = setInterval(function(){
+                    go(unix);
+                },1000);
             }
-        );
-    }
+            
+            list.push(
+                {
+                    ele:document.getElementById(id),
+                    otime:timeStamp1,
+                    ctime:timeStamp2
+                }
+            );
+        }
 
-    function go(opt) {
-        for (var i = 0; i < list.length; i++) {
-            //list[i].ele.innerHTML = changeTimeStamp(list[i].time);
-            callback= changeTimeStamp(list[i].otime,opt);
-            if(!callback){
-                list[i].ele.innerHTML='订单已取消';
-                $(list[i].ele).attr('data-key',0);
-                $(list[i].ele).parents('.order_info_list')
-                .find('a.order_pay_btn')
-                .removeClass('order_pay_btn')
-                .text('已取消')
-                .addClass('order_cancle');
-                $(list[i].ele).removeAttr('id');
-                //clearInterval(interval);
-                //interval=null;
-            }else{
-                for(var k=0;k<callback.length;k++){
-                    list[i].ele.children[k].innerHTML=callback[k];               
+        function go(opt) {
+            for (var i = 0; i < list.length; i++) {
+                //list[i].ele.innerHTML = changeTimeStamp(list[i].time);
+                callback= changeTimeStamp(list[i].otime,opt);
+                if(!callback){
+                    list[i].ele.innerHTML='订单已取消';
+                    $(list[i].ele).attr('data-key',0);
+                    $(list[i].ele).parents('.order_info_list')
+                    .find('a.order_pay_btn')
+                    .removeClass('order_pay_btn')
+                    .text('已取消')
+                    .addClass('order_cancle');
+                    $(list[i].ele).removeAttr('id');
+                    //clearInterval(interval);
+                    //interval=null;
+                }else{
+                    for(var k=0;k<callback.length;k++){
+                        list[i].ele.children[k].innerHTML=callback[k];               
+                    }
+                }
+                if (new Date(list[i].otime).getTime()==opt){
+                    list.splice(i, 1); 
                 }
             }
-            if (new Date(list[i].otime).getTime()==opt){
-                list.splice(i, 1); 
+            unix=unix+1000;
+        }
+
+        //传入unix时间戳，得到倒计时
+        function changeTimeStamp(endTime,backCurrentTime){
+            var distancetime = new Date(endTime).getTime() - backCurrentTime;
+            if(distancetime > 0){
+    　　　　　　 //如果大于0.说明尚未到达截止时间
+                //var ms = Math.floor(distancetime%1000);
+                var sec = Math.floor(distancetime/1000%60);
+                var min = Math.floor(distancetime/1000/60%60);
+                var hour =Math.floor(distancetime/1000/60/60%24);
+                var day = Math.floor(distancetime/1000/60/60/24);
+
+                // if(ms<100){
+                //     ms = "0"+ ms;
+                // }
+                if(sec<10){
+                    sec = "0"+ sec;
+                }
+                if(min<10){
+                    min = "0"+ min;
+                }
+                if(hour<10){
+                    hour = "0"+ hour;
+                }
+                //return day + ":" +hour + ":" +min + ":" +sec + ":"+ms;
+                return [day,hour,min,sec]
+            }else{
+    　　　　　　//若否，就是已经到截止时间了  
+                return false
             }
         }
-        unix=unix+1000;
-    }
-
-    //传入unix时间戳，得到倒计时
-    function changeTimeStamp(endTime,backCurrentTime){
-        var distancetime = new Date(endTime).getTime() - backCurrentTime;
-        if(distancetime > 0){
-　　　　　　 //如果大于0.说明尚未到达截止时间
-            //var ms = Math.floor(distancetime%1000);
-            var sec = Math.floor(distancetime/1000%60);
-            var min = Math.floor(distancetime/1000/60%60);
-            var hour =Math.floor(distancetime/1000/60/60%24);
-            var day = Math.floor(distancetime/1000/60/60/24);
-
-            // if(ms<100){
-            //     ms = "0"+ ms;
-            // }
-            if(sec<10){
-                sec = "0"+ sec;
-            }
-            if(min<10){
-                min = "0"+ min;
-            }
-            if(hour<10){
-                hour = "0"+ hour;
-            }
-            //return day + ":" +hour + ":" +min + ":" +sec + ":"+ms;
-            return [day,hour,min,sec]
-        }else{
-　　　　　　//若否，就是已经到截止时间了  
-            return false
-        }
-    }
 }();
 
 //错误提示;默认1.2s
@@ -413,3 +443,80 @@ $(window).on('scroll',function(){
         $('.right_sidebar').hide();
     }
 });
+//水平滑动(存在bug)
+ var nav_scroll ={
+        outer:null,
+        $inner:null,
+        hidden_width:0,
+        current_x:0,
+        start_x:0,
+        scale:1,
+        distance:0,
+        init:function(outer,inner){
+            var self =this;
+            self.outer = $(outer)[0];
+            self.$inner = $(inner);
+            var inner_width = 0;
+            var winWidth=$(window).width();
+            //li布局
+            var oLi=$(inner).find('li');
+            self.$inner.children().each(function(){
+                inner_width += $(this).outerWidth();
+            });
+            // oLi.each(function(){
+            //     $(this).css('width',winWidth/2+'px');
+            //     inner_width += $(this).outerWidth();
+            // })
+            self.hidden_width = inner_width-$(self.outer).width();
+            self.$inner.width(inner_width+1);
+            if(self.hidden_width>0){
+                self.outer.addEventListener('touchstart', self.eventlistener, false);
+            }
+        },
+        eventlistener:{
+            handleEvent: function(event) {
+            switch (event.type) {
+                case 'touchstart': this.start(event); break;
+                case 'touchmove': this.move(event); break;
+                case 'touchend': this.end(event); break;
+            }
+            },
+            start:function(){
+                nav_scroll.start_x = event.touches[0].pageX;
+                nav_scroll.outer.addEventListener('touchmove', this, false);
+            },
+            move:function(){
+                var this_e = event || window.event;
+                this_e.preventDefault();
+                this_e.stopPropagation()
+                nav_scroll.move_x = event.touches[0].pageX;
+                nav_scroll.current_x = nav_scroll.current_x+nav_scroll.move_x-nav_scroll.start_x;
+                nav_scroll.start_x = nav_scroll.move_x;
+                nav_scroll.transform();
+            },
+            end:function(){
+                nav_scroll.outer.removeEventListener('touchmove', this, false)
+                nav_scroll.outer.removeEventListener('touchend', this, false)
+            }
+        },
+        transform:function(x){
+            var self =this;
+            if(-nav_scroll.current_x>=self.hidden_width){
+                if(-nav_scroll.current_x===self.hidden_width){
+                    return null;
+                }
+                nav_scroll.current_x = -self.hidden_width;
+            }
+            else if(nav_scroll.current_x>=0){
+                if(nav_scroll.current_x===0){
+                    return null;
+                }
+                nav_scroll.current_x =0;
+            }
+            $(self.outer).css({
+                webkitTransform:'translate('+nav_scroll.current_x+'px,0) translateZ(0)',
+                transitionDuration:0+'ms',
+                transitionTimingFunction: 'cubic-bezier(0.1, 0.57, 0.1, 1)'
+            });
+        }
+}

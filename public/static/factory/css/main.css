@@ -338,3 +338,16 @@
     overflow: hidden;
     overflow-y:scroll;
 }
+.company-preview-top .columns_flex{
+    padding:0 0 0.15rem 0;
+    justify-content: space-between;
+}
+.company-preview-top .enter{
+    border-radius:3px;
+    background: #ff7bac;
+    color:#fff;
+}
+.address-label{
+    display: block;
+    float:left;
+}

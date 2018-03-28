@@ -514,6 +514,11 @@ color: #ed6d00;
     margin:0 10px;*/
     
 }
+.content-box{
+    padding:0.20rem 0.15rem;
+}.content-box:last-child{
+    padding-bottom:1rem;
+}
 .column_type.current{
     color:#ff7aab;
     border:1px solid #ff7aab;
@@ -1179,8 +1184,11 @@ color: #ed6d00;
     background: #ff7bac;
     color:#fff;
     text-align:center;
+    z-index:2;
 }
-
+.view-more,.more{
+    color:#ff7bac;
+}
 
 
 /*h5一次多图片上传*/
@@ -1577,3 +1585,7 @@ input[type=text]::-webkit-focus-inner {
 /*@media (max-width: 720px) {
 	.mask { position: fixed; }
 }*/
+.content-label{
+    display: block;
+    margin:0 0 10px 0;
+}
