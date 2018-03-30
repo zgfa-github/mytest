@@ -4,7 +4,6 @@
     html.style.fontSize=deviceWidth/6.4+'px';
 
     $.fn.moreText = function(options){
-        console.log(options);
         var defaults = {
             maxLength:50,
             mainCell:".branddesc",
@@ -272,6 +271,24 @@ function swiper(elemObj){
             spaceBetween: 10,
         }
         }
+    });
+}
+function swiperAnimation(elemObj){
+     var swiper = new Swiper(elemObj, {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows : true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
     });
 }
 //活动倒计时
