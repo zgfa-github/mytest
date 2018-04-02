@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>品牌厂商管理员预先登记名单</title>
+    <title>账户授权</title>
     <link rel="stylesheet" href="public/static/common/css/base.css">
     <link rel="stylesheet" href="public/static/common/css/public.css">
     <link rel="stylesheet" href="public/static/factory/css/main.css">
@@ -66,10 +66,44 @@
                         <li class="current">填单</li>
                     </ul>
                 </div>
+                <div class="range-list">
+                    <span class="range-label">售中客服:</span>
+                    <ul class="columns_flex">
+                        <li class="current">咨询</li>
+                        <li class="current">退换货</li>
+                        <li class="current">退款</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 </article>
+<!--省市区-->
+<section id="areaLayer" class="express-area-box" style="display:none;">
+    <header>
+        <h3>选择地区</h3>
+        <a id="backUp" class="back" href="javascript:void(0)" title="返回" style="display: none;"></a>
+        <a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+    </header>
+    <article id="areaBox">
+        <ul id="areaList" class="area-list"></ul>
+    </article>
+</section>
+<section id="areaListLayer" style="display:none;">
+    <div class="weui_cells msy_cells weui_address">
+        <div class="weui_cell">
+            <select name="province" class="pca province">
+                <option value="">省</option>
+            </select>
+            <select name="city" class="pca">
+                <option value="">市</option>
+            </select>
+            <select name="area" class="pca">
+                <option value="">县区</option>
+            </select>
+        </div>
+    </div>
+</section>
 <article class="f24">
     <section class="top_nav_fixed">
         <div class="top_bar columns_flex">
@@ -146,6 +180,7 @@
 <script type="text/javascript" src="public/static/common/js/dialog.js"></script>
 <script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
 <script type="text/javascript" src="public/static/common/js/uploadImgToTemp.js"></script>
+<script type="text/javascript" src="public/static/common/js/province_city_area.js"></script>
 <!--<script type="text/javascript" src="public/static/factory/js/enters.js"></script>-->
 <script type="text/javascript">
     $(function(){
@@ -167,12 +202,30 @@
             });
 
         });
-         $('body').on('click','.responsible-area',function(){
+        var areaListLayer=$('#areaListLayer').html();
+        $('body').on('click','.responsible-area',function(){
             layer.open({
-                title:['市场'],
-                content:'123'
+                title:['设定该账户角色负责的省市区域市场','border-bottom:1px solid #d9d9d9;'],
+                className:'areaListLayer',
+                content:areaListLayer,
+                btn:['确定']
             })
-         })
+        });
+        $('body').on('click','.modify-role',function(){
+            $(this).toggleClass('current');
+            $('.range-list-wrapper').toggleClass('current');
+        })
+
+        //初始化
+        // var province = '{$consigneeAddressInfo.province}';
+        // $('[name=province]').val(province);
+        // $('[name=province]').change();
+        // var city = '{$consigneeAddressInfo.city}';
+        // $('[name=city]').val(city);
+        // $('[name=city]').change();
+        // var area = '{$consigneeAddressInfo.area}';
+        // $('[name=area]').val(area);
+
 
     })
 </script>
