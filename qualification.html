@@ -233,6 +233,8 @@
         $('body').on('click','.identifyNewGoods',function(){
             var postData={};
                 postData=$('.qualificationContent').serializeObject();
+                postData.areaName=$('.area-address-name').data('key');
+                console.log(postData.areaName);
                 postData.developmentPicture=$('.development-picture').data('src');
                 postData.LicensePicture=$('.license-picture').data('src');
                 postData.honorPicture=$('.honor-picture').data('src');

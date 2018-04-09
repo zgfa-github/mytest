@@ -290,15 +290,56 @@ i{
     flex:1;
 }
 .bottom_nav_fixed{
-    background: #efefef;
     position:fixed;
     left:0;
     bottom:0;
     width:100%;
+    height:.8rem;
+    line-height:.8rem;
+    background: #fff;
+    border-top:1px solid #d9d9d9;
     font-size:0.24rem;
+    z-index:2;
+}
+.bottom_nav_fixed a{
+    position:relative;
+    text-align:center;
+    color:#fff;
+}
+.bottom_nav_fixed .col2{
+    color:#333;
+}
+.bottom_nav_fixed .col3{
+    background:#ff6482;
+}
+.bottom_nav_fixed .col4{
+    background:#ff1d25;
+}
+.bottom_nav_fixed .shopping-cart{
+    background:url(../../common/img/icons/shopping-cart-icons.png);
+    background-repeat:no-repeat;
+    background-size:31px 23px;
+    background-position:center;
+    border-left:1px solid #d9d9d9;
+    /*text-indent:-9999rem;*/
+}
+.bottom_nav_fixed .shopping-num{
+    position: absolute;
+    right:11px;
+    top:3px;
+    display: block;
+    width: 22px;
+    height: 22px;
+    line-height:22px;
+    border-radius: 100%;  
+    z-index: 3;
+    background: #ff6482;
+    color: #fff;
+   
 }
 .common_default_img{
     width:100%;
+    vertical-align: middle;
 }
 /*美尚云生态圈平台*/
 .top_nav_fixed{
@@ -408,7 +449,8 @@ i{
     color:#333;
     position:relative;
 }
-.top_menu_box a.current:before{
+.top_menu_box a.current:before,
+.detail-nav a.current:before{
     position: absolute;
     z-index: 1;
     left: 50%;
@@ -514,6 +556,7 @@ color: #ed6d00;
     margin:0 10px;*/
     
 }
+/*内容框*/
 .content-box{
     padding:0.20rem 0.15rem;
 }.content-box:last-child{
@@ -1589,6 +1632,7 @@ input[type=text]::-webkit-focus-inner {
 /*@media (max-width: 720px) {
 	.mask { position: fixed; }
 }*/
+/*内容标签*/
 .content-label{
     display: block;
     margin:0 0 10px 0;
