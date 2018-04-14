@@ -160,7 +160,8 @@
 .classify-operate-btn a.down-disabled-icons{
     background-position:0 -178px;
 }
-.addTagLayer .layui-m-layercont{
+.addTagLayer .layui-m-layercont,
+.areaListLayer .layui-m-layercont{
     padding:0.20rem;
 }
 .addTagLayer .layui-m-layercont form{
@@ -344,7 +345,7 @@
 }
 .company-preview-top .enter{
     border-radius:3px;
-    background: #ff7bac;
+    background: #009a3e;
     color:#fff;
 }
 .address-label{
@@ -386,7 +387,6 @@
 no-repeat scroll 
 right center 
 transparent;
-    border:1px solid #d9d9d9;
 }
 .range-list li{
     margin:0 0.20rem 0.15rem 0;
@@ -502,4 +502,133 @@ transparent;
 }
 .scroll-floor{
     height:500px;
+}
+/*区域市场*/
+.pca{
+    width:30%;
+    padding:0.12rem 0;
+    margin:0 0 .12rem 0;
+    border-radius:4px;
+    border:1px solid #d9d9d9;
+    /*background:none;*/
+    appearance:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background:url('../../common/img/icons/arrow_drop_down.png')
+no-repeat scroll 
+right center 
+transparent;
+}
+.addTo{
+    display: block;
+    width:1rem;
+    padding:.08rem;
+    border:1px solid #d9d9d9;
+    border-radius:3px;
+    text-align:center;
+}
+/*供应商店铺*/
+.top-row-bar .columns_flex{
+    justify-content: space-between;
+}
+.top-row-bar img{
+    width:30%;
+    vertical-align: top;
+}
+.top-row-bar div:first{
+    width:30%;
+}
+.top-row-bar .col-left{
+    width:125px;
+}
+.brand-store-info{
+    background-image:url(../../common/img/banner/home-banner.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+
+}
+.brand-series a{
+    margin:0 0 20px 0;
+}
+.brand-series img{
+    width:50%;
+}
+.store-qr-code{
+    margin:40px 0 15px 0;
+    overflow: hidden;
+}
+.store-qr-code a{
+    display: block;
+    width:1.4rem;
+    background: #009a3e;
+    color:#fff;
+    float:right;
+    text-align:center;
+}
+.brand-bottom-flex img{
+    float:left;
+    width:20%;
+}
+.brand-bottom-flex{
+    justify-content: space-between;
+}
+.coorperation-model{
+    display: block;
+    width:1.4rem;
+    background: #e60012;
+    color:#fff;
+    font-style: normal;
+    font-weight:normal;
+    text-align:center;
+}
+.follow-store{
+    display: block;
+    width:1.4rem;
+    background: #e60012;
+    text-align: center;
+    color:#fff;
+}
+.brand-store-name{
+    margin:0 0 0 .8rem;
+}
+.brand-store-nav a{
+    position:relative;
+    box-sizing: border-box;
+}
+.brand-store-nav{
+    padding:0.18rem 0;
+}
+.brand-store-nav li{
+    flex:1;
+    text-align: center;
+}
+.brand-store-nav li.current a{
+    color:#ff7aab;
+}
+.brand-store-nav li.current a:before{
+    bottom:-18px;
+    background-color:#ff7aab;
+}
+.flagship-store-goods li{
+    margin:0 0 0.25rem 0;
+    overflow:hidden;
+}
+.flagship-store-goods .flag-intro{
+    margin:0 0 0 1.8rem;
+}
+.qr-code-layer{
+    justify-content: space-between;
+}
+.role-label{
+    padding:.12rem 0 0;
+    margin:.15rem 0 0;
+    border-top:1px solid #d9d9d9;
+    color:#39b54a;
+}
+.stroe-preview{
+    display: block;
+    padding:0 0 0.15rem 0;
+    margin:0.15rem 0 0;
+    border-bottom:1px solid #d9d9d9;
+    text-align:right;
 }

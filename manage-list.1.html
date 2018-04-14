@@ -91,7 +91,7 @@
 </section>
 <section id="areaListLayer" style="display:none;">
     <span class="content-label">可选择的区域(点击选择添加)</span>
-    <select name="region" id="">
+    <select name="region" id="" class="pca">
         <option value="">区域</option>
         <!--<option value="">华东</option>
         <option value="">华南</option>
@@ -103,21 +103,24 @@
         <option value="">台港澳</option>-->
     </select>
     <div class="weui_cells msy_cells weui_address">
-        <div class="weui_cell">
-            <select name="province" class="pca province">
-                <option value="">省</option>
-            </select>
-            <select name="city" class="pca">
-                <option value="">市</option>
-            </select>
-            <select name="area" class="pca">
-                <option value="">县区</option>
-            </select>
-        </div>
+        <span class="content-label">具体的市区添加</span>
+        <select name="province" class="pca province" id="province">
+            <option value="0">省</option>
+        </select>
+        <select name="city" class="pca">
+            <option value="">市</option>
+        </select>
+        <select name="area" class="pca">
+            <option value="">县区</option>
+        </select>
+        <div class="error_tipc"></div>
+        <a href="javascript:void(0);" class="addTo">添加</a>
     </div>
     <span class="content-label">已添加的省市区域(点击移出)</span>
     <section class="region-box" style="border:1px solid #d9d9d9;height:100px;">
+        <ul>
 
+        </ul>
     </section>
 </section>
 <article class="f24">

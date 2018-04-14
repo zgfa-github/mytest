@@ -70,23 +70,27 @@
     </section>
     <section class="specific_type bottomLine">
         <div class="columns_flex f20">
+            <a class="column_type current">消息中心</a>
             <a href="javascript:void(0);" class="deployed-deployment">入驻部署</a>
             <a href="javascript:void(0);" class="order-management">订单管理</a>
-            <a href="javascript:void(0);" class="order-management">采购店铺</a>
-            <a href="javascript:void(0);" class="order-management">分成店铺</a>
-            <a href="javascript:void(0);" class="order-management">零售店铺</a>
         </div>
     </section>
-    <a href="javascript:void(0);" class="relation-vendor">切换供应商账号></a>
+    <a href="javascript:void(0);" class="relation-vendor">关联厂商选择></a>
     <input type="hidden" value="" class="factoryId">
     <section class="message-center-info f20">
-        <div >企业名称:<span class="vendor-name"></span></div>
+        <div class="vendor-name"></div>
         <p>欢迎来到供应商管理中心</p>
         <p>入驻部署仅对管理员开放，客服用户请进入订单管理操作</p>
         <!--<p>系统发现你已关联了XX家厂商企业，请选择进入</p>-->
     </section>
     <section>
-        <a class="account_entry right-arrow f20">还未入驻？免费申请</a>
+        <a class="account_entry right-arrow f20">还未入驻？或者代办其他厂商入驻？我要办理入驻申请</a>
+    </section>
+    <section class="explain_nav">
+        <a href="">关于美尚云></a>
+        <a href="">厂商使用帮助></a>
+        <a href="">人才招聘></a>
+        <a href="">版权信息备案号</a>
     </section>
     <section class="bottom_nav_fixed">
         <nav class=" foot_nav_bar">
@@ -94,7 +98,7 @@
                 <li class="each_column ">
                     <a>
                         <span class="store"></span>
-                        美容店家
+                        店家
                     </a>
                 </li>
                 <li class="each_column">
@@ -106,7 +110,7 @@
                 <li class="each_column current">
                     <a>
                         <span class="manufacturer"></span>
-                        供应商
+                        厂商
                     </a>
                 </li>
             </ul>
@@ -126,7 +130,7 @@
     $('body').on('click','.relation-vendor',function(){
         var factoryLayerName,factoryLayerId;
         layer.open({
-            title:['请选择关联的供应商账号登录','border-bottom:1px solid #d9d9d9'],
+            title:['选择厂商','border-bottom:1px solid #d9d9d9'],
             className:'vendorInfoLayer',
             content:vendorInfoList,
             btn:['确定','取消'],
