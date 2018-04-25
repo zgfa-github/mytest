@@ -42,8 +42,8 @@
         var defaults={
             getFractionValue:1,
             mainCell:".star_img img",
-            star:'/Public/img/common/star.png',
-            starRed:'/Public/img/common/starred.png'
+            star:'public/static/common/img/star.png',
+            starRed:'public/static/common/img/starred.png'
         };
         if($.isNumeric(options)){
             defaults.getFractionValue=options;

@@ -136,7 +136,8 @@
     margin:0 0 0 12px;
     background-image:url(../../common/img/icons/operate-icons.png);
     background-repeat: no-repeat;
-    background-size:32px 250px;
+    /*background-size:32px 250px;*/
+    background-size:32px 320px;
     text-indent:-9999rem;
 }
 .classify-operate-btn a.add-icons{
@@ -153,6 +154,12 @@
 }
 .classify-operate-btn a.down-icons{
     background-position:0 -106px;
+}
+.classify-operate-btn a.down-b-icons{
+    background-position:0 -250px;
+}
+.classify-operate-btn a.move-t-icons{
+    background-position:0 -286px;
 }
 .classify-operate-btn a.move-disabled-icons{
     background-position:0 -142px;
@@ -246,6 +253,7 @@
     /*height:auto;*/
     height:450px;
     min-height:100%;
+    border-top:1px solid #d9d9d9;
 }
 .category-left-menu{
     float:left;
@@ -313,6 +321,16 @@
 }
 .trademarkTypeLayer .vendorInfoList li{
     text-align: center;
+}
+.sort-tipc{
+    padding:.12rem 0 0 .15rem;
+    background: #EFEFEF;
+}
+.sort-left-menu{
+    border-right:1px solid #d9d9d9;
+}
+.goodSort-content-wrapper{
+    padding:0 0 10px;
 }
 /*档案资质*/
 .qualificationContent{
@@ -631,4 +649,95 @@ transparent;
     margin:0.15rem 0 0;
     border-bottom:1px solid #d9d9d9;
     text-align:right;
+}
+.l-r-sides a{
+    display: block;
+}
+.row-item-mgl .collect{
+    display: flex;
+    width:150px;
+    height:30px;
+    line-height: 30px;
+    margin:.15rem 0 0;
+    text-align:right;
+}
+.row-item-mgl .collect span,
+.invite-friends span,
+.go-shopping span{
+    display: inline-block;
+    width:26px;
+    height:28px;
+    background-image:url(../../common/img/icons/detail-icons.png);
+    background-position:0 -130px;
+    background-size:30px 325px;
+}
+.invite-friends span{
+    background-position:0 -160px;
+}
+.go-shopping span{
+    background-position:0 -192px;
+}
+.l-r-sides .invite-friends,
+.l-r-sides .go-shopping{
+    display: flex;
+    height:30px;
+    line-height: 30px;
+}
+.l-r-sides li{
+    display: flex;
+}
+.l-r-sides li:last-child{
+    margin:0 0.16rem 0 0;
+}
+.search-goods{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.layer-search-btn{
+    width:70px;
+    background:none;
+    border:1px solid #d9d9d9;
+    border-left:none;
+    text-align:center;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.addsalesgoodsLayer .content-box{
+    padding-right:0;
+}
+.addsalesgoodsLayer .content-label{
+    padding:0 0 .10rem 0;
+    margin-top:.10rem;
+    border-bottom:1px solid #d9d9d9;
+}
+.addsalesgoodsLayer .promotional-close-btn{
+    width:22px;
+    height:22px;
+    line-height: 22px;
+    text-align:center;
+    background: #ff7aab;
+    color:#fff;
+}
+.search-row-flex{
+    margin:.5rem 0 0;
+}
+.all-goods-list a.current span{
+    color:#ff7aab;
+}
+.all-goods-list img,
+.promotional-goods-list img{
+    max-width:40px;
+    height:28px;
+}
+.addSalesPromotion{
+    display: block;
+    padding:.15rem 0;
+}
+.sales-promotion-content{
+    padding:.12rem 0 0 .25rem;
+}
+.store-goods-sort img{
+    float:left;
 }

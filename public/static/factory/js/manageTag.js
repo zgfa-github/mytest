@@ -77,7 +77,7 @@ $(function(){
         if(_this.hasClass('move-disabled-icons')){
             _this.attr('disabled',true);
         }else{
-            manageClassifyTag.moveTag(_this);
+            manageClassifyTag.upTag(_this);
         }
         
     })
@@ -90,7 +90,22 @@ $(function(){
             manageClassifyTag.downTag(_this);
         }
        
-    }) 
+    });
+    //置顶
+    $('body').on('click','.move-t-icons',function(){
+        var _this=$(this);
+        // if(_this.hasClass('move-disabled-icons')){
+        //     _this.attr('disabled',true);
+        // }else{
+        //     manageClassifyTag.upTag(_this);
+        // }
+         manageClassifyTag.setTop(_this);
+    });
+    //置底
+    $('body').on('click','.down-b-icons',function(){
+        var _this=$(this);
+        manageClassifyTag.setBottom(_this);
+    })
 })
 var manageClassifyTag={
     //初始化弹窗
@@ -148,13 +163,13 @@ var manageClassifyTag={
         }
         delObj.parents('.tag-item').remove();
     },
-    moveTag:function(moveObj){
-        var currentIndex=moveObj.parents('.tag-item').index();
-        var upperIndex=moveObj.parents('.tag-item').prev().index();
-        var currentTagName=moveObj.parents('.tag-item').find('.classify-tag-name');
-        var upperTagName=moveObj.parents('.tag-item').prev().find('.classify-tag-name');
-        var currentTagId=moveObj.parents('.tag-item').find('input');
-        var upperTagId=moveObj.parents('.tag-item').prev().find('input');
+    upTag:function(upObj){
+        var currentIndex=upObj.parents('.tag-item').index();
+        var upperIndex=upObj.parents('.tag-item').prev().index();
+        var currentTagName=upObj.parents('.tag-item').find('.classify-tag-name');
+        var upperTagName=upObj.parents('.tag-item').prev().find('.classify-tag-name');
+        var currentTagId=upObj.parents('.tag-item').find('input');
+        var upperTagId=upObj.parents('.tag-item').prev().find('input');
 
         var temp,tempId;
             temp=upperTagName.text();
@@ -182,5 +197,36 @@ var manageClassifyTag={
                 nextTagId.data('tag-id',currentTagId.data('tag-id')).attr('class','classifyTagInfo'+currentTagId.data('tag-id'));
                 currentTagId.data('tag-id',tempId).attr('class','classifyTagInfo'+tempId);
             }
+    },
+    setTop:function(Obj){
+        var currentIndex=Obj.parents('.tag-item').index();
+        var firstIndex=Obj.parents('.tag-item').siblings('div:eq(0)').index();
+        var currentTagName=Obj.parents('.tag-item').find('.classify-tag-name');
+        var firstTagName=Obj.parents('.tag-item').siblings('div:eq(0)').find('.classify-tag-name');
+        var currentTagId=Obj.parents('.tag-item').find('input');
+        var upperTagId=Obj.parents('.tag-item').prev().find('input');
+         var temp,tempId;
+            temp=firstTagName.text();
+        console.log(currentIndex+'\n'+firstIndex);
+        if(currentIndex>firstIndex){
+            firstTagName.text(currentTagName.text());
+            currentTagName.text(temp);
+        }
+    },
+    setBottom:function(Obj){
+        var len=$('.tag-item').length;
+        var currentIndex=Obj.parents('.tag-item').index();
+        var lastIndex=Obj.parents('.tag-item').siblings('div').last().index();
+        var currentTagName=Obj.parents('.tag-item').find('.classify-tag-name');
+        var lastTagName=Obj.parents('.tag-item').siblings('div').last().find('.classify-tag-name');
+        var currentTagId=Obj.parents('.tag-item').find('input');
+        var upperTagId=Obj.parents('.tag-item').prev().find('input');
+         var temp,tempId;
+            temp=lastTagName.text();
+        console.log(currentIndex+'\n'+lastIndex);
+        if(currentIndex<lastIndex){
+            lastTagName.text(currentTagName.text());
+            currentTagName.text(temp);
+        }
     }
 }
