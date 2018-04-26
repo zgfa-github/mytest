@@ -1,4 +1,4 @@
-var ff={
+var regionalMarket={
     regionData:{
         1:
             {
@@ -5546,10 +5546,10 @@ var regionAttr=[
     [6,7,8],
     [32,33,34]
 ];
-$.each(ff.regionData, function (r_k,r_v) {
+$.each(regionalMarket.regionData, function (r_k,r_v) {
     regionAllOption+="<option value='"+r_k+"'>"+r_v.region_name+"</option>";
 })
-$.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {
+$.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {
     provinceAllOption += "<option value='" + p_k + "'>" + p_v.province_name + "</option>";
     // if(p_v.city){
     //     $.each(p_v.city, function (c_k, c_v) {
@@ -5569,9 +5569,10 @@ var provinceText,provinceId;
 $('body').on('change','select[name="province"]',function (){
    var provinceVal =provinceId= $(this).val();
    provinceText=$(this).find('option:selected').text();
-   $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {  
+   $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {  
         if(provinceVal==p_k){
             $("select[name='city']").find("option:gt(0)").remove();
+            $("select[name='area']").find("option:gt(0)").remove();
             $.each(p_v.city, function (c_k, c_v) {
                 var cityAllOption="";
                 cityAllOption += "<option province_id='"+p_k+"' value='" + c_k + "'>" + c_v.city_name + "</option>";
@@ -5588,7 +5589,7 @@ $('body').on('change','select[name="city"]',function () {
     cityText=$(this).find('option:selected').text();
     var selectedVal = $(this).find("option:selected").attr("province_id");
     console.log(cityVal);
-    $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {  
+    $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {  
         if(selectedVal==p_k){
             $.each(p_v.city, function (c_k, c_v) {
                 if(cityVal==c_k){
@@ -5620,14 +5621,14 @@ $('body').on('change','select[name="region"]',function (){
         if(provinceVal==1){
             $(".region-box").find("li").remove();
             var regionLen=$('.region-box li').length;
-            $("select[name='province']").find("option:gt(0)").remove();
-            $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {
+            $(".areaListLayer select[name='province'],.areaListLayer select[name='city'],.areaListLayer select[name='area']").find("option:gt(0)").remove();
+            $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {
                 if(p_k==9||p_k==10||p_k==11||p_k==12||p_k==13||p_k==15){
                     var cityAllOption="";
                     cityAllOption += "<li province_id='"+p_k+"' value='" + p_k + "'>" +  p_v.province_name + "</li>";
                     
                     if(!regionLen){
-                        alert(regionLen);
+                        // alert(regionLen);
                         $(".region-box ul").append(cityAllOption);
                     }else{
                         alert(1);
@@ -5645,17 +5646,17 @@ $('body').on('change','select[name="region"]',function (){
         }else if(provinceVal==2){
             $(".region-box").find("li").remove();
             var regionLen=$('.region-box li').length;
-            $("select[name='province']").find("option:gt(0)").remove();
-            $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {
+            $("select[name='province'],select[name='city'],select[name='area']").find("option:gt(0)").remove();
+            $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {
                 if(p_k==19||p_k==20||p_k==21){
                     var cityAllOption="";
                     cityAllOption += "<li province_id='"+p_k+"' value='" + p_k + "'>" +  p_v.province_name + "</li>";
                     if(!regionLen){
-                        alert(regionLen);
-                        $(".region-box").append(cityAllOption);
+                        // alert(regionLen);
+                        $(".region-box ul").append(cityAllOption);
                     }else{
-                    alert(regionLen);
-                    $(".region-box ul li:last").after(cityAllOption);
+                    //alert(regionLen);
+                        $(".region-box ul li:last").after(cityAllOption);
                     }
                 }else{
                     provincePartOption += "<option value='" + p_k + "'>" + p_v.province_name + "</option>"; 
@@ -5667,12 +5668,18 @@ $('body').on('change','select[name="region"]',function (){
 
         }else if(provinceVal==3){
             $(".region-box").find("li").remove();
-            $("select[name='province']").find("option:gt(0)").remove();
-            $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {
+            $("select[name='province'],select[name='city'],select[name='area']").find("option:gt(0)").remove();
+            $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {
                 if(p_k==14||p_k==16||p_k==17||p_k==18){
                     var cityAllOption="";
                     cityAllOption += "<li province_id='"+p_k+"' value='" + p_k + "'>" +  p_v.province_name + "</li>";
-                    $(".region-box").append(cityAllOption);
+                    if(!regionLen){
+                        // alert(regionLen);
+                        $(".region-box ul").append(cityAllOption);
+                    }else{
+                    //alert(regionLen);
+                        $(".region-box ul li:last").after(cityAllOption);
+                    }
                 }else{
                     provincePartOption += "<option value='" + p_k + "'>" + p_v.province_name + "</option>"; 
                 }
@@ -5683,12 +5690,18 @@ $('body').on('change','select[name="region"]',function (){
 
         }else if(provinceVal==4){
             $(".region-box").find("li").remove();
-            $("select[name='province']").find("option:gt(0)").remove();
-            $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {
+            $("select[name='province'],select[name='city'],select[name='area']").find("option:gt(0)").remove();
+            $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {
                 if(p_k==1||p_k==2||p_k==3||p_k==4||p_k==5){
                     var cityAllOption="";
                     cityAllOption += "<li province_id='"+p_k+"' value='" + p_k + "'>" +  p_v.province_name + "</li>";
-                    $(".region-box").append(cityAllOption);
+                    if(!regionLen){
+                        // alert(regionLen);
+                        $(".region-box ul").append(cityAllOption);
+                    }else{
+                    //alert(regionLen);
+                        $(".region-box ul li:last").after(cityAllOption);
+                    }
                 }else{
                     provincePartOption += "<option value='" + p_k + "'>" + p_v.province_name + "</option>"; 
                 }
@@ -5699,12 +5712,18 @@ $('body').on('change','select[name="region"]',function (){
 
         }else if(provinceVal==5){
             $(".region-box").find("li").remove();
-            $("select[name='province']").find("option:gt(0)").remove();
-            $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {
+            $("select[name='province'],select[name='city'],select[name='area']").find("option:gt(0)").remove();
+            $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {
                 if(p_k==27||p_k==28||p_k==29||p_k==30||p_k==31){
                     var cityAllOption="";
                     cityAllOption += "<li province_id='"+p_k+"' value='" + p_k + "'>" +  p_v.province_name + "</li>";
-                    $(".region-box").append(cityAllOption);
+                    if(!regionLen){
+                        // alert(regionLen);
+                        $(".region-box ul").append(cityAllOption);
+                    }else{
+                    //alert(regionLen);
+                        $(".region-box ul li:last").after(cityAllOption);
+                    }
                 }else{
                     provincePartOption += "<option value='" + p_k + "'>" + p_v.province_name + "</option>"; 
                 }
@@ -5715,12 +5734,18 @@ $('body').on('change','select[name="region"]',function (){
 
         }else if(provinceVal==6){
             $(".region-box").find("li").remove();
-            $("select[name='province']").find("option:gt(0)").remove();
-            $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {
+            $("select[name='province'],select[name='city'],select[name='area']").find("option:gt(0)").remove();
+            $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {
                 if(p_k==22||p_k==23||p_k==24||p_k==25||p_k==26){
                     var cityAllOption="";
                     cityAllOption += "<li province_id='"+p_k+"' value='" + p_k + "'>" +  p_v.province_name + "</li>";
-                    $(".region-box").append(cityAllOption);
+                    if(!regionLen){
+                        // alert(regionLen);
+                        $(".region-box ul").append(cityAllOption);
+                    }else{
+                    //alert(regionLen);
+                        $(".region-box ul li:last").after(cityAllOption);
+                    }
                 }else{
                     provincePartOption += "<option value='" + p_k + "'>" + p_v.province_name + "</option>"; 
                 }
@@ -5732,12 +5757,18 @@ $('body').on('change','select[name="region"]',function (){
         }
         else if(provinceVal==7){
             $(".region-box").find("li").remove();
-            $("select[name='province']").find("option:gt(0)").remove();
-            $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {
+            $("select[name='province'],select[name='city'],select[name='area']").find("option:gt(0)").remove();
+            $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {
                 if(p_k==6||p_k==7||p_k==8){
                     var cityAllOption="";
                     cityAllOption += "<li province_id='"+p_k+"' value='" + p_k + "'>" +  p_v.province_name + "</li>";
-                    $(".region-box").append(cityAllOption);
+                    if(!regionLen){
+                        // alert(regionLen);
+                        $(".region-box ul").append(cityAllOption);
+                    }else{
+                    //alert(regionLen);
+                        $(".region-box ul li:last").after(cityAllOption);
+                    }
                 }else{
                     provincePartOption += "<option value='" + p_k + "'>" + p_v.province_name + "</option>"; 
                 }
@@ -5748,12 +5779,18 @@ $('body').on('change','select[name="region"]',function (){
 
         }else if(provinceVal==8){
             $(".region-box").find("li").remove();
-            $("select[name='province']").find("option:gt(0)").remove();
-            $.each(ff.PROVINCE_CITY_AREA, function (p_k,p_v) {
+            $("select[name='province'],select[name='city'],select[name='area']").find("option:gt(0)").remove();
+            $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {
                 if(p_k==32||p_k==33||p_k==34){
                     var cityAllOption="";
                     cityAllOption += "<li province_id='"+p_k+"' value='" + p_k + "'>" +  p_v.province_name + "</li>";
-                    $(".region-box").append(cityAllOption);
+                    if(!regionLen){
+                        // alert(regionLen);
+                        $(".region-box ul").append(cityAllOption);
+                    }else{
+                    //alert(regionLen);
+                        $(".region-box ul li:last").after(cityAllOption);
+                    }
                 }else{
                     provincePartOption += "<option value='" + p_k + "'>" + p_v.province_name + "</option>"; 
                 }
@@ -5767,33 +5804,60 @@ $('body').on('change','select[name="region"]',function (){
 
 //添加
  var ad='';
+ var onOff=true;
 $('body').on('click','.addTo',function(){
     var oLen=$('.region-box li').length;
-   
     var html='';
-    if(!provinceText){
-        return false;
-    }else if(!cityText){
-        html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText + "</li>";
-    }else if(!areaText){
-        html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText+cityText + "</li>";
-    }else{
-        html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText+cityText+areaText + "</li>";
-    }
+    // if(!provinceText){
+    //     alert(1);
+    // }else if(!cityText){
+    //     alert(2);
+    //     html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText + "</li>";
+    //     provinceText='';
+    // }else if(!areaText){
+    //     alert(3);
+    //     html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText+cityText + "</li>";
+    // }else{
+    //     alert(4);
+    //     html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText+cityText+areaText + "</li>";
+    // }
     if(oLen==0){
-        $('.region-box ul').append(html);
+        html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText + "</li>";
+        $('.areaListLayer .region-box ul').append(html);
         ad+=provinceId;
         console.log(ad);
-    }else{
-        ad+=ad;
-        console.log(ad);
+    }
+    // else{
+        
+    //     $.each($('.areaListLayer .region-box li'),function(){
+    //          alert($('.region-box li').length);
+    //         var _thisId=$(this).attr('province_id');
+    //         alert(provinceId+'\n'+_thisId);
+    //         if(provinceId==_thisId){
+    //             errorTipc('该省份已添加');
+    //             return false;
+    //         }
+            
+               
+           
+    //     });
+    //    html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText + "</li>";
+    //            $('.areaListLayer .region-box ul li:last').after(html);
+                
+    // }
+   
+    else{
+        // ad+=ad;
+        // console.log(ad);
         if(ad.indexOf(provinceId)!=-1){
             // alert('存在了');
             errorTipc('该省份已添加');
             return false;
         }else{      
-            $('.region-box ul').append(html);   
+            html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText + "</li>";
+            $('.areaListLayer .region-box ul').append(html);   
             ad=ad+provinceId;
+            console.log(ad);
         }
     }
 })

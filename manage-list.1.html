@@ -11,7 +11,7 @@
 </head>
 <body>
 <!--创建登录账号-->
-<article id="abc" style="display:none;">
+<article id="addLoginAccount" style="display:none;">
     <section class="f24 signIn-wrapper">
         <div class="account-item">
             <input type="text" placeholder="姓名" class="input-filed" value="">
@@ -35,9 +35,9 @@
                 <div class="range-list">
                     <span class="range-label">[业务范围]</span>
                     <ul class="columns_flex">
-                        <li class="current">采购联营</li>
-                        <li class="current">分成联营</li>
-                        <li class="current">零售联营</li>
+                        <li class="current">采购业务</li>
+                        <li class="current">分成业务</li>
+                        <li class="current">零售业务</li>
                     </ul>
                 </div>
                 <div class="range-list">
@@ -57,17 +57,14 @@
                 <div class="range-list">
                     <span class="range-label">售中客服:</span>
                     <ul class="columns_flex">
-                        <li class="current">接单</li>
-                        <li class="current">打单</li>
-                        <li class="current">备货</li>
-                        <li class="current">打包</li>
-                        <li class="current">发货</li>
-                        <li class="current">物流</li>
-                        <li class="current">填单</li>
+                        <li class="current">接单打印</li>
+                        <li class="current">备货打包</li>
+                        <li class="current">发货/完成</li>
+                        <li class="current">填物流单</li>
                     </ul>
                 </div>
                 <div class="range-list">
-                    <span class="range-label">售中客服:</span>
+                    <span class="range-label">售后客服:</span>
                     <ul class="columns_flex">
                         <li class="current">咨询</li>
                         <li class="current">退换货</li>
@@ -143,7 +140,8 @@
             <a class="column_type current">账号授权</a>
             <a>档案资质</a>
             <a>店铺部署</a>
-            <a>云推客圈</a>
+            <a>促销管理</a>
+            <a>云推客联营计划</a>
         </div>
     </section>
     <section class="f24 account-content-wrapper ">
@@ -204,13 +202,13 @@
 <script type="text/javascript">
     $(function(){
         //创建登录账号
-        var abc=$('#abc').html();
+        var addLoginAccount=$('#addLoginAccount').html();
         $('body').on('click','.add-account',function(){
             var pageii = layer.open({
                 title:['创建登录账号','border-bottom:1px solid #d9d9d9;'],
                 className:'addCcountLayer',
                 type: 1,
-                content: abc,
+                content: addLoginAccount,
                 anim: 'up',
                 style: 'position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;',
                 success:function(){
@@ -234,7 +232,9 @@
             $(this).toggleClass('current');
             $('.range-list-wrapper').toggleClass('current');
         })
-
+        $('body').on('click','.range-list li',function(){
+            $(this).toggleClass('current');
+        })
         //初始化
         // var province = '{$consigneeAddressInfo.province}';
         // $('[name=province]').val(province);
