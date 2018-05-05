@@ -660,9 +660,10 @@ color: #ed6d00;
     
 }
 /*内容框*/
-.content-box{
+.content-box,.content-padding{
     padding:0.20rem 0.15rem;
-}.content-box:last-child{
+}
+.content-box:last-child{
     padding-bottom:1rem;
 }
 .column_type.current{
@@ -1165,6 +1166,8 @@ color: #ed6d00;
 .upload-picture-module .picture-module:before,
 .logo-license .logo:after,
 .logo-license .logo:before,
+.screenshot-wrap .logo:after,
+.screenshot-wrap .logo:before,
 .upload-company-map .picture-module:after,
 .upload-company-map .picture-module:before{
     content: " ";
@@ -1175,6 +1178,10 @@ color: #ed6d00;
     transform: translate(-50%,-50%);
     background-color: #999;
     z-index:2;
+}
+.screenshot-wrap .logo:after,
+.screenshot-wrap .logo:before{
+    background-color: #fff;
 }
 .upload-picture-module .picture-module.active:before,
 .upload-picture-module .picture-module.active:after{
@@ -1194,13 +1201,15 @@ color: #ed6d00;
     height: 2px;
     top:45%;
 }
-.logo-license .logo:before{
+.logo-license .logo:before,
+.screenshot-wrap .logo:before{
     width: 2px;
     height: 25px;
     top:45%;
     
 }
-.logo-license .logo:after{
+.logo-license .logo:after,
+.screenshot-wrap .logo:after{
     width: 25px;
     height: 2px;
     top:45%;
@@ -1254,6 +1263,7 @@ color: #ed6d00;
     margin-bottom:12px;
 }
 .multi-picture-module .picture-module{
+    position:relative;
     /*width:2.88rem;*/
 }
 /*文字中间两边横向延伸线条*/
@@ -1453,12 +1463,20 @@ color: #ed6d00;
     /*left: 50%;*/
     /*margin-left: -4rem*/
 }
-
+.screenshot-bg a{
+    width:auto;
+    height:4rem;
+    background: #9FA0A0;
+    border-radius:0;
+}
 .half > a img {
     width: 1rem;
     height: 0.8rem;
    margin:0.35rem auto 0;
    display:block;
+}
+.screenshot-bg a img{
+    display: none;
 }
 .half > a img.active{
     width:100%;

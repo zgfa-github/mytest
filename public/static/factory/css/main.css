@@ -741,3 +741,62 @@ transparent;
 .store-goods-sort img{
     float:left;
 }
+/*推客圈*/
+.release-news{
+    position:relative;
+    width:100px;
+    height:100px;
+    background: #DCDDDE;
+}
+.release-news .camera-btn{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    width:100%;
+    opacity: 0;
+    cursor:pointer;
+}
+.release-news .video-camera{
+    position:absolute;
+    display: block;
+    width:50px;
+    height:40px;
+    left:50%;
+    top:50%;
+    margin:-20px 0 0 -25px;
+    background-image:url(../../common/img/icons/camera.png);
+    background-repeat: no-repeat;
+    background-size: 50px 40px;
+    background-position:center;
+}
+.twitter-release-content .columns_flex{
+    margin:0 0 18px 0;
+}
+.twitter-release-content .release-date{
+    width:100px;
+}
+.photo-frame{
+    width:180px;
+    height:88px;
+    overflow:hidden;
+}
+.photo-frame img{
+    width:50%;
+    float:left;
+}
+.twitter-release-content{
+    padding:.15rem .15rem 0 .15rem;
+}
+.cloudTwitterLayer .twitter-text{
+    width:100%;
+    height:2rem;
+}
+.cloudTwitterLayer .layui-m-layerbtn span[yes]{
+    background: #ff7bac;
+    color:#fff;
+}
+.cloudTwitterLayer .multi-picture-module li{
+    width:30%;
+}

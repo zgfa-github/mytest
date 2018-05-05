@@ -5571,8 +5571,9 @@ $('body').on('change','select[name="province"]',function (){
    provinceText=$(this).find('option:selected').text();
    $.each(regionalMarket.PROVINCE_CITY_AREA, function (p_k,p_v) {  
         if(provinceVal==p_k){
-            $("select[name='city']").find("option:gt(0)").remove();
-            $("select[name='area']").find("option:gt(0)").remove();
+            $("select[name='city'],select[name='area']").find("option:gt(0)").remove();
+            // $("select[name='area']").find("option:gt(0)").remove();
+            cityText=areaText='';
             $.each(p_v.city, function (c_k, c_v) {
                 var cityAllOption="";
                 cityAllOption += "<option province_id='"+p_k+"' value='" + c_k + "'>" + c_v.city_name + "</option>";
@@ -5619,6 +5620,8 @@ $('body').on('change','select[name="region"]',function (){
      
    var provinceVal = $(this).val();
         if(provinceVal==1){
+            ad='';
+            provinceText=cityText=areaText='';
             $(".region-box").find("li").remove();
             var regionLen=$('.region-box li').length;
             $(".areaListLayer select[name='province'],.areaListLayer select[name='city'],.areaListLayer select[name='area']").find("option:gt(0)").remove();
@@ -5806,6 +5809,7 @@ $('body').on('change','select[name="region"]',function (){
  var ad='';
  var onOff=true;
 $('body').on('click','.addTo',function(){
+    console.log(ad);
     var oLen=$('.region-box li').length;
     var html='';
     // if(!provinceText){
@@ -5822,7 +5826,18 @@ $('body').on('click','.addTo',function(){
     //     html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText+cityText+areaText + "</li>";
     // }
     if(oLen==0){
-        html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText + "</li>";
+        if(!provinceText){
+            errorTipc('请先选择省市区,再添加！');
+            return false;
+        }
+        if(!cityText){
+            cityText='';
+        }
+        if(!areaText){
+            areaText='';
+        }
+        console.log(cityText);
+        html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText+cityText+areaText + "</li>";
         $('.areaListLayer .region-box ul').append(html);
         ad+=provinceId;
         console.log(ad);
@@ -5854,7 +5869,7 @@ $('body').on('click','.addTo',function(){
             errorTipc('该省份已添加');
             return false;
         }else{      
-            html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText + "</li>";
+            html+="<li province_id='"+provinceId+"' value='" + provinceId + "'>" + provinceText+cityText+areaText + "</li>";
             $('.areaListLayer .region-box ul').append(html);   
             ad=ad+provinceId;
             console.log(ad);
