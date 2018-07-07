@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>权限</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<section id="groupRole" style="display: none;">
+	<div class="groupRole-box">
+		<input class="role-name input-filed" type="text" name="" value="" placeholder="请输入角色">
+	</div>
+</section>
+<article class="f24">
+    <section class="top_nav_fixed">
+		<div class="top_bar top-switch-bar columns_flex l-r-sides">
+			<div class="">
+				<a class="home">首页</a>
+			</div>
+			<div class="">
+				<img class="left" src="public/static/common/img/default/no_pic_40.jpg" alt="">
+				<span>爱国宾</span>
+			</div>
+			<div class="">
+				<a class="switch-account">切换供应商账号></a>
+			</div>
+		</div>
+	</section>
+    <section class="specific_type bottomLine">
+        <div class="columns_flex f20">
+            <a >企业档案</a>
+            <a>商标备案</a>
+            <a>开店申请</a>
+            <a class="column_type current">组别角色</a>
+            <a>账号授权</a>
+        </div>
+    </section>
+    <section class="f24 ">
+        <div class="page-bd">
+            <nav class="apply-data-nav">
+                <ul id="status " class="status f24 weui-flex group-role-nav">
+                    <li class="weui-flex-item "><span class="ogranzi"></span><em></em>组织</li>
+                    <li class="weui-flex-item "><span class="group"></span><em></em>组别</li>
+                    <li class="weui-flex-item current"><span class="role"></span><em></em>角色</li>
+                    <li class="weui-flex-item "><span class="juris"></span>权限</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <section>
+        <ul class="account-role-list role-list">
+            <li>
+                <span>总经理组</span>
+                <div class="operate-box">
+                    <a class="edit btn">i</a>
+                    <a class="reduce btn">-</a>
+                </div>
+            </li>
+           
+        </ul>
+        <div class="add-role">
+            <a href="javascript:void(0);" class="add">+</a>
+        </div>
+    </section>
+    <p class="f20 content-box group-role-tipc">提示：选择角色进行默认权限的设定，全部角色默认权限设定后再按确定。</p>
+    <a href="javascript:void(0);" class="add-account foot-btn">下一步</a>
+</article>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script>
+    $(function(){
+        var groupRole=$('#groupRole').html();
+        $('body').on('click','.add-role .add',function(){
+            layer.open({
+                title:['新增角色','border-bottom:1px solid #d9d9d9;'],
+                className:'',
+                content:groupRole,
+                btn:['确定','取消']
+            })
+        })
+    })
+</script>
+</body>
+
+</html>

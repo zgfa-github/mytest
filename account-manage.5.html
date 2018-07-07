@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>账户修改</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<section id="accountInfo" style="display: none;">
+    <div class="account-info">
+        <div>
+            <span class="r-t">姓名</span>
+            <span>cccc</span>
+        </div>
+         <div>
+            <span class="r-t">手机号码</span>
+            <span>cccc</span>
+        </div>
+         <div>
+            <span class="r-t">角色类型</span>
+            <span>客服部客服专员</span>
+        </div>
+    </div>
+</section>
+<article class="f24">
+<section class="separation-line">
+    <div class="columns_flex l-r-sides content-padding account-header">
+        <div>
+            <div>
+                <span class="r-t">姓名</span><span>123</span>
+            </div>
+            <div>
+                <span class="r-t">手机号码</span><span>13430393576</span>
+            </div>
+            <div>
+                <span class="r-t">角色类型</span><span>客服部客服专员</span>
+            </div>
+        </div>
+        <div class="account-edit-btn columns_flex">
+            <a>
+                <span class="stop-icon ic"></span>
+                <span class="btn-status">停用账号</span>
+            </a>
+            <a>
+                <span class="del-icon ic"></span>
+                <span class="btn-status">删除账号</span>
+            </a>
+        </div>
+    </div>
+</section>
+<section class="f24 signIn-wrapper">
+    <div class="account-item">
+        <span class="content-label">修改账号角色</span>
+        <ul class="account-role-list">
+            <li>总经理</li>
+            <li>运营部.运营总监</li>
+            <li>运营部.运营经理</li>
+            <li>运营部.运营专员</li>
+            <li>客服部.客服总监</li>
+            <li>客服部.客服经理</li>
+            <li>客服部.客服专员</li>
+        </ul>
+    </div>
+</section>
+</article>
+<a href="javascript:void(0);" class="foot-btn f24">确定</a>
+
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('body').on('click','.account-role-list li',function(){
+            $(this).toggleClass('current');
+        });
+        $('body').on('click','.account-edit-btn a',function(){
+            var status=$(this).find('.btn-status').text();
+            var accountInfo=$('#accountInfo').html();
+            manageAccount(status,accountInfo);
+        })
+       
+    })
+    function manageAccount(title,content){
+        layer.open({
+            title:[title,'border-bottom:1px solid #d9d9d9;'],
+            className:'accountInfoLayer',
+            content:content,
+            btn:['确定','取消']
+        })
+    }
+</script>
+</body>
+
+</html>

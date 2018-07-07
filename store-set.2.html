@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>店铺运营</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<!--企业品牌logo-->
+<section class="htmleaf-container" style="display: none;">
+    <div id="clipArea">
+        <div class="photo-clip-view" >
+            <div class="photo-clip-moveLayer" >
+                <div class="photo-clip-rotateLayer"></div>
+            </div>
+        </div>
+        <div class="photo-clip-mask">
+            <div class="photo-clip-mask-left"></div>
+            <div class="photo-clip-mask-right" ></div>
+            <div class="photo-clip-mask-top" ></div>
+            <div class="photo-clip-mask-bottom" ></div>
+            <div class="photo-clip-area" ></div>
+        </div>
+        <a href="javascript:void(0);" class="photoClip-close ">X</a>
+    </div>
+    <div class="foot-use f28">
+        <div class="uploader1 blue">
+            <input type="button" name="file" class="button" value="打开图片">
+            <input id="file" type="file" onchange="javascript:void(0);" accept="image/*" multiple="" />
+        </div>
+        <button id="clipBtn">截取</button>
+    </div>
+    <div id="view" class="photoview" ></div>
+</section>
+<article class="f24">
+    <section class="top_nav_fixed">
+		<div class="top_bar columns_flex l-r-sides">
+			<div class="">
+				<a class="home">首页</a>
+			</div>
+			<div class="">
+				<img src="http://msy.new.com/static/common/img/default/no_pic_40.jpg" alt="">
+				<span>爱国宾</span>
+			</div>
+			<div class="">
+				<a class="switch-account">切换我的店铺</a>
+			</div>
+		</div>
+	</section>
+    <section class="columns_flex l-r-sides">
+        <div>
+            <img class="left" src="http://msy.new.com/static/common/img/default/no_pic_40.jpg" alt="">
+            <div>
+                <p><span>某某</span>官方旗舰店</p>
+                <p>B2B采购商城 <span>供应商自营</span></p>
+            </div>
+        </div>
+        <div>
+            <a href="" class="personal_center">我的</a>
+            <a href="" class="my-store">我的店铺</a>
+        </div>
+    </section>
+    <section class="bottomLine">
+        <nav class="columns_flex channel_nav manufacturer_nav">
+            <a href="" >
+                店铺提醒
+            </a>
+            <a href="" class="current">
+                店铺管理
+            </a>
+            <a href="">
+                营销推广
+            </a>
+            <a href="">
+                官方活动
+            </a>
+        </nav>
+    </section>
+    <section class="specific_type store-manage-type bottomLine">
+		<div class="columns_flex f20">
+			<a >设置</a>
+			<a >商品</a>
+			<a >排序</a>
+			<a class="column_type current">入仓</a>
+			<a>上架</a>
+			<a>卡券</a>
+		</div>
+	</section>
+    <section class="">
+        <div class="columns_flex l-r-sides library-th">
+            <span>商品</span>
+            <span>商品库存</span>
+            <span>商品入仓</span>
+            <span>盘点出仓</span>
+        </div>
+        <ul class="library-tr">
+            <li class="columns_flex l-r-sides">
+                <div class="td">
+                    <img src="public/static/common/img/default/no_pic_40.jpg" alt="" class="left ">
+                    <div>
+                        <p>商品名字</p>
+                    </div>
+                </div>
+                <div class="td">
+                    <span class="goods-library-num">0</span>
+                </div>
+                <div class="td">
+                    <input type="text" placeholder="增加数量" class="add-num" style="width:20%;"/>
+                </div>
+                <div class="td">
+                    <input type="text" placeholder="减去数量" class="reduce-num" style="width:20%;"/>
+                </div>
+            </li>
+            <!--<li class="columns_flex l-r-sides">
+                <div class="td">
+                    <img src="public/static/common/img/default/no_pic_40.jpg" alt="" class="left ">
+                    <div>
+                        <p>商品名字</p>
+                    </div>
+                </div>
+                <div class="td">
+                    <span class="goods-library-num">0</span>
+                </div>
+                <div class="td">
+                    <input type="text" placeholder="增加数量" style="width:100%;"/>
+                </div>
+                <div class="td">
+                    <input type="text" placeholder="减去数量" />
+                </div>
+            </li>-->
+        </ul>
+    </section>
+</article>
+<a href="http://192.168.1.101:8008/demo/joint-deployment.4.html" class="increase-commodity foot-btn f24">确定</a>
+<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common /js/common.js"></script>
+<script>
+    $(function(){
+        //实时增加
+        $('.add-num').on('blur', function() {
+            console.log(1);
+            var _this=$(this);
+            _this.val('增加数量');
+            // var num=_this.val();
+            // _this.parent().prev().find('.goods-library-num').text(num);
+        });
+        //实时减少
+        // $('.reduce-num').on('input propertychange', function() {
+        //     var _this=$(this);
+        //     var num=_this.val();
+        //     _this.parents('li').find('.goods-library-num').text(num);
+        // });
+    })
+</script>
+</body>
+
+</html>

@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="public/static/common/css/public.css">
     <link rel="stylesheet" href="public/static/factory/css/main.css">
     <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+    <style>
+        .addCcountLayer{
+            position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;
+        }
+    </style>
 </head>
 <body>
 <!--创建登录账号-->
@@ -210,7 +215,7 @@
                 type: 1,
                 content: addLoginAccount,
                 anim: 'up',
-                style: 'position:fixed; left:0; top:0; width:100%; height:100%; border: none; -webkit-animation-duration: .5s; animation-duration: .5s;',
+                style: '',
                 success:function(){
                     var winHeight=$(window).height();
                     $('.signIn-wrapper').css('height',winHeight-120+'px');

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>店铺运营</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class="f24">
+    <section class="bottomLine">
+        <div class="top_bar top-title">
+            <span></span>
+            <h2>复制商品数据到本店铺</h2>
+        </div>
+    </section>
+    <nav class="goods-database-nav">
+        <ul class="columns_flex">
+            <li>选择源文件</li>
+            <li>选择性复制</li>
+        </ul>
+    </nav>
+    <section>
+        <ul class="goods-database-content">
+            <li>
+                <img src="public/static/common/img/default/no_pic_100.jpg" alt="" class="left">
+                <div class="database-r">
+                    <p>商品名商品名商品名商品名</p>
+                    <div class="p-r">
+                        <span>￥</span>
+                        <price>888.00</price>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <img src="public/static/common/img/default/no_pic_100.jpg" alt="" class="left">
+                <div class="database-r">
+                    <p>商品名商品名商品名商品名</p>
+                    <div class="p-r">
+                        <span>￥</span>
+                        <price>88888.00</price>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+</article>
+<a href="http://192.168.1.101:8008/demo/joint-deployment.4.html" class="increase-commodity foot-btn f24">确定</a>
+<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common /js/common.js"></script>
+<script>
+    $(function(){
+        //复制商品数据库
+        $('body').on('click','.goods-database-content li', function() {
+            var _this=$(this);
+                _this.toggleClass('current');
+        });
+    })
+</script>
+</body>
+
+</html>

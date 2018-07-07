@@ -80,19 +80,19 @@
 </section>
 <article class="f24">
     <section class="top_nav_fixed">
-        <div class="top_bar columns_flex">
-             <div class="each_column">
-                <a class="personal_center">我的</a>
-             </div>
-             <div class="each_column top_search_module">
-                 <input type="button" class="search_btn"/>
-                 <input type="text" class="search_text" placeholder="美尚云搜索"/>
-             </div>
-            <div class="each_column">
-            <a class="home">首页</a>
-            </div>
-        </div> 
-    </section>
+		<div class="top_bar columns_flex l-r-sides">
+			<div class="">
+				<a class="home">首页</a>
+			</div>
+			<div class="">
+				<img src="http://msy.new.com/static/common/img/default/no_pic_40.jpg" alt="">
+				<span>爱国宾</span>
+			</div>
+			<div class="">
+				<a class="switch-account">切换我的店铺</a>
+			</div>
+		</div>
+	</section>
     <section class="specific_type bottomLine">
         <div class="columns_flex f20">
             <a >企业档案</a>
@@ -103,38 +103,38 @@
         </div>
     </section>
     <section class="f24 account-content-wrapper ">
-        <!--<div class="account-top">
-            <div>企业名称：<span>某某公司</span></div>
-            <div class="columns_flex">
-                <span>选择账号进行修改</span>
-                <a href="javascript:void(0);" class="add-account">创建登录账号&nbsp;></a>
-            </div>
-        </div>-->
         <div class="search-bar columns_flex">
             <input type="text" class="search-text" name="" value="" placeholder="输入姓名、手机号码查询账号">
             <input type="button" class="search-btn">
         </div>
         <div class="account-list-content">
             <span class="title">供应商员工登陆账号列表</span>
+            
+            <span class="title">暂无数据</span>
+            <span class="title">搜索结果</span>
+            <span class="title">查无此人</span>
             <ul class="account-list ">
                 <li>
                     <div>
-                        <div>
-                            <span class="list-label">姓名</span>
-                            <span>XXXXXX</span>
-                        </div>
-                        <div>
-                            <span class="list-label">手机号码</span>
-                            <span>13430363587</span>
-                        </div>
-                        <div>
-                            <span class="list-label">角色类型</span>
-                            <span>管理员</span>
-                        </div>
+                        <a href="">
+                            <div>
+                                <span class="list-label">姓名</span>
+                                <span>XXXXXX</span>
+                            </div>
+                            <div>
+                                <span class="list-label">手机号码</span>
+                                <span>13430363587</span>
+                            </div>
+                            <div>
+                                <span class="list-label">角色类型</span>
+                                <span>管理员</span>
+                            </div>
+                        </a>
                     </div>
                     <div>
                         <span>账号正常</span>
                     </div>
+                   
                 </li>
             </ul>
         </div>
@@ -166,33 +166,10 @@
             });
 
         });
-        var areaListLayer=$('#areaListLayer').html();
-        $('body').on('click','.responsible-area',function(){
-            layer.open({
-                title:['设定该账户角色负责的省市区域市场','border-bottom:1px solid #d9d9d9;'],
-                className:'areaListLayer',
-                content:areaListLayer,
-                btn:['确定']
-            })
-        });
-        $('body').on('click','.modify-role',function(){
-            $(this).toggleClass('current');
-            $('.range-list-wrapper').toggleClass('current');
-        })
-        $('body').on('click','.range-list li',function(){
+        $('body').on('click','.account-role-list li',function(){
             $(this).toggleClass('current');
         })
-        //初始化
-        // var province = '{$consigneeAddressInfo.province}';
-        // $('[name=province]').val(province);
-        // $('[name=province]').change();
-        // var city = '{$consigneeAddressInfo.city}';
-        // $('[name=city]').val(city);
-        // $('[name=city]').change();
-        // var area = '{$consigneeAddressInfo.area}';
-        // $('[name=area]').val(area);
-
-
+       
     })
 </script>
 </body>

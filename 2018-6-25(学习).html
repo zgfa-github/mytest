@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>  
+<html>  
+<head>  
+    <meta charset="UTF-8">  
+    <title> 匿名函数里面封装的函数，在外面调用</title>  
+<body>  
+<script type="text/javascript"> 
+var fn=()=>{
+    alert(123);
+}
+fn();
+document.onclick=function(){
+    //this指向的是window
+    // setTimeout(function(){
+    //     console.log(this);
+    // },1000)
+
+    //this指向的是document,箭头函数this指向所在的作用域
+    setTimeout(()=>{
+        console.log(this);
+    },1000)
+} 
+var util=(function(){
+    // function add(a,b){
+    //     console.log(a+b);
+    // }
+    // function reduce(a,b){
+    //     console.log(a-b);
+    // }
+    // function isFuction(){
+
+    // }
+    add=function(a,b){
+        console.log(a+b);
+    }
+    return {
+        add
+        // ,
+        // reduce,
+        // isFuction
+    }
+})();  
+util.add(5,2);
+// util.reduce(5,2);
+</script>  
+</body>  
