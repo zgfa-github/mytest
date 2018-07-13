@@ -12,7 +12,22 @@
     <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
 </head>
 <body>
-	
+<!--云推客发布-->
+<section id="cloudTwitter" style="display: none;">
+    <div class="twitter-release-content"> 
+        <textarea class="twitter-text" rows="" cols="" placeholder="消息文字"></textarea>
+        <ul class="upload-picture-module multi-picture-module">
+            <!--<img src="" alt="" class="abc"/>-->
+            <!--accept="image/*"   multiple属性是多选-->
+        </ul>
+        <div class="error_tipc"></div>
+        <div class="release-news">
+            <span class="video-camera"></span>
+            <input class="camera-btn uploadSingleImg" type="file" id="file" capture="camera" data-num="9" multiple>
+        </div>
+
+    </div>
+</section>
 <article class="scroll-wrapper f24">
     <section class="fixedtop top_nav_fixed">
 		<div class="top_bar columns_flex">
@@ -163,23 +178,102 @@
 <script src="public/static/common/js/jquery-1.9.1.min.js"></script>
 <script src="public/static/common/js/public.js"></script>
 <script type="text/javascript" src="public/static/common/js/swiper.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
 <script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
 <script>
-    $(function(){
-        //轮播
-        var swiper1 = new Swiper('.swiper-container', {
-			spaceBetween: 30,
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true
-			}
-		});
-		swiper('.swiper-focus-container');
-        $('.more-text-box').moreText({
-            mainCell:".more-text",
-            openBtn:'全部>'
+$(function(){
+    //轮播
+    var swiper1 = new Swiper('.swiper-container', {
+        spaceBetween: 30,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        }
+    });
+    swiper('.swiper-focus-container');
+    $('.more-text-box').moreText({
+        mainCell:".more-text",
+        openBtn:'全部>'
+    });
+
+    var cloudTwitter=$('#cloudTwitter').html();
+    $('body').on('click','.release-msg',function(){
+        var pageii = layer.open({
+            title:['发云推客圈消息','border-bottom:1px solid #d9d9d9;'],
+            className:'cloudTwitterLayer',
+            type: 1,
+            content: cloudTwitter,
+            anim: 'up',
+            success:function(){
+                var winHeight=$(window).height();
+                $('.twitter-release-content').css('height',winHeight-120+'px');
+            },
+            btn:['发布']
         });
+    });
+    var fileList;
+    $('body').on('change','#file',function(){
+        var file = $(this);
+        fileList = $(this).get(0).files;
+        var imgArr = [];
+        var num=file.data('num');//限制个数  
+    
+        if($('.cloudTwitterLayer li').length==num){
+            errorTipc('只能上传'+num+'张图片');
+            return false;
+        }
+        if(num==0){ //0代表无限制个数
+            uploadPic(fileList[0],0,fileList.length);
+        }else{
+            uploadPic(fileList[0],0,num);
+        }      
+    });
+    function uploadPic(fil,i,len){
+            var img = fil;
+            var obj=$(this).parent();
+            var fileSize=fil.size/1024/1024;
+            // console.log(event.target.files[i]);
+            // console.log(fileSize);
+            // 判断是否图片
+            if(!img){
+                return false;
+            }
+            // 判断图片格式
+            var imgRegExp=/\.(?:jpg|jpeg|png|gif)$/;
+            if(!(img.type.indexOf('image')==0 && img.type && imgRegExp.test(img.name)) ){
+                layer.open({
+                    content:'请上传：jpg、jpeg、png、gif格式图片',
+                    time:2
+                }) ;
+            }
+            if(fileSize>1){
+                dialog.error('图片大小不能超过1M');
+                return false;
+            }
+            var reader = new FileReader();
+            reader.readAsDataURL(img);
+
+            reader.onload = function(e){
+                var imgUrl=e.target.result;
+                var img=  $('<img src="" class="upload_img">');
+                img.attr("src", imgUrl);
+                var imgAdd = $('<li><div class="picture-module active"><input type="file" class="uploadImg uploadSingleEditImg" name=""><span class="delete-picture">X</span></div></li>');
+                imgAdd.find('.picture-module').append(img);
+                $('.multi-picture-module').append(imgAdd);
+                if(i<len-1){
+                    // console.log(len);
+                    if(fileList[i+1]){
+                        uploadPic(fileList[i+1],i+1,len);
+                    }
+                }
+            }         
+    }
+    $('body').on('click','.delete-picture',function(){
+        $(this).parents('li').remove();
+        $('.company-video').data('src','');
     })
+})
 </script>
 </body>
 

@@ -1,3 +1,9 @@
+//jq 封装页面交互效果插件写法
+// $.fn.dosomething=function(){
+//     //执行逻辑
+// }
+// $('').dosomething();
+
 (function($){
     var deviceWidth=document.documentElement.clientWidth;
     var html =document.getElementsByTagName('html')[0];

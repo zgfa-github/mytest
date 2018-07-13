@@ -899,6 +899,8 @@ transparent;
 .cloudTwitterLayer .twitter-text{
     width:100%;
     height:2rem;
+    border:1px solid #d9d9d9;
+    resize:none;
 }
 .cloudTwitterLayer .layui-m-layerbtn span[yes]{
     background: #ff7bac;
@@ -1274,4 +1276,57 @@ transparent;
     /*width:66px;*/
    
     /*box-sizing: border-box;*/
+}
+.cloudTwitterLayer .release-news{
+    width:100px;
+    height:100px;
+    background: #DCDDDE;
+}
+.twitter-release-content{
+    overflow-y:scroll;
+}
+/*财务订单结算*/
+.top-bar-column,.top-bar-column a{
+    color:#fff;
+}
+.order-wrapper{
+    padding-top:.15rem;
+    background: #efefef;
+}
+.order-list-content li{
+    padding:.15rem;
+    margin:0 0 .35rem 0;
+    background: #fff;
+    border:1px solid #9FA0A0;
+    border-radius:3px;
+}
+.order-list-title{
+    margin:.25rem 0;
+}
+.recharge-record{
+    display:block;
+    text-align:right;
+}
+.wx-pay-content{
+    margin:0 0 .25rem 0;
+    background: #fff;
+}
+.pay-money{
+    flex-wrap: wrap;
+}
+.pay-money li{
+    margin:0 .05rem .20rem;
+    padding:.1rem .15rem;
+    border:1px solid #009a3e;
+    border-radius:3px;
+    color:#009a3e;
+}
+.recharge-record{
+    margin:.15rem 0;
+}
+.customer-service{
+    display: block;
+    padding:.25rem 0 0;
+    margin:.15rem 0 0;
+    border-top:1px solid #d9d9d9;
 }

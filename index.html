@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>调用node.js开发的接口，请求数据</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <!--<link rel="stylesheet" href="public/static/common/css/public.css">-->
+</head>
+<body>
+<p >我是客户端，想请求node.js开发出来的接口</p>
+<table class="list">
+    <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+    </tr>
+</table>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script>
+   $(function(){ 
+        $.ajax({
+            type:'get',
+            url:'http://localhost:8888/123',
+            success:function(data){
+                console.log(data);
+                var html='';
+                for(var i=0;i<data.length;i++){
+                    html+='<tr>';
+                    html+='<td>'+data[i].name+'</td>';
+                    html+='<td>'+data[i].sex+'</td>';
+                    html+='<td>'+data[i].age+'</td>';
+                    html+='</tr>';
+                   
+                }
+                $('.list tr:first').after(html);
+            },
+            error:function(){
+                console.log('error1111');
+            }
+        })
+    })
+</script>
+</body>
+
+</html>
