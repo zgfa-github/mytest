@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>touch事件</title>
+
+</head>
+<body>
+    <div style="height:250px;border-bottom:1px solid #d9d9d9;">
+        
+    </div>
+    <p class="a"></p>
+    <p class="b"></p>
+    <p class="c"></p>
+</body>
+    <script>   
+        //TouchEvent对象
+        var i = 0;
+        var box = document.querySelector("div");
+
+        var ps = document.querySelectorAll("p");
+        // box.addEventListener("touchstart", function (e){
+        //     console.log(e);
+        //     ps[0].innerHTML = e.type + i++;
+        // })
+
+        box.addEventListener("touchstart", function (e){
+            var msg = "touches.length: " + e.touches.length +
+                    "<br> targetTouches.length: " + e.targetTouches.length +
+                    "<br> changedTouches.length: " + e.changedTouches.length;
+            ps[0].innerHTML = msg;
+        })
+
+        box.addEventListener("touchmove", function (e){
+            ps[1].innerHTML = e.type + i++;
+            e.preventDefault()
+        })
+            box.addEventListener("touchend", function (e){
+        ps[2].innerHTML = e.changedTouches.length;  //返回Touch对象的个数
+        for(var i = 0; i < e.changedTouches.length; i++){
+            //遍历出来每个Touch对象
+            console.log(e.changedTouches.item(i));
+        }
+    })
+    </script>
+</html>

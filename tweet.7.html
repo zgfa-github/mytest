@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>含多个商品的小类场景</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+	<!--<link rel="stylesheet" href="Public/img/admin-css/common/weui.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">-->
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<!--底部弹窗商品信息-->
+<section id="goodsInfoLayer" style="display:none;">
+    <ul class="bottom-layer-info">
+        <li >
+            <img src="" alt="" class="left">
+            <div>
+                <p>台湾原装进口 真世酵素纤丽果冻</p>
+            </div>
+        </li>
+        <li>
+            <div class="columns_flex l-r-sides">
+                <div>单品规格<span>12g*20条 /盒</span></div>
+                <div>￥<price>198.00</price>
+                    <del>￥999</del>
+                </div>
+            </div>
+            <div class="columns_flex l-r-sides">
+                <div>采购包装<span>10盒/箱</span></div>
+                <div>￥<price>1980</price></div>
+            </div>
+        </li>
+        <li>
+            <div class="columns_flex l-r-sides">
+                <span>采购数量(单位：箱)</span>
+                <div class="quantity_wrapper selected-number">
+                    <a href="javascript:void(0);" class="greduce">-</a>
+                    <input type="text" value="1" class="f24 gshopping_count">
+                    <a href="javascript:void(0);" class="gplus">+</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="columns_flex l-r-sides bottom-layer-last">
+        <span class="pink">￥<price>0.00</price></span>
+        <a href="javascript:void(0);" class="bff6482 group_btn50 add-shopping-cart">加入采购车</a>
+    </div>
+</section>
+<article class="scroll-wrapper f24">
+    <section class="">
+		<img src="public/static/common/img/default/no_pic2_1000.jpg" alt="" class="common_default_img">
+    </section>
+    <section class="separation-line top-text-info">
+        <p class="top-text-name">美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤美肤</p>
+        <p class="top-text-intro">是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，
+            滚滚长江东逝水，浪花淘尽英雄。 几度夕阳红。白发渔樵江渚上，都付笑谈中。滚滚长江东逝水，浪花淘尽英雄。是非成败转
+        </p>
+        <div class="top-text-tipc columns_flex l-r-sides">
+            <p>[优惠通知] 是非成败转头空，青山依旧在，惯看秋月春风。一壶浊酒喜相逢，古今多少事，滚滚长江东逝水</p>
+            <a href="javascript:void(0);">
+                <span></span>
+                分享
+            </a>
+        </div>
+    </section>
+    <section class="separation-line columns_flex l-r-sides content-padding">
+        <div class="deadline">
+            <img src="public/static/common/img/icons/deadline.png" alt="">
+            <div>
+                <span class="left count-down-icons"></span>
+                <div class="d-r">
+                    <p class=" pink">联合采购本周五截止</p>
+                    <div class="end-text">168:00:00</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <span>
+                <i></i>
+                周五结单
+            </span>
+            <span>
+                <i></i>
+                直达工厂
+            </span>
+        </div>
+    </section>
+    <section class="content-padding content-bg">
+        <div class="ctype-title">  
+            <span class="line"></span>  
+            <span class="txt f24">商品1111111</span>  
+            <span class="line"></span>  
+        </div>
+        <ul class="columns_flex flex-both-side goods-content-list" id="list">
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p class="text-intro">某某美白美颜护肤品肤品肤品肤品肤品肤品肤品肤品肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+        </ul>
+        <div class="ctype-title">  
+            <span class="line"></span>  
+            <span class="txt f24">商品222222</span>  
+            <span class="line"></span>  
+        </div>
+        <ul class="columns_flex flex-both-side goods-content-list" id="list">
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p class="text-intro">某某美白美颜护肤品肤品肤品肤品肤品肤品肤品肤品肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+</article>
+<footer class="f24 group_cart_nav footer-cart-nav">
+    <a href="javascript:void(0);" class="group_btn30 buy_now"><i class="service"></i>客服</a>
+    <a href="javascript:void(0);" class="group_btn30 buy_now"><i class="share"></i>分享</a>
+    <a href="javascript:void(0);" class="group_btn30 buy_now"><i class="shopping"></i>采购车</a>
+    <a href="javascript:void(0);" class="bff6482 group_btn50 add_cart">立即结算</a>
+</footer>
+<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/swiper.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadImgToTemp.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadMultiImg.js"></script>
+<script>
+$(function(){
+    var goodsInfoLayer=$('#goodsInfoLayer').html();
+    var pageii;
+    $('.shopping-cart').on('click',function(){
+        pageii = layer.open({
+            className:'goodsInfoLayer',
+            content: goodsInfoLayer,
+            closeBtn:2,
+            shadeClose:false,
+            success:function(){
+                var winHeight=$(window).height();
+                $('.twitter-release-content').css('height',winHeight-120+'px');
+                $('.layui-m-layermain .layui-m-layersection').addClass('bottom-layer');
+            },
+            btn:['取消']
+        });
+    });
+    $('body').on('click','.add-shopping-cart',function(){
+        console.log('#layui-m-layer'+pageii);
+        $('.layui-m-layer').remove();
+    })
+})
+</script>
+</body>
+
+</html>

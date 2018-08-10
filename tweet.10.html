@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>发布直播预告</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/common/css/mobiscroll.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<!--直播时间设定-->
+<section class="liveTimeLayer" style="display:none;">
+    <span class="content-label">持续时长</span>
+    <ul>
+        <li>15分钟</li>
+        <li>30分钟</li>
+        <li>45分钟</li>
+        <li>60分钟</li>
+        <li>90分钟</li>
+        <li>120分钟</li>
+    </ul>
+</section>
+<article class="scroll-wrapper f24">
+    <form id="releaseInfoForm">
+        <div class="upload-company-map f24">
+            <div>
+                <div class="picture-module company-picture-module ">
+                    <input type="file" class="uploadImg uploadSingleImg" name="">
+                    <img class="upload_img common_default_img" src="http://msy.new.com/uploads/factory_record/1529049736.jpeg" alt="">
+                    <input type="hidden" class="business-license img" value="factory_record/1529049736.jpeg" name="company_img">
+                </div>
+            </div>
+        </div>
+        <section class="separation-line content-padding">
+            <div>
+                <textarea rows="" cols="" name="" placeholder="直播预告标题..." class="input-filed"></textarea>
+            </div>
+            <div>
+                <textarea rows="" cols="" name="" placeholder="直播预告简介..." class="input-filed"></textarea>
+            </div>
+        </section>
+        <section class="separation-line">
+            <ul class="option-content">
+                <li class="">
+					<span class="content-label">设定直播时间</span>
+					<input name="start_time" id="startTime" readonly="" class="set-live-time f24" type="text" placeholder="选择开始时间" value="">
+				</li>
+                <li class="">
+					<a href="javascript:void(0);" class="set-live-time right-arrow">设定直播时长</a>
+					<input type="hidden" class="" value="" data-src="" name="">
+				</li>
+                <li class="">
+					<a href="javascript:void(0);" class="uploadFocusPicture right-arrow">设置直播分类标签</a>
+					<input type="hidden" class="" value="" data-src="" name="">
+				</li>
+                <li class="">
+					<a href="javascript:void(0);" class="uploadFocusPicture right-arrow">设置直播推广商品</a>
+					<input type="hidden" class="" value="" data-src="" name="">
+				</li>
+            </ul>
+        </section>
+    </form>
+</article>
+<a href="javascript:void(0);" class="foot-btn f24">发布</a>
+<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/mobiscroll.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadImgToTemp.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadMultiImg.js"></script>
+<script>
+$(function(){
+    var currYear = (new Date()).getFullYear();
+    var opt={};
+    opt.date = {preset : 'date'};
+    opt.datetime = {preset : 'datetime'};
+    opt.time = {preset : 'time'};
+    opt.default = {
+        theme: 'android-ics light', //皮肤样式
+        display: 'modal', //显示方式
+        mode: 'scroller', //日期选择模式
+        dateFormat: 'yy-mm-dd',
+        timeFormat: 'HH:ii',
+        lang: 'zh',
+        showNow: false,
+        nowText: "今天",
+        startYear: currYear - 100, //开始年份
+        endYear: currYear + 100, //结束年份
+        onSelect: function (valueText, inst) {
+        var id = $(this)[0].id;
+        var validity = valueText.split("-");
+        var hm=validity[2].split(' ');
+        var hm1=hm[1].split(':');
+        if (id === "startTime") {
+            if (opt.default.maxDate) {
+                opt.default.maxDate = null;
+            }
+            opt.default.minDate = new Date(validity[0], +validity[1] - 1, +validity[2] + 1);
+            opt.default.minDate = new Date(validity[0], validity[1] - 1,hm[0],hm1[0]);
+            $("#endTime").mobiscroll().datetime({
+                theme: 'android-ics light',  
+                display: 'modal', //显示方式
+                mode: 'scroller', //操作方式 
+                dateFormat: 'yy-mm-dd',
+                timeFormat: 'HH:ii',
+                lang: 'zh',  
+                minDate:new Date(validity[0], validity[1] - 1,hm[0],hm1[0],hm1[1])
+            });
+            }
+        } 
+    };
+    $("#startTime").mobiscroll($.extend(opt['datetime'],opt['default']));   
+})
+
+    //推文类型弹窗
+    var liveTimeLayer=$('.liveTimeLayer').html();
+    $('body').on('click','.set-live-time',function(){
+        var pageii = layer.open({
+            className:'liveTimeLayer',
+            type:1,
+            
+            content: liveTimeLayer,
+            shadeClose:false,
+            success:function(){
+                var winHeight=$(window).height();
+                $('.twitter-release-content').css('height',winHeight-120+'px');
+            },
+            btn:['取消']
+        });
+    });
+</script>
+</body>
+
+</html>

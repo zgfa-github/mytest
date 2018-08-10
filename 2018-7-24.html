@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>测试字符串转对象</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<div>a</div>
+<div>b</div>
+<div>c</div>
+
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script>
+    $(function(){
+        var html='';
+            html+='<li><div></div></li>';
+            html+='<li><span></span></li>';
+            html+='<li></li>';
+            html+='<li></li>';
+            html+='<li></li>';
+            html+='<li></li>';
+            html+='<li></li>';
+            html+='<li></li>';
+            var len=$(html).get(0).length;//错误的
+            console.log($(html).length);
+    })
+</script>
+<!--<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>-->
+</body>
+
+</html>

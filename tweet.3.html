@@ -12,20 +12,118 @@
     <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
 </head>
 <body>
-<!--云推客发布-->
-<section id="cloudTwitter" style="display: none;">
-    <div class="twitter-release-content"> 
-        <textarea class="twitter-text" rows="" cols="" placeholder="消息文字"></textarea>
-        <ul class="upload-picture-module multi-picture-module">
-            <!--<img src="" alt="" class="abc"/>-->
-            <!--accept="image/*"   multiple属性是多选-->
-        </ul>
-        <div class="error_tipc"></div>
-        <div class="release-news">
-            <span class="video-camera"></span>
-            <input class="camera-btn uploadSingleImg" type="file" id="file" capture="camera" data-num="9" multiple>
+<!--云推客发布消息选项-->
+<section id="releaseFileContent" style="display: none;">
+    <div class="release-file">
+        <a href="javascript:void(0);" class="release-img" data-type="1">图片消息（最多9张图）</a>
+        <a href="javascript:void(0);" data-type="2">小视频（不超过10秒）</a>
+        <a href="javascript:void(0);" data-type="3">视频 （不超过3分钟）</a>
+        <a href="javascript:void(0);" data-type="4">文章（视频+文字+图片）</a>
+    </div>
+</section>
+<!--云推客发布图片消息-->
+<section id="cloudImgTwitter" style="display: none;">
+    <form id="releaseInfoForm">
+        <div class="twitter-release-content"> 
+            <textarea name="msgText" class="twitter-text" rows="" cols="" placeholder="消息文字..."></textarea>
+            <ul class="upload-picture-module multi-picture-module">
+            </ul>
+            <div class="error_tipc"></div>
+            <div class="release-news">
+                <span class="video-camera"></span>
+                <input class="camera-btn uploadSingleImg" type="file" id="file" capture="camera" data-num="9" multiple>
+                <input type="hidden" name="msgfile" class="msg-img">
+            </div>
+            <a href="javascript:void(0);" class="link-store-goods">设定链接的商家店铺商品（可选）></a>
+            <input type="hidden" name="storeGoods" class="store-goods">
         </div>
-
+    </form>
+</section>
+<!--云推客发布视频消息-->
+<section id="cloudVideoTwitter" style="display: none;">
+    <form id="releaseInfoForm">
+        <textarea name="msgText" class="twitter-text" rows="" cols="" placeholder="视频说明文字..."></textarea>
+        <div class="error_tipc"></div>
+        <div class="upload-picture-module f24">
+            <div>
+                <div class="picture-module">
+                    <input type="file" class="uploadImg uploadSingleVideo" name="" data-duration="">
+                    <video class="upload_img upload-video" src="" autoplay="autoplay"></video>
+                    <input type="hidden" name="msgfile" class="img" data-src="" value="">
+                </div>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="link-store-goods">设定链接的商家店铺商品（可选）></a>
+        <input type="hidden" name="storeGoods" class="store-goods">
+    </form>
+</section>
+<!--云推客发布文章-->
+<section id="cloudArticleTwitter" style="display: none;">
+    <p>*编辑完文字图片后再按发布</p>
+    <div class="error_tipc"></div>
+    <form id="releaseInfoForm">
+        <div class="separation-line columns_flex l-r-sides release-file-module ">
+            <div class="upload-picture-module f24">
+                <div>
+                    <div class="picture-module">
+                        <input type="file" class="uploadImg uploadSingleImg" name="">
+                        <img class="upload_img" src="" alt="">
+                        <input type="hidden" name="msgfile" class="img" data-src="" value="">
+                    </div>
+                    <p>上传配图</p>
+                </div>
+            </div>
+            <div>
+                <textarea name="msgText" class="twitter-text" rows="" cols="" placeholder="输入标题文字不超过28字"></textarea>
+            </div>
+        </div>
+        <div class="separation-line columns_flex l-r-sides release-file-module ">
+            <div class="upload-picture-module f24">
+                <div>
+                    <div class="picture-module">
+                        <input type="file" class="uploadImg uploadSingleVideo" name="">
+                        <video class="upload_img upload-video" src="" autoplay="autoplay"></video>
+                        <input type="hidden"  name="msgfile" class="img" data-src="" value="">
+                    </div>
+                    <p>上传视频(可不选)</p>
+                </div>
+            </div>
+            <div>
+                <textarea name="msgText" class="twitter-text" rows="" cols="" placeholder="输入标题文字不超过28字"></textarea>
+            </div>
+        </div>
+        <a href="javascript:void(0);" class="link-store-goods">设定链接的商家店铺商品（可选）></a>
+        <input type="hidden" name="storeGoods" class="store-goods">
+    </form>
+    <div class="paragraph-module">
+        <textarea class="twitter-text" rows="" cols="" placeholder="段落文字粘贴..."></textarea>
+        <div class="upload-picture-module release-file-module f24">
+            <div>
+                <div class="picture-module">
+                    <input type="file" class="uploadImg uploadSingleImg" name="">
+                    <img class="upload_img" src="" alt="">
+                    <input type="hidden" class="img" data-src="" value="">
+                </div>
+                <p>上传插图（可选项，建议图片宽950像素）</p>
+            </div>
+        </div>
+    </div>
+    <a href="javascript:void(0);" class="insert-button">插入段落文字图片</a>
+</section>
+<!--段落文字图片-->
+<section id="paragraphLayer" style="display: none;">
+    <div class="paragraph-module">
+        <textarea class="twitter-text" rows="" cols="" placeholder="段落文字粘贴..."></textarea>
+        <div class="upload-picture-module release-file-module f24">
+            <div>
+                <div class="picture-module">
+                    <input type="file" class="uploadImg uploadSingleImg" name="">
+                    <img class="upload_img" src="" alt="">
+                    <input type="hidden" class="img" data-src="" value="">
+                </div>
+                <p>上传插图（可选项，建议图片宽950像素）</p>
+            </div>
+        </div>
     </div>
 </section>
 <article class="scroll-wrapper f24">
@@ -181,6 +279,8 @@
 <script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
 <script type="text/javascript" src="public/static/common/js/common.js"></script>
 <script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadImgToTemp.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadMultiImg.js"></script>
 <script>
 $(function(){
     //轮播
@@ -191,88 +291,129 @@ $(function(){
             clickable: true
         }
     });
-    swiper('.swiper-focus-container');
-    $('.more-text-box').moreText({
-        mainCell:".more-text",
-        openBtn:'全部>'
-    });
-
-    var cloudTwitter=$('#cloudTwitter').html();
+    // swiper('.swiper-focus-container');
+    var paragraphLayer=$('#paragraphLayer').html();
+    //添加段落文章和图片
+    $('body').on('click','.insert-button',function(){
+        $('.editDetailLayer .paragraph-module:last').after(paragraphLayer);
+    })
+    //推文类型弹窗
+    var releaseFile=$('#releaseFileContent').html();
     $('body').on('click','.release-msg',function(){
         var pageii = layer.open({
-            title:['发云推客圈消息','border-bottom:1px solid #d9d9d9;'],
-            className:'cloudTwitterLayer',
-            type: 1,
-            content: cloudTwitter,
-            anim: 'up',
+            className:'releaseFileLayer',
+            content: releaseFile,
+            shadeClose:false,
             success:function(){
                 var winHeight=$(window).height();
                 $('.twitter-release-content').css('height',winHeight-120+'px');
+                $('.layui-m-layermain .layui-m-layersection').addClass('bottom-layer');
             },
-            btn:['发布']
+            btn:['取消']
         });
     });
-    var fileList;
-    $('body').on('change','#file',function(){
-        var file = $(this);
-        fileList = $(this).get(0).files;
-        var imgArr = [];
-        var num=file.data('num');//限制个数  
-    
-        if($('.cloudTwitterLayer li').length==num){
-            errorTipc('只能上传'+num+'张图片');
-            return false;
-        }
-        if(num==0){ //0代表无限制个数
-            uploadPic(fileList[0],0,fileList.length);
+    //发布推文选项
+    $('body').on('click','.release-file a',function(){
+        var releaseType=$(this).data('type');
+        var opt={};
+        if(releaseType==1){
+            var cloudTwitter=$('#cloudImgTwitter').html();
+            opt={
+                content:cloudTwitter,
+                title:'发图片消息',
+                msg:'请上传图片'
+            }
+        }else if(releaseType==2){
+            var cloudTwitter=$('#cloudVideoTwitter').html();
+            opt={
+                content:cloudTwitter,
+                title:'发小视频',
+                msg:'请上传小视频',
+                duration:10
+            }
+        }else if(releaseType==3){
+            var cloudTwitter=$('#cloudVideoTwitter').html();
+            opt={
+                content:cloudTwitter,
+                title:'发视频',
+                msg:'请上传视频',
+                duration:180
+            }
         }else{
-            uploadPic(fileList[0],0,num);
-        }      
+            var cloudTwitter=$('#cloudArticleTwitter').html();
+            opt={
+                content:cloudTwitter,
+                title:'发文章',
+                paragraphAttr:[]
+            }
+        }
+         releaseFileLayer(opt);
     });
-    function uploadPic(fil,i,len){
-            var img = fil;
-            var obj=$(this).parent();
-            var fileSize=fil.size/1024/1024;
-            // console.log(event.target.files[i]);
-            // console.log(fileSize);
-            // 判断是否图片
-            if(!img){
-                return false;
-            }
-            // 判断图片格式
-            var imgRegExp=/\.(?:jpg|jpeg|png|gif)$/;
-            if(!(img.type.indexOf('image')==0 && img.type && imgRegExp.test(img.name)) ){
-                layer.open({
-                    content:'请上传：jpg、jpeg、png、gif格式图片',
-                    time:2
-                }) ;
-            }
-            if(fileSize>1){
-                dialog.error('图片大小不能超过1M');
-                return false;
-            }
-            var reader = new FileReader();
-            reader.readAsDataURL(img);
-
-            reader.onload = function(e){
-                var imgUrl=e.target.result;
-                var img=  $('<img src="" class="upload_img">');
-                img.attr("src", imgUrl);
-                var imgAdd = $('<li><div class="picture-module active"><input type="file" class="uploadImg uploadSingleEditImg" name=""><span class="delete-picture">X</span></div></li>');
-                imgAdd.find('.picture-module').append(img);
-                $('.multi-picture-module').append(imgAdd);
-                if(i<len-1){
-                    // console.log(len);
-                    if(fileList[i+1]){
-                        uploadPic(fileList[i+1],i+1,len);
+    //发布弹窗
+    function releaseFileLayer(options){
+        layer.open({
+            title:[options.title,'border-bottom:1px solid #d9d9d9;'],
+            className:'editDetailLayer',
+            // type: 1,
+            content: options.content,
+            // anim: 'up',
+            success:function(){
+                var winHeight=$(window).height();
+                $('.editDetailLayer .layui-m-layercont').css('height',winHeight-120+'px');
+                $('.editDetailLayer .uploadSingleVideo').data('duration',options.duration);
+            },
+            btn:['发布','取消'],
+            yes:function(){
+                var layermultiImgAttr=[];
+                //获取图片路径
+                $.each($('.editDetailLayer li'),function(i,val){
+                    var _this=$(this);
+                    var imgSrc=_this.find('img').attr('src');
+                    layermultiImgAttr.push(imgSrc);
+                })
+                //获取文章段落和图片数据
+                options.paragraphAttr=[];
+                $.each($('.editDetailLayer .paragraph-module'),function(i,val){
+                    var _this=$(this);
+                    var mesObject={};
+                    var mesText=_this.find('.twitter-text').val();
+                    var mesImgSrc=_this.find('.img').val();
+                    mesObject={
+                        mesText:mesText,
+                        mesImgSrc:mesImgSrc
                     }
+                    options.paragraphAttr.push(mesObject);
+                })
+                console.log(options.paragraphAttr);
+                $('.msg-img').val(layermultiImgAttr);
+                //序列化表单数据
+                var releaseFormData=$('.editDetailLayer #releaseInfoForm').serializeObject();
+                var content='';
+                if(!releaseFormData.msgText){
+                    content='请填写消息内容';
+                }else if(!releaseFormData.msgfile){
+                    content=options.msg;
+                }else if(!releaseFormData.storeGoods){
+                    content='请链接商家商品';
                 }
-            }         
+                if(content){
+                    errorTipc(content);
+                    return false;
+                }
+                $.ajax({
+                    url:'',
+                    type:'',
+                    data:{},
+                    success:function(){
+
+                    },
+                    error:function(){
+
+                    }
+                })
+            }
+        });
     }
-    $('body').on('click','.delete-picture',function(){
-        $(this).parents('li').remove();
-        $('.company-video').data('src','');
-    })
 })
 </script>
 </body>

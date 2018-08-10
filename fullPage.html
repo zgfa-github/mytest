@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>满屏上下翻页</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <style>
+        .fullpage{
+            position:relative;
+        }
+        .fullpage-main{
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        .fullpage-main li:nth-of-type(1){
+            background: #000;
+        }
+        .fullpage-main li:nth-of-type(2){
+            background: #0066cc;
+        }
+        .fullpage-main li:nth-of-type(3){
+            background: #ff0000;
+        }
+        .icons{
+            position:absolute;
+            bottom:10px;
+            left:10px;
+        }
+    </style>
+</head>
+<body>
+<section class="fullpage">
+    <ul class="fullpage-main" id="slider">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="icons" id="icons">
+        <span class="curr">1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+</section>
+<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script src="public/static/common/js/public.js"></script>
+<script>
+    // $(function(){
+        
+    // })
+    function FullPage(){
+        this.width=document.body.clientWidth||document.documentElement.clientWidth;
+        this.height=document.body.clientHeight||document.documentElement.clientHeight;
+        this.slider=document.getElementById('slider');
+        this.icons=document.getElementById('icons');
+        this.icon=this.icons.getElementsByTagName('span');
+        this.init=function(options){
+            //console.log(this);
+            var self=this;
+            for(var i=0;i<options.oLi.length;i++){
+                //console.log(options.oLi[i]);
+                options.oLi[i].style.width=this.width+'px';
+                options.oLi[i].style.height=this.height+'px';
+            }
+            self.slider.addEventListener('touchstart',self,false);
+        }
+    }
+    FullPage.prototype.handleEvent=function(){
+        console.log(this);
+        var self=this;
+        if(event.type == 'touchstart'){   
+            self.start(event);
+        }else if(event.type == 'touchmove'){
+            self.move(event);
+        }else if(event.type == 'touchend'){
+            self.end(event);
+        }
+      
+    }
+    FullPage.prototype.start=function(){
+        console.log(this);
+        //touches数组对象获得屏幕上所有的touch，取第一个touch
+        var touch = event.targetTouches[0];    
+        //取第一个touch的坐标值 
+        startPos = {x:touch.pageX,y:touch.pageY,time:+new Date};  
+        //这个参数判断是垂直滚动还是水平滚动  
+        isScrolling = 0;   
+        this.slider.addEventListener('touchmove',this,false);
+        this.slider.addEventListener('touchend',this,false);
+    }
+     FullPage.prototype.move=function(){
+        //console.log(2);
+        //当屏幕有多个touch或者页面被缩放过，就不执行move操作
+        if(event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
+        var touch = event.targetTouches[0];
+        endPos = {x:touch.pageX - startPos.x,y:touch.pageY - startPos.y};
+        //isScrolling为1时，表示纵向滑动，0为横向滑动
+        isScrolling = Math.abs(endPos.x) < Math.abs(endPos.y) ? 1:0;    
+        if(isScrolling === 0){
+            //阻止触摸事件的默认行为，即阻止滚屏
+            event.preventDefault();      
+            this.slider.className = 'cnt';
+            this.slider.style.left =-this.index*slider.clientW + endPos.x + 'px';
+        }
+        if(isScrolling === 1){
+            //阻止触摸事件的默认行为，即阻止滚屏
+            event.preventDefault();      
+            this.slider.className = 'cnt';
+            this.slider.style.top = -this.index*slider.clientH + endPos.y + 'px';
+        }
+     }
+     FullPage.prototype.end=function(){
+         //console.log(this);
+         //滑动的持续时间
+        var duration = +new Date - startPos.time;   
+            console.log(this.index);
+        //当为水平滚动时
+        // if(isScrolling === 0){    
+        //     this.icon[this.index].className = '';
+        //     if(Number(duration) > 10){     
+        //         //判断是左移还是右移，当偏移量大于10时执行
+        //         if(endPos.x > 10){
+        //             if(this.index !== 0) {
+        //                 this.index -= 1;
+        //             }
+        //         }else if(endPos.x < -10){
+        //             if(this.index !== this.icon.length-1) this.index += 1;
+        //         }
+        //     }
+        //     this.icon[this.index].className = 'curr';
+        //     this.slider.className = 'cnt f-anim';
+        //     this.slider.style.left=-this.index*slider.clientW+'px';
+        // }
+        //当为垂直滚动时
+        if(isScrolling === 1){
+            this.icon[this.index].className = '';
+            if(Number(duration) > 10){
+                if(endPos.y > 10){
+                    if(this.index !== 0) {
+                        this.index -= 1;
+                    }
+                }else if(endPos.y < -10){
+                    if(this.index !== this.icon.length-1) this.index += 1;
+                }
+            }
+            this.icon[this.index].className = 'curr';
+            this.slider.className = 'cnt f-anim';
+            this.slider.style.top = -this.index*slider.clientH + 'px';
+        }
+        //解绑事件
+        this.slider.removeEventListener('touchmove',this,false);
+        this.slider.removeEventListener('touchend',this,false);
+     }
+    var page=new FullPage();
+        //console.log(page.width+'\n'+page.height);
+        page.init({
+            oLi:document.querySelectorAll('li')
+        });
+        // page.handleEvent();
+</script>
+</body>
+
+</html>

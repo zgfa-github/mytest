@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>分类推荐商品</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+	<!--<link rel="stylesheet" href="Public/img/admin-css/common/weui.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="Public/css/home/mall.css">-->
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<!--fixedtop top_nav_fixed-->
+<!--底部弹窗商品信息-->
+<section id="goodsInfoLayer" style="display:none;">
+    <ul class="bottom-layer-info">
+        <li >
+            <img src="" alt="" class="left">
+            <div>
+                <p>台湾原装进口 真世酵素纤丽果冻</p>
+            </div>
+        </li>
+        <li>
+            <div class="columns_flex l-r-sides">
+                <div>单品规格<span>12g*20条 /盒</span></div>
+                <div>￥<price>198.00</price>
+                    <del>￥999</del>
+                </div>
+            </div>
+            <div class="columns_flex l-r-sides">
+                <div>采购包装<span>10盒/箱</span></div>
+                <div>￥<price>1980</price></div>
+            </div>
+        </li>
+        <li>
+            <div class="columns_flex l-r-sides">
+                <span>采购数量(单位：箱)</span>
+                <div class="quantity_wrapper selected-number">
+                    <a href="javascript:void(0);" class="greduce">-</a>
+                    <input type="text" value="1" class="f24 gshopping_count">
+                    <a href="javascript:void(0);" class="gplus">+</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="columns_flex l-r-sides bottom-layer-last">
+        <span class="pink">￥<price>0.00</price></span>
+        <a href="javascript:void(0);" class="bff6482 group_btn50 add-shopping-cart">加入采购车</a>
+    </div>
+</section>
+<article class="scroll-wrapper f24">
+    <section class="classify-recommond-nav">
+		<div class="top_menu_box">
+			<div class="top_menu_list columns_flex">
+				<a href="javascript:void(0);" class="current">科技美肤</a>
+				<a href="javascript:void(0);">轻光电</a>
+				<a href="javascript:void(0);">健康营养</a>
+				<a href="javascript:void(0);">基因检测</a>
+				<a href="javascript:void(0);">细胞银行</a>
+				<a href="javascript:void(0);">医疗器械</a>
+			</div>
+		</div>
+    </section>
+    <section class="content-padding content-bg">
+        <ul class="columns_flex flex-both-side goods-content-list" id="list">
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+</article>
+<section class="bottom_nav_fixed">
+    <nav class=" foot_nav_bar">
+        <ul class="columns_flex">
+            <li class="each_column current">
+                <a>
+                    <span class="store"></span>
+                    美容机构
+                </a>
+            </li>
+            <li class="each_column">
+                <a>
+                    <span class="practitioners"></span>
+                    从业人员
+                </a>
+            </li>
+            <li class="each_column">
+                <a>
+                    <span class="manufacturer"></span>
+                    供应商
+                </a>
+            </li>
+        </ul>
+    </nav>
+</section>
+<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/swiper.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadImgToTemp.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadMultiImg.js"></script>
+<script>
+$(function(){
+    var goodsInfoLayer=$('#goodsInfoLayer').html();
+    var pageii;
+    $('.shopping-cart').on('click',function(){
+        pageii = layer.open({
+            className:'goodsInfoLayer',
+            content: goodsInfoLayer,
+            closeBtn:2,
+            shadeClose:false,
+            success:function(){
+                var winHeight=$(window).height();
+                $('.twitter-release-content').css('height',winHeight-120+'px');
+                $('.layui-m-layermain .layui-m-layersection').addClass('bottom-layer');
+            },
+            btn:['取消']
+        });
+    });
+    $('body').on('click','.add-shopping-cart',function(){
+        console.log('#layui-m-layer'+pageii);
+        $('.layui-m-layer').remove();
+    })
+})
+</script>
+</body>
+
+</html>
