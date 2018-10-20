@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>遮罩弹窗模仿京东布局</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+    <style>
+        .shade_mask{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 904;
+            background: rgba(0,0,0,.5);
+            -webkit-transform: translate3D(0,0,0);
+            transform: translate3D(0,0,0);
+            -webkit-transition: .3s linear;
+        }
+        .shade_content{
+            width:300px;
+            margin:0 auto;
+            position:absolute;
+            left:50%;
+            top:50%!important;
+            transform:translateY(-50%);
+            margin-left:-150px;
+            background:#fff;
+        }
+        .close{
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            top: -40px;
+            right: -3px;
+            z-index: 2;
+            /*background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAMAAABG8BK2AAAABGdBT…TgGoTYxrJ8SHRmfjQkHoyWcmRdekfWXwP0+IcB+m3/zD4A+3UfTAGXkVgAAAAASUVORK5CYII=);*/
+            background-size: cover;
+        }
+    </style>
+</head>
+<body >
+<div style="height:1000px;">是否适当方式对付对付</div>
+<div class="shade_mask">
+    
+    <div class="shade_content">
+        <a href="javascript:void(0);" class="close">X</a>
+        ffffff
+    </div>
+</div>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+</body>
+
+</html>

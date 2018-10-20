@@ -544,3 +544,111 @@ $(window).on('scroll',function(){
             });
         }
 }
+//获取列表
+function getList(config) {
+    $.ajax({
+        url: config.url,
+        data: config.postData?config.postData:{},
+        type: 'post',
+        beforeSend: function(xhr){
+            $('.loading').show();
+        },
+        error:function(xhr){
+            $('.loading').hide();
+            dialog.error('AJAX错误');
+        },
+        success: function(data){
+            $('.loading').hide();
+            if(data.status==0){
+                dialog.error(data.info);
+            }else{
+                $('ul.list').empty().append(data);
+            }
+        }
+    });
+}
+
+//新增-表单提交
+function dialogFormAdd(config) {
+    $.ajax({
+        url: config.url,
+        data: config.postData,
+        type: 'post',
+        beforeSend: function(xhr){
+            $('.loading').show();
+        },
+        error:function(xhr){
+            $('.loading').hide();
+            dialog.error('AJAX错误');
+        },
+        success: function(data){
+            $('.loading').hide();
+            if(data.status == 0){
+                dialog.error(data.info);
+            }else{
+                $('ul.list').prepend(data);
+                $('ul.list').find('span.no-data').remove();
+                layer.close(config.index);
+            }
+        }
+    });
+}
+
+//修改-表单提交
+function dialogFormEdit(config) {
+    $.ajax({
+        url: config.url,
+        data: config.postData,
+        type: 'post',
+        beforeSend: function(xhr){
+            $('.loading').show();
+        },
+        error:function(xhr){
+            $('.loading').hide();
+            dialog.error('AJAX错误');
+        },
+        success: function(data){
+            $('.loading').hide();
+            if(data.status == 0){
+                dialog.error(data.info);
+            }else{
+                copyDataByName(config.fromObj,config.toObj);
+                layer.close(config.index);
+            }
+        }
+    });
+}
+//修改-表单提交
+function dialogFormDel(config) {
+    $.ajax({
+        url: config.url,
+        data: config.postData,
+        type: 'post',
+        beforeSend: function(xhr){
+            $('.loading').show();
+        },
+        error:function(xhr){
+            $('.loading').hide();
+            dialog.error('AJAX错误');
+        },
+        success: function(data){
+            $('.loading').hide();
+            if(data.status == 0){
+                dialog.error(data.info);
+            }else{
+                config.obj.remove();
+                layer.close(config.index);
+            }
+        }
+    });
+}
+//根据input的value值变化宽度
+window.onload=function(){
+// $('.input_size').bind('input propertychange',function(){
+    //     alert(1);
+    //     var obj = $(this);
+        // var text_length = $('.input_size').val().length;  //获取当前长度
+        // var width = parseInt(text_length)*14; //该12是改变前的宽度除以当前字符串的长度，算出每个字符的长度
+        // $('.input_size').css('width',width+'px');
+    // });
+}

@@ -15,6 +15,7 @@
 	</body> 
 	<script type="text/javascript">  
 		function myFunction(ele) {
+			console.log(ele.duration);
 			var hour = parseInt((ele.duration)/3600);
 			var minute = parseInt((ele.duration%3600)/60);
 			var second = Math.ceil(ele.duration%60);

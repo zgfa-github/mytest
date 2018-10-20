@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>门店店长管理</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<!--省市区-->
+<section id="areaLayer" class="express-area-box" style="display:none;">
+	<header>
+		<h3>选择地区</h3>
+		<a id="backUp" class="back" href="javascript:void(0)" title="返回" style="display: none;"></a>
+		<a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+	</header>
+	<article id="areaBox">
+		<ul id="areaList" class="area-list"></ul>
+	</article>
+</section>   
+<article class="f24">
+    <div class="top_header">
+        <section class="top_nav_fixed top_nav_store">
+                <div class="top_bar top-switch-bar columns_flex l-r-sides">
+                    <!--<div class="">
+                        <a class="home top_icon" href="/store/Index/index.html">首页</a>
+                    </div>-->
+                    <div class="top_left_f">
+                        <img id="" class="left store-logo-img" src="http://msy.meishangyun.com/uploads/factory_record/2018092516061665977.jpeg">
+                        <span class="store-name">订单</span>
+                    </div>
+                    <div class="">
+                        <div class="columns_flex">
+                            <a href="javascript:void(0);" class="shopping_cart top_icon"></a>
+                            <a href="javascript:void(0);" class="personal_center top_icon"></a>
+                            <a href="/store/Index/index.html" class="home top_icon"></a>
+                        </div>
+                        <a href="javascript:void(0);" class="switch-factory ">切换美容店家账号&gt;</a>
+                    </div>
+                </div>
+        </section>
+        <section class="specific_type store_deploy_nav">
+            <div class="columns_flex f20 l-r-sides store_deploy_bar">
+                <a href="">线上店铺店长管理</a>
+                <a href="" class="current">020门店店长管理</a>
+            </div>
+        </section>
+        <section class=" ">
+            <div class="columns_flex f20 l-r-sides top_empy_nav">
+                <a href="" >门店员工账号</a>
+                <a href="" class="current">门店经营地址</a>
+                <a href="">门店收货人地址手机号码</a>
+            </div>
+        </section>
+	</div>
+    <section class="f24 account-content-wrapper">
+        <div class="content-top content-mg-top">
+            <p>设定门店经营地址和联系信息（*可用于精准导航）</p>
+            <div>
+
+            </div>
+            <div>
+                门店名称:
+                <span>某某某</span>
+            </div>
+            <form class="consignee_info_form">
+                <div class="input_item">
+                    <input class="input-filed" type="tel" name="name" value="" placeholder="（区号）固定电话">
+                </div>
+                <div>
+                    <input class="input-filed" type="tel" name="mobile_phone" value="" placeholder="美容预约联系手机号码">
+                </div>
+                <div class="express-area area-box">
+                    <a id="expressArea" href="javascript:void(0)" class="f24 form-group box-flex">
+                        <label class="form-label">所在地区：</label>
+                        <div class="area_address">省 &gt; 市 &gt; 区/县</div>
+                        <input type="hidden" value="" class="area-address-name" data-key="" name="provinces">
+                    </a>
+                </div>
+                <div>
+                    <input class="input-filed" type="text" name="detail_name" value="" placeholder="街道/小区/道/楼/门牌详细地址">
+                </div>
+                <div>
+                    <a href="javascript:void(0);" class="right-arrow">对门店地址进行地图人工标位</a>
+                    <input type="hidden" name="" value="">
+                </div>
+                <div>
+                    <span>未标识</span>
+                </div>
+            </form>
+        </div>
+    </section>
+    <a href="javascript:void(0);" class="submit foot-btn">确定</a>
+</article>
+<div id="areaMask" class="mask"></div>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript" src="public/static/common/js/jquery.area.js"></script>
+<script type="text/javascript"> 
+    $(function(){
+        //收货人信息
+		$('body').on('click','.submit',function(){
+			var postData={};
+			var  content ='';
+            postData=$('.consignee_info_form').serializeObject();
+			if(!register.phoneCheck(postData.mobile_phone)){
+				content='请填写手机号码';
+			}else if(!postData.provinces){
+				content='请选择所在地区';
+			}else if(!postData.detail_name){
+				content='请填写地区详细地址';
+			}
+			if(content){
+				dialog.error(content);
+				return false;
+			}
+			var _this = $(this);
+			_this.addClass("nodisabled");//防止重复提交
+			$.ajax({
+				url:controller + "edit",
+				type:'post',
+				data:postData,
+				dataType:'json',
+				success:function (data) {
+					_this.removeClass("nodisabled");
+
+				   if(data.status == 0){
+						dialog.error(data.info);
+						return false;
+					}else if(data.status == 1){
+						dialog.success(data.info,controller+'preview');
+					}
+				},
+				error:function (xhr) {
+					dialog.error('Ajax错误'+xhr.status);
+				},
+			})
+		})
+    })
+</script>
+</body>
+
+</html>

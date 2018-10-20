@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>维雅</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+    <style>
+        .wy_nav{
+            height:34px;
+            line-height: 34px;
+            display: flex;
+            justify-content: space-between;
+            background:#666;
+        }
+        .wy_nav li{
+            flex:1;
+            color:#fff;
+        }
+        .content{
+            padding:0.15rem;
+        }
+        .wy_nav li.current{
+            background:#000;
+        }
+        .content .hide{
+            display:none;
+        }
+        .footer{
+            position:fixed;
+            left:0;
+            bottom:0;
+            width:100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <ul class="wy_nav f24">
+            <li class="current">公司简介</li>
+            <li>产品中心</li>
+            <li>业务流程</li>
+            <li>合作优势</li>
+            <li>合作伙伴</li>
+            <li>联系我们</li>
+    </ul>
+    <div class="content f24">
+        <p class="">广东维雅生物科技有限公司网站建设目标是：建成优秀的美容行业品牌定制（加工）网站，展示公司形象，服务于公司日常运营。通过公司网站展示公司优秀产品，让客户能够了解本公司，并对感兴趣的产品有详尽了解</p>
+        <p class="hide">产品中心</p>
+        <p class="hide">业务流程</p>
+        <p class="hide">合作优势</p>
+        <p class="hide">合作伙伴</p>
+        <p class="hide">联系我们</p>
+    </div>
+<footer class="footer f24">
+     <a href="http://www.worldview.com.cn">
+        <span class="icp_icon">Copyright 广东维雅生物科技有限公司</span>
+        <span class="icp_icon">粤ICP备14021421号</span>
+    </a>
+</footer>
+<script src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script src="public/static/common/js/public.js"></script>
+</body>
+<script>
+    $(function(){
+        $('.wy_nav li').on('click',function(){
+            $(this).addClass('current').siblings().removeClass('current');
+            $('.content p').hide().eq($(this).index()).show();
+        })
+    })
+</script>
+</html>

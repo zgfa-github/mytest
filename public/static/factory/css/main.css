@@ -213,7 +213,7 @@
 .addProductContent {
     padding:0.25rem 0.15rem 0;
 }
-.addProductContent .right-arrow{
+.addProductContent .right-arrow,.right-arrow{
     position:relative;
     display: block;
     width:100%;
@@ -1461,3 +1461,48 @@ transparent;
 .deadline .d-r{
     margin:0 0 0 .8rem;
 }
+/*管理员账号*/
+.manage_account_list{
+    padding:.25rem;
+}
+.manage_account_list li,
+.admin-account-list li{
+    padding:.15rem;
+    border:1px solid #d9d9d9;
+    border-radius:4px;
+}
+.manage_account_list li .m_item{
+    display:inline-block;
+    width:60px;
+    margin:0 .12rem 0 0;
+    text-align:right;
+}
+.addManageLayer .input-filed{
+    text-align:center;
+}
+.manage_account_list li.current,
+.admin-account-list li.current{
+    border:1px solid #0066cc;
+}
+.manage_account_list .operate-btn,
+.admin-account-list .operate-btn{
+    display:none;
+}
+.operate-btn a{
+    margin:0 0 .12rem 0;
+}
+.list li{
+    border:1px solid #d9d9d9;
+    padding:0.15rem 0.25rem;
+    border-radius:4px;
+    background:#fff;
+}
+.set_shopowner{
+    padding:.05rem 0.10rem;
+    border:1px solid #39b54a;
+    border-radius:4px;
+}
+.set_top_info{
+    text-align: center;
+}
+

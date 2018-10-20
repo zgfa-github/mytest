@@ -427,3 +427,51 @@ function trim(str,is_global){
         }
         return result;
 }
+//修改-表单提交
+function dialogFormEdit(config) {
+    $.ajax({
+        url: config.url,
+        data: config.postData,
+        type: 'post',
+        beforeSend: function(xhr){
+            $('.loading').show();
+        },
+        error:function(xhr){
+            $('.loading').hide();
+            dialog.error('AJAX错误');
+        },
+        success: function(data){
+            $('.loading').hide();
+            if(data.status == 0){
+                dialog.error(data.info);
+            }else{
+                copyDataByName(config.fromObj,config.toObj);
+                layer.close(config.index);
+            }
+        }
+    });
+}
+//修改-表单提交
+function dialogFormDel(config) {
+    $.ajax({
+        url: config.url,
+        data: config.postData,
+        type: 'post',
+        beforeSend: function(xhr){
+            $('.loading').show();
+        },
+        error:function(xhr){
+            $('.loading').hide();
+            dialog.error('AJAX错误');
+        },
+        success: function(data){
+            $('.loading').hide();
+            if(data.status == 0){
+                dialog.error(data.info);
+            }else{
+                config.obj.remove();
+                layer.close(config.index);
+            }
+        }
+    });
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/common/css/storeaddress.css">
+	<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=b181d1a79c04bc7be57be3e176538a90"></script> 
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script src="public/static/common/js/public.js"></script>
+	<!--<script src="js/layer.js"></script>  -->
+	<title>高德地图定位</title>
+    <style>
+        #container {width:100%; height:667px; }
+    </style>
+</head>
+<body>
+<div id="container"></div> 
+</body>
+</html>
+<script type="text/javascript">
+function markLocation(mapId, address) {
+    AMap.plugin('AMap.Geocoder', function() {
+        var geocoder = new AMap.Geocoder();            
+        geocoder.getLocation(address, function(status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+
+                // 经纬度                      
+                var lng = result.geocodes[0].location.lng;
+                var lat = result.geocodes[0].location.lat;
+
+                // 地图实例
+                var map = new AMap.Map(mapId, {
+                    resizeEnable: true, // 允许缩放
+                    center: [lng, lat], // 设置地图的中心点
+                    zoom: 15 　　　　　　 // 设置地图的缩放级别，0 - 20
+                });
+                        
+                // 添加标记
+                var marker = new AMap.Marker({
+                    map: map,
+                    position: new AMap.LngLat(lng, lat),   // 经纬度
+                });
+            } else {
+                console.log('定位失败！');
+            }
+        });
+    });
+}
+markLocation('container', '湖北省武汉市');
+</script>

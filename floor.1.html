@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>楼层滚动</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+    <style>
+#content {
+  width:100%;
+  margin: 0 auto;
+  padding:42px 0 0;
+}
+
+#content h1 {
+  color: red;
+}
+
+#content .item {
+height:400px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px dotted red;
+}
+
+#content .item h2 {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom: 5px solid red;
+  margin-bottom: 10px;
+}
+
+#content .item li {
+  display: inline;
+  margin-right: 10px;
+  text-align: justify;
+}
+
+#content .item li a img {
+  width: 230px;
+  height: 230px;
+  margin-bottom: 10px;
+  border: none;
+}
+
+#menu {
+  position: fixed;
+  top: 0;
+  left:0;
+  /*margin-left: 410px;*/
+  width: 100%;
+}
+#menu ul{
+    display:flex;
+     height: 40px;
+  line-height: 40px;
+  background:#000;
+  justify-content: space-between
+}
+#menu ul li a {
+  display: block;
+  /*margin: 5px 0;*/
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  /*width: 25%;*/
+  text-decoration: none;
+  text-align: center;
+  /*border-radius: 3px;*/
+}
+
+ #menu ul li a.current {
+  color: white;
+  background: red;
+}
+
+.goTop {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  margin-left: 410px;
+  line-height: 1.2em;
+  border: 1px solid red;
+  width: 40px;
+  height: 34px;
+  text-align: center;
+  padding-top: 6px;
+  border-radius: 5px;
+  color: red;
+  text-decoration: none;
+}
+
+* html, * html body {
+  background-image: url(about:blank);
+  background-attachment: fixed;
+}
+
+* html #menu {
+  position: absolute;
+  top: expression(((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+ 100 +'px');
+}
+
+    </style>
+</head>
+<body>
+<div class="scrollwrapper">
+    <!-- 菜单 -->
+	<div id="menu">
+		<ul>
+			<li><a href="javascript:;" data-item="item1" class="current">1F &nbsp;男&nbsp;装</a></li>
+			<li><a href="javascript:;" data-item="item2" class="">2F &nbsp;女&nbsp;装</a></li>
+			<li><a href="javascript:;" data-item="item3" class="">3F &nbsp;数&nbsp;码</a></li>
+			<li><a href="javascript:;" data-item="item4" class="">4F &nbsp;母&nbsp;婴</a></li>
+			<!--<li><a href="#item5" class="">5F &nbsp;化妆品</a></li>
+			<li><a href="#item6">6F &nbsp;大家电</a></li>-->
+		</ul>
+	</div>
+	<!-- 内容楼层 -->
+	<div id="content">
+		<!--<h2>优速乐购网</h2>-->
+
+		<div id="item1" class="item">
+			<h2>1F 男装</h2>
+			<ul>
+				<li><a href="javascript:;"><img src="./images/nanzhuang-01.jpg" alt=""></a></li> 
+				<li><a href="javascript:;"><img src="./images/nanzhuang-01.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nanzhuang-01.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nanzhuang-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nanzhuang-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nanzhuang-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nanzhuang-03.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nanzhuang-03.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nanzhuang-03.jpg" alt=""></a></li>
+			</ul>
+		</div>
+
+		<div id="item2" class="item">
+			<h2>2F 女装</h2>
+			<ul>
+				<li><a href="javascript:;"><img src="./images/nvzhuang-01.jpg" alt=""></a></li> 
+				<li><a href="javascript:;"><img src="./images/nvzhuang-01.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nvzhuang-01.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nvzhuang-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nvzhuang-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nvzhuang-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nvzhuang-03.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nvzhuang-03.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/nvzhuang-03.jpg" alt=""></a></li>
+			</ul>
+		</div>
+
+		<div id="item3" class="item">
+			<h2>3F 数码</h2>
+			<ul>
+				<li><a href="javascript:;"><img src="./images/shuma-01.jpg" alt=""></a></li> 
+				<li><a href="javascript:;"><img src="./images/shuma-01.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/shuma-01.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/shuma-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/shuma-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/shuma-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/shuma-03.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/shuma-03.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/shuma-03.jpg" alt=""></a></li>
+			</ul>
+		</div>
+
+		<div id="item4" class="item">
+			<h2>4F 母婴</h2>
+			<ul>
+				<li><a href="javascript:;"><img src="./images/muying-01.jpg" alt=""></a></li> 
+				<li><a href="javascript:;"><img src="./images/muying-01.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/muying-01.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/muying-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/muying-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/muying-02.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/muying-03.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/muying-03.jpg" alt=""></a></li>
+				<li><a href="javascript:;"><img src="./images/muying-03.jpg" alt=""></a></li>
+			</ul>
+		</div>
+	</div>
+	<!--<a href="javascript:;" class="goTop" style="display: none;">返回<br>顶部</a>-->
+
+</div>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	// 滚动条发生滚动
+    var menu = $('#menu');						//获取菜单
+    var items = $('#content').find('.item');	//获取项目
+	$(window).scroll(function() {
+		// 完成一些操作
+		var top = $(document).scrollTop();			//滑动的距离
+	
+		var currentId = '';
+        //console.log(top);
+		items.each(function(){
+			var m = $(this);
+			var itemTop = m.offset().top;			//获取每一个项目到顶部距离
+           // console.log(itemTop);
+			if(top + 42>= itemTop ){
+				//currentId = '#' + m.attr('id');
+				currentId = m.attr('id');
+			} else {
+				return false;
+			}
+		});
+		// 给相应楼层的a 设置 current, 取消其他链接的current
+		var currentLink = menu.find('.current');
+		if(currentId && currentLink.data('item') != currentId) {
+			currentLink.removeClass('current');
+			menu.find("[data-item='"+ currentId +"']").addClass('current').siblings().removeClass('current');
+		}
+	});
+    $('#menu li a').on('click',function(){
+        var _this=$(this);
+        var id=_this.data('item');
+        items.each(function(){
+			var m = $(this);
+			
+			if(m.attr('id')==id){
+                var itemTop = m.offset().top;
+            	_this.addClass('current');
+            console.log(itemTop);
+            var abc=itemTop-42;	
+				$('html, body').animate({
+                    scrollTop: abc
+                },500);
+			}else{
+                _this.removeClass('current');
+            } 
+		});
+    })
+	// // 滚动条
+	// var goTop = $('.goTop');
+
+	// $('.goTop').on('click', move);
+	// 	// 调用函数是函数无参数
+	// 	// $(window).on('scroll', checkPosition);
+	// 	$(window).on('scroll', function() {
+	// 		// $(window).height() 是屏幕的一屏可视区域
+	// 		checkPosition($(window).height());
+	// 	});
+		
+	// 	// 加载的时候判断
+	// 	checkPosition($(window).height());
+	// 	// 运动返回顶部
+	// 	function move() {
+	// 		$('html, body').animate({
+	// 			scrollTop: 0
+	// 		},800);
+	// 	}
+	// 	// 返回顶部
+	// 	function goTop() {
+	// 		$('html, body').scrollTop(0);
+	// 	}
+	// 	function checkPosition(pos) {
+	// 		// $(window).scrollTop()判断当前浏览器的高度
+	// 		if($(window).scrollTop() > pos) {
+	// 			$('.goTop').fadeIn();
+	// 		} else {
+	// 			$('.goTop').fadeOut();
+	// 		}
+	// 	}
+});
+
+</script>
+</body>
+
+</html>

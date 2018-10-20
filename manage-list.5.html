@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>设置店长</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<!--设置店长-->
+<section id="setShopAccount" style="display:none;">
+    <div class="set_top_info">
+        <p>
+            <span>XXX</span>机构官方旗舰店
+        </p>
+        <p>美尚会云店店铺</p>
+    </div>
+    <form class="setShopForm">
+        <div class="account-field">
+            <input type="text" class="shopper_name" placeholder="店长姓名" name="name">
+        </div>
+        <div class="account-field">
+            <input type="tel" class="shopper_mobile" placeholder="手机号码" name="mobile_phone">
+        </div>
+    </form>
+    <div class="error_tipc"></div>
+</section>
+<article class="f24">
+    <section class="top_nav_fixed top_nav_store">
+        <div class="top_bar top-switch-bar columns_flex l-r-sides">
+            <div class="">
+                <img class="left store-logo-img" src="" alt="">
+                <span>是防守对方</span>
+            </div>
+            <div class="">
+                <div class="top_bar columns_flex">
+                    <a href="javascript:void(0);" class="shopping_cart"></a>
+                    <a href="javascript:void(0);" class="personal_center"></a>
+                    <a href="/index.php/store/Index/index.html" class="home"></a>
+                </div>
+                <a href="javascript:void(0);" class="switch-account">切换美容店家账号&gt;</a>
+            </div>
+        </div>
+    </section>
+    <section class="specific_type bottomLine store_deploy_nav">
+		<div class="columns_flex f20 l-r-sides ">
+			<a href="/index.php/store/Manager/index.html">管理员</a>
+			<a href="/index.php/store/Record/preview.html">档案</a>
+			<a href="/index.php/store/Brand/manage.html">商标</a>
+			<a href="/index.php/store/Store/manage.html">开店</a>
+			<a href="/index.php/store/Manager/index.html">店铺管理</a>
+			<a href="javascript:void(0);">门店</a>
+			<a href="javascript:void(0);">财务</a>
+		</div>
+	</section>
+    <section class="f24 account-content-wrapper">
+        <ul class="list">
+            <li class="columns_flex l-r-sides">
+                <div>
+                    <p>
+                        <span>某某</span>机构官方旗舰店
+                    </p>
+                    <p>美尚会云店店铺</p>
+                    <div>
+                        <span>店长:</span>
+                        <input type="text" value="1" name="name" readonly="readonly"/>
+                    </div>
+                    <div>
+                        <span>手机号码:</span>
+                        <input type="tel" value="13430394569" name="mobile_phone" readonly="readonly"/>
+                    </div>
+                </div>
+                <div>
+                    <a href="javascript:void(0);" class="text-color-gr set_shopowner">设置店长</a>
+                </div>
+            </li>
+        </ul> 
+    </section>
+</article>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript"> 
+    $(function(){
+        //设置店长
+         var setShopAccount=$('#setShopAccount').html();
+        $('body').on('click','.set_shopowner',function(){
+            var _this=$(this).parents('.list li');
+            layer.open({
+                title:['设置线上店铺店长','border-bottom:1px solid #d9d9d9;color:#0066cc;'],
+                className:'setShopAccountLayer',
+                content:setShopAccount,
+                 btn:['确定','取消'],
+                success:function(){
+                    copyDataByName(_this,$('.setShopAccountLayer .setShopForm'));
+                },
+                yes:function(index){
+                    var postData={};
+                    var content='';
+                    postData=$('.setShopAccountLayer .setShopForm').serializeObject();
+                    if(!postData.name){
+                        content='请填写姓名';
+                    }else if(!register.phoneCheck(postData.mobile_phone)){
+                        content='请填写手机号码';
+                    }
+                    if(content){
+                        errorTipc(content);
+                        return false;
+                    }
+                    var config = {
+						url:module + 'Manager/edit',
+						postData:postData,
+						fromObj:$('.setShopAccountLayer .setShopForm'),
+						toObj:_this,
+						index:index
+					};
+                    dialogFormEdit(config)
+                    layer.close(index)
+                }
+            })
+        });
+    })
+</script>
+</body>
+
+</html>

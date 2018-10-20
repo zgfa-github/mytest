@@ -1,0 +1,193 @@
+<!DOCTYPE html>    
+<html lang="en">    
+<head>    
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>移动端网页弹窗滑动穿透问题</title>  
+    <style type="text/css">  
+    html, body, div, p, ul, li {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            position: relative;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        p {
+            height: 30px;
+        }
+
+        .tab {
+            position: relative;
+            width: 100%;
+            top: 0;
+            background: #ddd;
+            height: 40px;
+        }
+
+        .content li {
+            height: 500px;
+            background: pink;
+        }
+
+        .content1 {
+            padding-top: 80px;
+        }
+
+        button {
+            font-size: 20px;
+        }
+
+        .foot {
+            height: 700px;
+            background: blue;
+
+        }
+
+        #toast {
+
+            z-index: 1000;
+        }
+
+        #toast .mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+
+        }
+
+        #toast .toast-content {
+            position: fixed;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            padding-top: 10px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            text-align: center;
+
+        }
+
+        #toast .title {
+            line-height: 40px;
+        }
+
+        #toast .body {
+            height: 400px;
+            overflow: scroll;
+            background: #9ed99d;
+        }
+
+        #toast .close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>   
+</head>    
+<body>
+<p>文字</p>
+<p>文字</p>
+<p>文字</p>
+<div class="tab"></div>
+<ul class="content">
+    <li class="content1">
+        content1<br>
+        <button class="show-toast">点击显示浮层</button>
+    </li>
+    <li>content2</li>
+    <li>content3</li>
+</ul>
+<div class="foot">
+    foot
+</div>
+<div id="toast" class="forbid-scroll-wrap hide">
+    <div class="mask"></div>
+    <div class="toast-content">
+        <div class="wrap ">
+            <div class="title">标题</div>
+            <div class="close">X</div>
+            <div class="body can-scroll-wrap">
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+                <p>文字</p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript" src="public/static/common/js/forbidscroll.js"></script>
+
+<script type="text/javascript">
+     var app = {
+        index: 0,
+        tabOffsetTop: $('.tab')[0].offsetTop,
+        forbidScroll:null,
+        bindEvent: function () {
+            var $this = this;
+            $('.show-toast').click(function () {
+                $('#toast').removeClass('hide');
+                $this.forbidScroll = new ForbidScroll();
+                $this.forbidScroll.initForbid();
+            });
+            $('.close').click(function () {
+                $('#toast').addClass('hide');
+                $this.forbidScroll.relieveForbid();
+            })
+
+        },
+
+        init: function () {
+            this.bindEvent();
+            var tabOffsetTop = this.tabOffsetTop;
+            window.onscroll = function () {
+                var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+                if (scrollTop >= tabOffsetTop) {
+                    $('.tab').css('position', 'fixed');
+                } else {
+                    $('.tab').css('position', 'relative');
+                }
+            }
+
+        }
+    };
+    app.init();
+</script>
+</body>    
+</html>  

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>有关滚动事件失效的问题</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+    <style>
+        html,body{
+            height:100%;
+        }
+        .app-content{
+            position:static;
+            height:100%;
+        }
+        .app-shell{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .app-view-wrapper{
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .app-view{
+            position: absolute;
+            z-index: 999;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .page-wrap{
+            position: relative;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .bodys{
+            position: absolute;
+            top: 82px;
+            left: 0;
+            right: 0;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<article class="f24 app-content">
+    <!--<section class="app-shell">
+        <div class="app-view-wrapper">
+            <div class="app-view">
+                <div class="page-wrap">
+                    <div class="bodys">-->
+                        <div style="height:500px;">a</div>
+                        <div style="height:500px;">b</div>
+                        <div style="height:500px;">c</div>
+                    <!--</div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+</article>
+
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script>
+    $(function(){
+      
+    })
+    window.addEventListener('scroll',function(){
+        console.log(1);
+    })
+</script>
+<!--<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>-->
+</body>
+
+</html>

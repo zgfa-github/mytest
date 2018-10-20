@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Fimtwu6FDRrHWvg3oq44YCw0c0YonNpv"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+	<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+    <script src="public/static/common/js/public.js"></script>
+	<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+	<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+    <style>
+    /*百度地图标示和距离*/
+    .ditumap{position:relative;}
+    .ditumap .ditumap_part{display:flex;position:fixed;left:0;top:0;right:0;z-index:2;border:1px solid #d9d9d9; border-radius:0.06rem;}
+    .ditu_search_text{flex:6;padding:0.20rem 0 0.20rem 0.25rem;border-right:1px solid #d9d9d9;box-sizing:border-box;border-radius:0.06rem 0 0 0.06rem;}
+    .ditu_search_btn{background:#fff;flex:1;justify-content: center;align-items: center;display:flex;border-radius:0 0.06rem 0.06rem 0;}
+    </style>
+	<title>百度地图定位</title>
+</head>
+<body>
+	<div class="ditumap">  
+		<div class="ditumap_part" id="r-result">
+			<input type="text" id="suggestId" class="ditu_search_text f24" placeholder="输入地点搜索" />
+		</div>
+		<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+		<div style="border:none;" id="l-map"></div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function(){
+        var deviceHeight=$(document).height();
+		var screenObj=document.getElementsByTagName('body')[0];
+            $('#l-map').css({height:deviceHeight+'px'});
+			screenObj.addEventListener('touchstart',function(e){
+            	//e.preventDefault();
+				$('#suggestId').blur();
+        	});
+			screenObj.addEventListener('touchmove',function(e){
+				$('#suggestId').blur();
+        	});
+			screenObj.addEventListener('touchend',function(e){
+				$('#suggestId').blur();
+        	});	
+			
+    });
+
+	// 百度地图API功能
+	function G(id) {
+		return document.getElementById(id);
+	}
+
+	var map = new BMap.Map("l-map");
+	map.centerAndZoom("广州",12);       // 初始化地图,设置城市和地图级别。
+	
+	// var geolocation = new BMap.Geolocation();
+	// 	geolocation.getCurrentPosition(function(r){
+	// 		console.log(r);
+	// 	if(this.getStatus() == BMAP_STATUS_SUCCESS){
+	// 	var mk = new BMap.Marker(r.point);
+	// 	map.addOverlay(mk);
+	// 	map.panTo(r.point);
+	// 	alert('您的位置：'+r.point.lng+','+r.point.lat);
+	// 	}
+	// 	else {
+	// 	alert('failed'+this.getStatus());
+	// 	}        
+	// 	},{enableHighAccuracy: true})
+
+	function showInfo(e){
+		console.log(e);
+		map.clearOverlays();
+		var new_point=new BMap.Point(e.point.lng,e.point.lat);
+		var marker=new BMap.Marker(new_point);
+			marker.enableDragging(); //marker可拖拽
+			map.addOverlay(marker);
+			map.panTo(new_point);
+		var gc = new BMap.Geocoder();
+			gc.getLocation(new_point, function(rs){
+			var addComp = rs.addressComponents;
+			alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
+			});
+	}
+	map.addEventListener("click", showInfo);
+
+	var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+		{
+			"input" : "suggestId",
+			"location" : map
+		}
+	);
+
+	
+	//当前所在城市 
+	var cityName;
+	function myFun1(result){
+		cityName = result.name;
+		//map.setCenter(cityName);
+		console.log("当前定位城市:"+cityName);
+	}
+	var myCity = new BMap.LocalCity();
+	//alert(myCity.get(myFun));
+	myCity.get(myFun1);
+	
+	var myValue;
+	
+	ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+		var _value = e.item.value;
+		myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+		//alert(myValue);
+		setPlace(myValue);
+	});
+	
+	function setPlace(targetCity){
+		alert(targetCity);
+		map.clearOverlays();    //清除地图上所有覆盖物
+		function myFun(){
+			var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+			map.centerAndZoom(pp, 18);
+			map.addOverlay(new BMap.Marker(pp));    //添加标注
+		}
+		var local = new BMap.LocalSearch(map, { //智能搜索
+		  onSearchComplete: myFun
+		});
+		local.search(targetCity);	
+	}
+
+	function DrivingTime() {
+        var output = null; var time;
+        var searchComplete = function (results) {
+        if (transit.getStatus() != BMAP_STATUS_SUCCESS) {
+        return;
+        }
+        var plan = results.getPlan(0);
+        output = plan.getDuration(true);
+        }
+        var transit = new BMap.DrivingRoute(map, {
+        renderOptions: { map: map },
+        onSearchComplete: searchComplete,
+        onPolylinesSet: function () {
+        setTimeout(function () { time = output ;alert(time);}, "1000");
+    }
+});
+transit.search("上地", "西单");
+return time; //time=驾车的时间
+}
+	//alert(DrivingTime());
+		
+window.onload=function(){
+    var addr="广东广州市海珠区TIT创意园";
+    //setPlace(addr);
+    //var re=actualDistance('广东广州市海珠区TIT创意园','深圳市宝安国际机场');
+//alert(actualDistance('广东广州市海珠区TIT创意园','深圳市宝安国际机场')());
+}
+</script>
