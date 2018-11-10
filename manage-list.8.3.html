@@ -20,7 +20,57 @@
 	<article id="areaBox">
 		<ul id="areaList" class="area-list"></ul>
 	</article>
-</section>   
+</section> 
+<!--门店经营地址模板--> 
+<section id="setStoreAddressInfo" style="display:none;">
+    <form>
+        <ul>
+            <li>
+                <label class="">门店名称：</label>
+                <input type="text" value="" />
+            </li>
+            <li>
+                <p>设定门店店头</p>
+                <div class="upload-picture-module f24">
+                    <div class="columns_flex l-r-sides">
+                        <div class="picture-module">
+                            <input type="file" class="uploadImg uploadSingleImg" name="">
+                            <img class="upload_img" src="" alt="">
+                            <input type="hidden" class="img" data-src="" value="">
+                        </div>
+                        <div>
+                            <p>门店门头/前台照片推荐像素300X225（点击图片上传）</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="input_item">
+                <input class="input-filed" type="tel" name="name" value="" placeholder="(区号)固定电话">
+            </li>
+            <li>
+                <input class="input-filed" type="tel" name="mobile_phone" value="" placeholder="业务手机号码">
+            </li>
+            <li class="express-area area-box">
+                <a id="expressArea" href="javascript:void(0)" class="f24 form-group box-flex">
+                    <label class="form-label">所在地区：</label>
+                    <div class="area_address">省 &gt; 市 &gt; 区/县</div>
+                    <input type="hidden" value="" class="area-address-name" data-key="" name="provinces">
+                </a>
+            </li>
+            <li>
+                <input class="input-filed" type="text" name="detail_name" value="" placeholder="街道/小区/道/楼/门牌详细地址">
+            </li>
+            <li>
+                <a href="javascript:void(0);" class="upload-thumbnail right-arrow">对门店地址进行地图人工标位（*可用于定位导航）</a>
+                <input type="hidden" class="hidden_img" value="" name="thumb_img">
+            </li>
+            <li>
+                <span>未标示</span>
+            </li>
+        </ul>
+        <a href="javascript:void(0);" class="submit foot-btn">确定</a>
+    </form>
+</section>
 <article class="f24">
     <div class="top_header">
         <section class="top_nav_fixed top_nav_store">
@@ -58,39 +108,25 @@
 	</div>
     <section class="f24 account-content-wrapper">
         <div class="content-top content-mg-top">
-            <p>设定门店经营地址和联系信息（*可用于精准导航）</p>
-            <div>
-
+            <div class="content_main">
+                <ul class="list">
+                    <li>
+                        <img src="public/static/common/img/default/no_pic_100.jpg" alt="" class="left">
+                        <div>
+                            <div>
+                                <input type="text" name="" value="">
+                            </div>
+                            <div>地址：<sapn>广东</sapn></div>
+                            <div>固话：<span>020-45646455</span></div>
+                            <div>手机：<span>13825545678</span></div>
+                            <div>
+                                <i></i>
+                                距离<span>500</span>km
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <div>
-                门店名称:
-                <span>某某某</span>
-            </div>
-            <form class="consignee_info_form">
-                <div class="input_item">
-                    <input class="input-filed" type="tel" name="name" value="" placeholder="（区号）固定电话">
-                </div>
-                <div>
-                    <input class="input-filed" type="tel" name="mobile_phone" value="" placeholder="美容预约联系手机号码">
-                </div>
-                <div class="express-area area-box">
-                    <a id="expressArea" href="javascript:void(0)" class="f24 form-group box-flex">
-                        <label class="form-label">所在地区：</label>
-                        <div class="area_address">省 &gt; 市 &gt; 区/县</div>
-                        <input type="hidden" value="" class="area-address-name" data-key="" name="provinces">
-                    </a>
-                </div>
-                <div>
-                    <input class="input-filed" type="text" name="detail_name" value="" placeholder="街道/小区/道/楼/门牌详细地址">
-                </div>
-                <div>
-                    <a href="javascript:void(0);" class="right-arrow">对门店地址进行地图人工标位</a>
-                    <input type="hidden" name="" value="">
-                </div>
-                <div>
-                    <span>未标识</span>
-                </div>
-            </form>
         </div>
     </section>
     <a href="javascript:void(0);" class="submit foot-btn">确定</a>
@@ -102,8 +138,27 @@
 <script type="text/javascript" src="public/static/common/js/dialog.js"></script>
 <script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
 <script type="text/javascript" src="public/static/common/js/jquery.area.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadImgToTemp.js"></script>
 <script type="text/javascript"> 
     $(function(){
+        
+        var setStoreAddressInfo=$('#setStoreAddressInfo').html();
+        $('body').on('click','.list li',function(){
+            layer.open({
+                title:['设定门店经营地址','border:1px solid #d9d9d9;'],
+                className:'setStoreAddress',
+                content:setStoreAddressInfo,
+                type:1,
+                anim:'up',
+                btn:['确定','取消'],
+                success:function(){
+                    $('.layui-m-layermain .layui-m-layersection').addClass('bottom-layer');
+                },
+                yes:function(){
+
+                }
+            })
+        })
         //收货人信息
 		$('body').on('click','.submit',function(){
 			var postData={};
@@ -135,7 +190,7 @@
 						return false;
 					}else if(data.status == 1){
 						dialog.success(data.info,controller+'preview');
-					}
+					} 
 				},
 				error:function (xhr) {
 					dialog.error('Ajax错误'+xhr.status);

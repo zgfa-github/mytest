@@ -21,6 +21,7 @@
 </head>
 <body>
 	<div class="ditumap">  
+		<div id="distanceId" style="position:absolute;left:0;top:0.5rem;width:100%;z-index:100;" class="f24"></div> 
 		<div class="ditumap_part" id="r-result">
 			<input type="text" id="suggestId" class="ditu_search_text f24" placeholder="输入地点搜索" />
 		</div>
@@ -30,7 +31,7 @@
 </body>
 </html>
 <script type="text/javascript">
-    $(function(){
+ $(function(){
         var deviceHeight=$(document).height();
 		var screenObj=document.getElementsByTagName('body')[0];
             $('#l-map').css({height:deviceHeight+'px'});
@@ -52,9 +53,10 @@
 		return document.getElementById(id);
 	}
 
+	// 初始化地图,设置城市和地图级别
 	var map = new BMap.Map("l-map");
-	map.centerAndZoom("广州",12);       // 初始化地图,设置城市和地图级别。
-	
+	map.centerAndZoom("广州",12);       
+	console.log(map);
 	// var geolocation = new BMap.Geolocation();
 	// 	geolocation.getCurrentPosition(function(r){
 	// 		console.log(r);
@@ -70,13 +72,13 @@
 	// 	},{enableHighAccuracy: true})
 
 	function showInfo(e){
-		console.log(e);
+		//console.log(e);
 		map.clearOverlays();
 		var new_point=new BMap.Point(e.point.lng,e.point.lat);
 		var marker=new BMap.Marker(new_point);
 			marker.enableDragging(); //marker可拖拽
 			map.addOverlay(marker);
-			map.panTo(new_point);
+			//map.panTo(new_point);
 		var gc = new BMap.Geocoder();
 			gc.getLocation(new_point, function(rs){
 			var addComp = rs.addressComponents;
@@ -84,14 +86,15 @@
 			});
 	}
 	map.addEventListener("click", showInfo);
-
-	var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+	
+	//建立一个自动完成的对象
+	var ac = new BMap.Autocomplete(    
 		{
 			"input" : "suggestId",
 			"location" : map
 		}
 	);
-
+	
 	
 	//当前所在城市 
 	var cityName;
@@ -106,53 +109,78 @@
 	
 	var myValue;
 	
-	ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
-		var _value = e.item.value;
-		myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
-		G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
-		//alert(myValue);
-		setPlace(myValue);
-	});
+	// ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+	// 	var _value = e.item.value;
+	// 	myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+	// 	G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+	// 	//alert(myValue);
+	// 	setPlace(myValue);
+	// });
 	
-	function setPlace(targetCity){
-		alert(targetCity);
-		map.clearOverlays();    //清除地图上所有覆盖物
-		function myFun(){
-			var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
-			map.centerAndZoom(pp, 18);
-			map.addOverlay(new BMap.Marker(pp));    //添加标注
-		}
-		var local = new BMap.LocalSearch(map, { //智能搜索
-		  onSearchComplete: myFun
-		});
-		local.search(targetCity);	
-	}
-
-	function DrivingTime() {
-        var output = null; var time;
-        var searchComplete = function (results) {
-        if (transit.getStatus() != BMAP_STATUS_SUCCESS) {
-        return;
-        }
-        var plan = results.getPlan(0);
-        output = plan.getDuration(true);
-        }
-        var transit = new BMap.DrivingRoute(map, {
-        renderOptions: { map: map },
-        onSearchComplete: searchComplete,
-        onPolylinesSet: function () {
-        setTimeout(function () { time = output ;alert(time);}, "1000");
-    }
-});
-transit.search("上地", "西单");
-return time; //time=驾车的时间
-}
-	//alert(DrivingTime());
+	// function setPlace(targetCity){
+	// 	alert(targetCity);
+	// 	map.clearOverlays();    //清除地图上所有覆盖物
+	// 	function myFun(){
+	// 		var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+	// 		map.centerAndZoom(pp, 18);
+	// 		map.addOverlay(new BMap.Marker(pp));    //添加标注
+	// 	}
+	// 	var local = new BMap.LocalSearch(map, { //智能搜索
+	// 	  onSearchComplete: myFun
+	// 	});
+	// 	local.search(targetCity);	
+	// }
+	// var oj=document.getElementById('distanceId');
+	// var output='';
+	// var distance;
+	// var transit = new BMap.DrivingRoute(map, {
+	// 		renderOptions: {map: map,autoViewport:false },
+	// 		onSearchComplete: function (results){
+	// 		alert(results);
+	// 		alert(transit.getStatus()+' '+BMAP_STATUS_SUCCESS);
+	// 		if (transit.getStatus() != BMAP_STATUS_SUCCESS){
+	// 			return ;
+			
+	// 		}
+	// 		var plan = results.getPlan(0);
+	// 		// // if(output){
+	// 		// // output='';
+	// 		// // }
+	// 		// // output += plan.getDuration(true) + "\n";           //获取时间
+	// 		// //output += "总路程为：" ;
+	// 		output = plan.getDistance(true);             //获取距离
+	// 		alert(output);
+	// 	},
+	// 	onPolylinesSet: function(){        
+	// 		oj.innerHTML=output;	//返回距离值
+	// 	}
+	// });
+	// function DrivingTime() {
+	// 	var output = null; var time;
+	// 	var searchComplete = function (results) {
+	// 	if (transit.getStatus() != BMAP_STATUS_SUCCESS) {
+	// 	return;
+	// 	}
+	// 	var plan = results.getPlan(0);
+	// 	output = plan.getDuration(true);
+	// 	}
+	// 	var transit = new BMap.DrivingRoute(map, {
+	// 	renderOptions: { map: map },
+	// 	onSearchComplete: searchComplete,
+	// 	onPolylinesSet: function () {
+	// 	setTimeout(function () { time = output ;alert(time);}, "1000");
+	// 	}
+	// 	});
+	// 	transit.search("上地", "西单");
+	// 	return time; //time=驾车的时间
+	// }
+	// alert(DrivingTime());
 		
-window.onload=function(){
-    var addr="广东广州市海珠区TIT创意园";
-    //setPlace(addr);
-    //var re=actualDistance('广东广州市海珠区TIT创意园','深圳市宝安国际机场');
-//alert(actualDistance('广东广州市海珠区TIT创意园','深圳市宝安国际机场')());
-}
+	window.onload=function(){
+		var addr="广东广州市海珠区TIT创意园";
+		//setPlace(addr);
+		transit.search('广东广州市海珠区TIT创意园','广州市番禺市桥');
+		//var re=actualDistance('广东广州市海珠区TIT创意园','深圳市宝安国际机场');
+	//alert(actualDistance('广东广州市海珠区TIT创意园','深圳市宝安国际机场')());
+	}
 </script>

@@ -1917,7 +1917,7 @@ input[type=text]::-webkit-focus-inner {
     position:fixed;
     bottom: -100%;
     left: 0;
-    z-index: 15;
+    z-index:99999999;
     width: 100%;
     /* margin-left: -160px; */
     background-color: #fff;
@@ -1948,7 +1948,7 @@ input[type=text]::-webkit-focus-inner {
 	.express-area-box { position: fixed; left: 0; width: 100%; margin-left: 0; }
 }*/
 /*遮罩层*/
-.mask { display: none; position: absolute; top: 0; left: 0; z-index: 12; width: 100%; height: 100%; background-color: rgba(0,0,0,.5); }
+.mask { display: none; position: absolute; top: 0; left: 0; z-index:99999998; width: 100%; height: 100%; background-color: rgba(0,0,0,.5); }
 /*@media (max-width: 720px) {
 	.mask { position: fixed; }
 }*/
@@ -2882,7 +2882,8 @@ input[type=text]::-webkit-focus-inner {
     margin:.15rem 0;
 }
 .employeeAccountLayer .layui-m-layerbtn,
-.storeShopListLayer .layui-m-layerbtn{
+.storeShopListLayer .layui-m-layerbtn,
+.setMapLayer .layui-m-layerbtn{
     display: flex;
     justify-content: space-between;
     position: absolute;
@@ -2895,10 +2896,14 @@ input[type=text]::-webkit-focus-inner {
 .employeeAccountLayer .layui-m-layerbtn span[no] {
     visibility: hidden;
 }
-.employeeAccountLayer .layui-m-layerbtn span[yes] {
+.employeeAccountLayer .layui-m-layerbtn span[yes],
+.setMapLayer .layui-m-layerbtn span[yes],
+.setMapLayer .layui-m-layerbtn span[no]
+ {
     width: 50px;
     background: none;
     color: #40AFFE;
+    border:none;
 }
 .employeeAccountForm{
     margin:0.20rem .15rem 0;
@@ -2958,6 +2963,10 @@ input[type=text]::-webkit-focus-inner {
 .content-mg-top{
     margin-top:3rem;
 }
+.content_main list img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
 /*打印订单*/
 .print_orders{
     display:block;
@@ -2980,4 +2989,15 @@ input[type=text]::-webkit-focus-inner {
 .storeShopListLayer li.current{
     background:#009A3E;
     color:#fff;
+}
+.options_item {
+    display: flex;
+    display:-webkit-flex;
+    justify-content: space-between;
+}
+.options_item a{
+    background:#009A3E;
+    color:#fff;
+    border-radius:5px;
+    padding:0 0.12rem;
 }

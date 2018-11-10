@@ -5544,7 +5544,7 @@ var regionAttr=[
     [30,31,27,29,28],
     [22,23,24,25,26],
     [6,7,8],
-    [32,33,34]
+    [32,33,34 ]
 ];
 $.each(regionalMarket.regionData, function (r_k,r_v) {
     regionAllOption+="<option value='"+r_k+"'>"+r_v.region_name+"</option>";
