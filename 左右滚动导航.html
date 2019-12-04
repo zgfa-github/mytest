@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>采购平台</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class="f24">
+    <section class="fixedtop top_nav_fixed">
+        <div class="top_bar columns_flex l-r-sides">
+        <div class="each_column top_hidden">
+            <a class="home top_icon">首页</a>
+        </div>
+        <div class="each_column top_search_module top_hidden">
+            <input type="button" class="search_btn"/>
+            <input type="text" class="search_text" placeholder="搜店铺、商品、服务等"/>
+        </div>
+        <!--<div class="top_menu_box top_left_menu">
+            <div class="top_menu_list">
+                <a href="javascript:void(0);" class="current">供应商入驻</a>
+                <a href="javascript:void(0);">老板直聘</a>
+                <a href="javascript:void(0);">商学院</a>
+            </div>
+        </div>-->
+        <div class="each_column">
+            <a class="shopping_cart top_icon">购物车</a>
+        </div>
+        <div class="each_column">
+            <a class="personal_center top_icon">我的</a>
+        </div>
+        <!--<div class="top_right_menu">
+            <a class="shopping_cart top_icon" >购物车</a>
+            <a class="personal_center top_icon" >我的</a>
+        </div>-->
+    </div>
+    <div class="top_menu_box">
+        <div class="top_menu_list">
+            <a href="javascript:void(0);" class="current">采购</a>
+            <a href="javascript:void(0);">分成</a> 
+            <a href="javascript:void(0);">加盟</a>
+             <a href="javascript:void(0);">社交电商</a>
+            <a href="javascript:void(0);"  >店家入驻</a>
+            <a href="javascript:void(0);">智慧店务</a>
+            <a href="javascript:void(0);">老板直聘</a>
+            <a href="javascript:void(0);">商学院</a>
+        </div>
+    </div>
+    </section>
+    <section class="slider_banner">
+		<div class="swiper-container swiper-container-horizontal swiper-container-ios">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide swiper-slide-active">
+					<img src="public/static/common/img/banner/home-banner1.jpg" alt="" class="common_default_img">
+				</div>
+				<div class="swiper-slide ">
+					<img src="public/static/common/img/banner/home-banner2.jpg" alt="" class="common_default_img">
+				</div>
+				<div class="swiper-slide ">
+					<img src="public/static/common/img/banner/home-banner3.jpg" alt="" class="common_default_img">
+				</div>
+				<div class="swiper-slide ">
+					<img src="public/static/common/img/banner/home-banner.jpg" alt="" class="common_default_img">
+				</div>
+			</div>
+			<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+				<span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span>
+				<span class="swiper-pagination-bullet " tabindex="0" role="button" aria-label="Go to slide 2"></span>
+				<span class="swiper-pagination-bul let " tabindex="0" role="button" aria-label="Go to slide 3"></span>
+				<span class="swiper-pagination-bullet " tabindex="0" role="button" aria-label="Go to slide 4"></span>
+			</div>
+		</div>      
+	</section>
+	<section class="module-navigation separation-line ">
+		<div class="columns_flex f20 channel_nav store_organize_nav">
+			<a href="{:url('store/Store/index')}" class="deployed-deployment"><span class="union_purchase"></span>采购首页</a>
+			<a href="{:url('store/ManagerManage/index')}" class="store_run"><span class="exclusive"></span>商品分类</a>
+			<a href="{:url('store/Operation/index')}" class="order-management"><span class="classify"></span>联合采购</a>
+			<a href="{:url('store/Order/index')}" class="order-management-change"><span class="purchasers"></span>品牌定制</a>
+			<a href="javascript:void(0);" class="my-store"><span class="recharge"></span>采购商</a>
+		</div>
+	</section>
+    <section>
+        <div class="scroll_news">
+            <a class="news_tit">美尚云快报</a>
+            <div class="news_list_wrapper">
+                <ul class="news_list j_scroll_news">
+                    <li class="news_item">
+                        <a>
+                            <span class="red">最新</span>美尚云快报1111111111
+                        </a>
+                    </li>
+                    <li class="news_item">
+                        <a>
+                            <span class="red">hot</span>美尚云快报2222222222
+                        </a>
+                    </li>
+                    <li class="news_item">
+                        <a>
+                            <span class="red">推荐</span>美尚云快报3333333333
+                        </a>
+                    </li>
+                    <li class="news_item">
+                        <a>
+                            <span class="red">优惠</span>美尚云快报4444444444
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <a class="news_more">更多</a>
+        </div>
+    </section>
+    <section class="content-padding">
+        <ul>
+            <li></li>
+        </ul>
+        <a href="">领劵中心</a>
+    </section>
+    <section class="new_share_wrap">
+        <div class="mod-part-title">
+            <div class="mod-part-title-wrap">
+                <span class="icon-title left"></span>
+                <span class="title">新人专享</span>
+                <span class="icon-title right"></span>
+            </div>
+        </div>
+        <ul class="columns_flex flex-both-side goods-content-list">
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p class="text-intro">某某美白美颜护肤品肤品肤品肤品肤品肤品肤品肤品肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="new_select_wrap">
+        <div class="mod-part-title">
+            <div class="mod-part-title-wrap">
+                <span class="icon-title left"></span>
+                <span class="title">美尚精选</span>
+                <span class="icon-title right"></span>
+            </div>
+        </div>
+        <ul class="columns_flex flex-both-side goods-content-list">
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p class="text-intro">某某美白美颜护肤品肤品肤品肤品肤品肤品肤品肤品肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="new_select_wrap select_more_wrap">
+        <div class="mod_selection">
+            <div class="nav">
+                <div class="mod_selection_more">
+                    <div class="tab-arrow"></div>
+                </div>
+                <ul class="mod_selection_nav">
+                    <li>皮肤管理</li>
+                    <li>轻光电</li>
+                    <li>孝素食品</li>
+                    <li>基因检测</li>
+                    <li>美肤美白</li>
+                    <li>DNA检测</li>
+                    <li>健康食品</li>
+                </ul>
+            </div>
+        </div>
+        <ul class="columns_flex flex-both-side goods-content-list">
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p class="text-intro">某某美白美颜护肤品肤品肤品肤品肤品肤品肤品肤品肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+            <li>
+                <a href="">
+                    <img src="public/static/common/img/default/no_pic_100.jpg" alt="">
+                </a>
+                <p>某某美白美颜护肤品</p>
+                <div class="columns_flex l-r-sides">
+                    <span class="pink">￥<price>5000</price></span>
+                    <a href="javascript:void(0);" class="shopping-cart">购物车</a>
+                </div>
+            </li>
+        </ul>
+    </section>
+</article>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript" src="public/static/common/js/swiper.min.js"></script>
+<script type="text/javascript"> 
+    $(function(){
+		//轮播
+		var swiper = new Swiper('.swiper-container', {
+			spaceBetween: 30,
+            autoplay:true,
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true
+			}
+		});
+        //新闻滚动
+        var len=$('.news_list li').length;
+        var timer=setInterval(function(){
+            var i=0;
+            i++;
+            // console.log(i);
+            move(i);
+        },2200);
+        function move(i){
+            
+            var h=$('.news_item').height();
+            var offsetY=h*i;
+            $('.news_list').get(0).style.transform="translate3d(0,-"+offsetY+"px,0)";
+            $('.news_list').get(0).style.transition="transform 500ms ease-in-out 0s";
+           
+            //offsetY=0;
+            setTimeout(function(){
+                $('.news_list').get(0).style.transform="translate3d(0,0,0)";
+                $('.news_list').get(0).style.transition="none 0s ease 0s";
+                $('.news_list li').eq(len-1).after($('.news_list li').eq(0));
+            },500);
+            
+        }
+
+        // $('.mod_selection_nav li').on('click',function(){
+        //     var _this=$(this);
+        //     var offsetX=$(this).offset().left;
+        //     console.log(offsetX);
+        //     if(offsetX<0){
+        //         offsetX=-(offsetX);
+        //         console.log($('.mod_selection_nav').offset().left);
+        //         // setTimeout(function(){
+        //         //     $('.mod_selection_nav').get(0).style.transform="translate3d(0,0,0)";
+        //         // },300)
+        //     }
+        // });
+        // var a=[1];
+        // console.log($('.mod_selection_nav').isEmptyArray(a));
+
+         $(".mod_selection_nav li").click(function(){
+                    //console.log($(this).position().left);
+                    //console.log($(this).parent().scrollLeft());
+                    var moveX = $(this).offset().left+$(this).parent().scrollLeft();
+                    var pageX = document.documentElement.clientWidth;//设备的宽度
+                    var blockWidth = $(this).width();
+                  
+//                  console.log(pageX);
+//                  console.log(blockWidth);
+                    var left = moveX-(pageX/2)+(blockWidth/2);
+                 console.log(left);
+                    $(".mod_selection_nav").animate({scrollLeft:left},400);
+                    $(this).addClass("active").siblings().removeClass("active");
+//                     var index = $(this).index();
+//                     console.log(index);
+//                     $('div').eq(index).show().siblings("div").hide();
+                })
+	});
+</script>
+</body>
+
+</html>

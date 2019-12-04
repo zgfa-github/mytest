@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pc端弹窗添加产品</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <style>
+        .thead_title{
+            border-bottom:1px solid #d9d9d9;
+        }
+        .add_goods{
+            display:block;
+            width:50px;
+            background:#4898d5;
+            color:#fff;
+            text-align:center;
+        }
+        .thead_title .list_item,.list_item{
+            display:inline-block;
+            width:200px;
+            vertical-align: top;
+        }
+        .list_item img,
+        .selected_goods_list img{
+            max-width:50px;
+        }
+        .scroller-container{
+            padding:15px 0 0;
+        }
+        .add_layer_content .list li{
+            border:none;
+            border-bottom:1px solid #d9d9d9;
+        }
+        .search_bar{
+            margin:15px 0;
+            overflow:hidden;
+        }
+        .search_bar input,.search_bar select{
+            float:left;
+            height:36px;
+            box-sizing: border-box;
+        }
+        .search-goods{
+            margin-left:15px;
+            border:1px solid #d9d9d9;
+        }
+        .layer-search-btn{
+            background:#4898d5;
+            color:#fff;
+            border:1px solid #4898d5;
+        }
+        .selected_goods_list li{
+            position:relative;
+            margin:0 20px 0 0;
+        }
+        .selected_goods_list li a{
+            position:absolute;
+            top:-22px;
+            right:0px;
+        }
+    </style>
+</head>
+<body>
+<!--推荐产品模板-->
+<!--<img src="http://msy.meishangyun.com/uploads/factory_goods/2018120611453168290.jpeg" alt="" class="left">
+                <div class="promotional-g-right">
+                    <span class="goods-name">美肤1111</span>
+                </div>
+                <a href="javascript:void(0);" class="promotional-close-btn">X</a>-->
+<section style="display: none" class="search-li">
+    <li data-goods-id="">
+        <img src="" alt="" class="left">
+        <div class="promotional-g-right">
+            <span class="goods-name">美肤1111</span>
+        </div>
+        <a href="javascript:void(0);" class="promotional-close-btn">X</a>
+    </li>
+</section>
+<!--推荐产品容器-->
+<section id="recommendGoods" style="display:none;">
+		<span class="content-label">已推荐产品</span>
+		<ul class="columns_flex selected_goods_list">
+            
+        </ul>
+		<div class="error_tipc"></div>
+		<form name="form" id="form">
+			<div class="search_bar">
+                <span class="left">产品分类:</span>
+                <select name="">
+                    <option value="">产品1</option>
+                    <option value="">产品2</option>
+                </select>
+				<input type="text" class="search-goods keyword" name="keyword" placeholder="搜索产品">
+				<input type="button" value="搜索" class="layer-search-btn search">
+			</div>
+		</form>
+		<span class="content-label">所有产品(可以从下面商品中点击添加产品到已推荐产品)</span>
+		<div class="add_layer_content">
+            <div class="thead_title">
+                <span class="list_item">产品名称</span>
+                <span class="list_item">所属分类</span>
+                <span class="list_item">操作</span>
+            </div>
+			<ul class="scroller-container list" id="list">
+                <li data-id="1" class="">
+                    <div class="list_item">
+                        <div >
+                            <img src="http://msy.meishangyun.com/uploads/factory_goods/2018120611453168290.jpeg" alt="" class="left">
+                            <p class="goods_name">美肤美肤美肤美肤美肤美肤</p>
+                        </div>
+                    </div>
+                    <div class="list_item">
+                        产品1
+                    </div>
+                    <div class="list_item">
+                        <a href="javascript:void(0);" class="add_goods">添加</a>
+                    </div>
+                </li>
+                <li data-id="2" class="">
+                    <div class="list_item">
+                        <div>
+                            <img src="http://msy.meishangyun.com/uploads/factory_goods/2018120611453168290.jpeg" alt="" class="left">
+                            <p class="goods_name">美肤美肤美肤美肤美肤美肤11111</p>
+                        </div>
+                    </div>
+                    <div class="list_item">
+                        产品1
+                    </div>
+                    <div class="list_item">
+                        <a href="javascript:void(0);" class="add_goods">添加</a>
+                    </div>
+                </li>
+                 <li data-id="3" class="">
+                    <div class="list_item">
+                        <div>
+                            <img src="http://msy.meishangyun.com/uploads/factory_goods/2018120611453168290.jpeg" alt="" class="left">
+                            <p class="goods_name">啊啊啊啊啊啊</p>
+                        </div>
+                    </div>
+                    <div class="list_item">
+                        产品1
+                    </div>
+                    <div class="list_item">
+                        <a href="javascript:void(0);" class="add_goods">添加</a>
+                    </div>
+                </li>
+			</ul>
+		</div>
+</section>
+<a href="javascript:void(0);" class="add">添加</a>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer/layer.js"></script>
+<script type="text/javascript"> 
+    $(function(){
+        var recommendGoods=$('#recommendGoods').html();
+        $('.add').on('click',function(){
+            layer.open({
+                title:['添加推荐产品'],
+                className:'addGoodsLayer',
+                area: ['1200px', '800px'],
+                btn:['确定','取消'],
+                content:recommendGoods,
+                yes:function(index){
+                    var selectedGoodsArr=[];
+                    $('.layui-layer-content .selected_goods_list li').each(function () {
+                        var id=$(this).data('goods-id');
+                        selectedGoodsArr.push(id);
+                    });
+                    console.log(selectedGoodsArr);
+                    layer.close(index);
+                }
+            });
+        });
+        //添加商品
+        $('body').on('click','.add_goods',function(){
+            var selectedGoodsIds = [];
+            $('.layui-layer-content .selected_goods_list li').each(function(){
+                var selectedGoodsId = $(this).data('goods-id');
+                selectedGoodsIds.push(selectedGoodsId);
+            });
+            var _this=$(this);
+            var goodsId=_this.parents('li').data('id');
+            if($.inArray(goodsId, selectedGoodsIds) !== -1){
+                layer.tips('此商品已选择过!'); 
+                return false;
+            }
+            var goodsImgSrc=_this.find('img').attr('src');
+            var selectedLen=$('.layui-layer-content .selected_goods_list li').length;
+            var listHtml = _this.parents('li').find('.list_item:eq(0)').html();
+            var html='';
+                html+="<li data-goods-id="+goodsId+">";
+                html+=listHtml;
+                html+="<a href='javascript:void(0);' class='close-btn'>X</a>";
+                html+="</li>";
+                if(!selectedLen){
+                    $('.selected_goods_list').append(html);
+                }else{
+                    $('.selected_goods_list li:last').after(html);
+                }
+        });
+        //移除商品
+        $('body').on('click','.close-btn',function(){
+            var _this=$(this);
+            var id=_this.parents('li').data('goods-id');
+            $.each($('.list li'),function(){
+                var _This=$(this);
+                if(_This.data('id')==id){
+                    _This.removeClass('current');
+                }
+            })
+            _this.parent().remove();
+        });
+	});
+</script>
+</body>
+
+</html>

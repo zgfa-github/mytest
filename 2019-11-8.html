@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>测试拖拽碰撞</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <!--<link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">-->
+    <style>
+    .box1{
+        position:absolute;
+        width:100px;
+        height:100px;
+        background:#0066cc;
+    }
+    .box2{
+        position:absolute;
+        left:200px;
+        top:200px;
+        width:100px;
+        height:50px;
+        background:#000;
+        z-index:-1;
+        color:#fff;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="box1" class="box1" ></div>
+    <div id="box2" class="box2" >拖拽碰撞到我就删除</div>
+
+<!--<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>-->
+</body>
+<script type="text/javascript">
+    /**总结如下
+    *1,document和拖拽对象触发事件
+    2,坐标 clientX,clientY
+    3,边界判断归属于数学问题(4个方向不碰撞，剩下的情况都是碰撞了)
+    4,原生js取dom元素的宽和高问题 offsetWidth,offsetHeight
+    **/
+    var box1=document.getElementById('box1');
+    var box2=document.getElementById('box2');
+    //var content=document.getElementById('content');
+        var startX,startY,l,t;
+       
+        box1.onmousedown=function(event){
+            //console.log( window.getComputedStyle(content).height);
+            //console.log( content.clientWidth);
+            var event=event||window.event;
+
+            //event.preventDefault();
+            var t1X=event.clientX;
+            var t1Y=event.clientY;
+           
+            var X=t1X-box1.offsetLeft;
+            var Y=t1Y-box1.offsetTop;
+
+           
+            document.onmousemove=function(event){
+                var event=event||window.event;
+                var l1=box1.offsetLeft;
+                var t1=box1.offsetTop;
+                var r1=l1+box1.offsetWidth;
+                var b1=t1+box1.offsetHeight;
+
+                var l2=box2.offsetLeft;
+                var t2=box2.offsetTop;
+                var r2=l2+box2.offsetWidth;
+                var b2=t2+box2.offsetHeight;
+                console.log('t1:'+t1,'b2:'+b2);
+                if(b1<t2 || l1>r2 || t1>b2 || r1<l2){
+                    console.log(1111111);
+                    box2.style.backgroundColor='black';
+                }else{
+                    box2.style.backgroundColor='red';
+                    //box2.parentNode.removeChild(box1)
+                }
+                box1.style.left=(event.clientX-X)+'px';
+                box1.style.top=(event.clientY-Y)+'px';
+            }
+
+            document.onmouseup=function(){
+                this.onmousedown=this.onmousemove=null;
+            }
+            return false;
+        }
+       
+        
+</script>
+</html>

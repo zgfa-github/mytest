@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>账户授权</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+<style>
+input { 
+
+display: inline-block; 
+
+
+
+} 
+input:last-child { 
+
+border-right: px solid #d9d9d9;
+ }
+
+.input input { 
+
+border-top: 1px solid #d9d9d9; 
+
+border-bottom:1px solid #d9d9d9; 
+
+border-left: 1px solid #d9d9d9; 
+
+width: px; 
+
+height: px; 
+
+outline:none; 
+
+font-family: inherit; 
+
+font-size: px; 
+
+font-weight: inherit; 
+
+text-align: center; 
+
+line-height: px; 
+
+color: #ccc; 
+
+background: rgba(,,,); 
+
+} 
+
+
+</style>
+<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+    <body>
+        <p class="input"> 
+            <input type="tel" placeholder="随" maxlength="1">
+            <input type="tel" placeholder="机" maxlength="1">
+            <input type="tel" placeholder="5" maxlength="1">
+            <input type="tel" placeholder="位" maxlength="1">
+            <input type="tel" placeholder="数" maxlength="1"> 
+        </p>
+    </body>
+    <script type="text/javascript">
+       /** 
+
+* 模拟支付宝的密码输入形式 
+
+*/
+
+(function (window, document) { 
+
+    var active =0;
+
+    inputBtn = document.querySelectorAll('input'); 
+    console.log(inputBtn);
+    $('input:first').focus();
+    for (var i =0 ; i < inputBtn.length; i++) { 
+
+        inputBtn[i].addEventListener('click', function () { 
+
+            inputBtn[active].focus(); 
+
+        }, false); 
+
+        inputBtn[i].addEventListener('focus', function () { 
+
+            this.addEventListener('keyup', listenKeyUp, false); 
+
+        }, false); 
+
+        inputBtn[i].addEventListener('blur', function () { 
+
+            this.removeEventListener('keyup', listenKeyUp, false); 
+
+        }, false); 
+
+    } 
+
+    /** 
+
+    * 监听键盘的敲击事件 
+
+    */
+
+    function listenKeyUp() { 
+
+        var beginBtn = document.querySelector('#beginBtn'); 
+
+        if (!isNaN(this.value) && this.value.length != inputBtn.length) { 
+
+            if (active < inputBtn.length) { 
+
+                active += 1; 
+
+            } 
+
+            inputBtn[active].focus(); 
+
+        } else if (this.value.length == inputBtn.length) { 
+
+            if (active > inputBtn.length-1) { 
+
+            active -= 1; 
+
+            } 
+
+            inputBtn[active].focus(); 
+
+        } 
+
+    if (active >= inputBtn.length) { 
+
+        var _value = inputBtn[active].value; 
+
+        if (beginBtn.className == 'begin-no' && !isNaN(_value) && _value.length != inputBtn.length) { 
+
+        beginBtn.className = 'begin'; 
+
+        beginBtn.addEventListener('click', function () { 
+
+        calculate.begin(); 
+
+        }, false); 
+
+        } 
+
+    } else { 
+        if (beginBtn.className == 'begin') { 
+            beginBtn.className = 'begin-no'; 
+        } 
+    } 
+
+} 
+
+})(window, document);    
+</script>
+</html> 

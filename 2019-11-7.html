@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>测试拖着</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <!--<link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">-->
+    <style>
+    #content{
+        position:relative;
+        width:400px;
+        height:400px;
+        background:#0066cc;
+    }
+    .box{
+        position:absolute;
+        left:0;
+        top:0;
+        width:100px;
+        height:100px;
+        background:#000;
+    }
+    </style>
+</head>
+<body>
+<div id="content">
+    <div id="box" class="box" ></div>
+</div>
+<!--<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>-->
+</body>
+<script type="text/javascript">
+    /**总结如下
+    *1,document和拖拽对象触发事件
+    2,坐标 clientX,clientY
+    3,边界判断归属于数学问题
+    4,原生js取dom元素的宽和高问题 clientWidth,clientHeight
+    **/
+    var obj=document.getElementById('box');
+    var content=document.getElementById('content');
+        console.log(obj);
+        var startX,startY,l,t;
+        var isDown=false;
+        obj.onmousedown=function(event){
+            console.log( window.getComputedStyle(content).height);
+            console.log( content.clientWidth);
+            //event.preventDefault();
+            startX=event.clientX;
+            startY=event.clientY;
+            l=obj.offsetLeft;
+            t=obj.offsetTop;
+            isDown=true;
+        }
+        document.onmousemove=function(event){
+            //event.preventDefault();
+            if(isDown==false){
+                return;
+            }
+            var moveX=event.clientX;
+            var moveY=event.clientY;
+            var offsetX=moveX-(startX-l);
+            var offsetY=moveY-(startY-t);
+            // var cW=content.style.width;
+            // var lll=cW-obj.style.width;
+           
+            maX=content.clientWidth-obj.clientWidth;
+            maY=content.clientHeight-obj.clientHeight;
+            //console.log('maX:'+maX,'maY:'+maY);
+            if(offsetX<=0){
+                offsetX=0;
+            }
+            else if(offsetX>=maX){
+                //console.log('offsetX:'+offsetX,'offsetY:'+offsetY);
+                // obj.style.left=maX+'px';
+                // obj.style.top=offsetY+'px';
+                offsetX=maX;
+            }
+            if(offsetY<=0){
+                offsetY=0;
+            }
+            else if(offsetY>=maY){
+                //console.log('offsetY'+offsetY);
+                // obj.style.top=maY+'px';
+                // obj.style.left=offsetX+'px';
+                offsetY=maY;
+            }
+            // if(offsetX>maX&&offsetY>maY){
+            //     obj.style.left=maX+'px';
+            //     obj.style.top=maY+'px';
+            //     return;
+            // }
+            //console.log(11111111111)
+            obj.style.left=offsetX+'px';
+            obj.style.top=offsetY+'px';
+            
+        }
+        document.onmouseup=function(event){
+            console.log(isDown)
+            isDown=false;
+            //event.preventDefault();
+            // obj.style.left=(event.clientX-X)+'px';
+            // obj.style.top=(event.clientY-Y)+'px';
+        }
+        
+</script>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>百度地图导航实验测试</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+    <link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+</head>
+<body>
+<!--地图-->
+<section class="map_module" style="display:none;">
+    <!--<div class="ditumap">  
+		<div id="distanceId" style="position:absolute;left:0;top:0.5rem;width:100%;z-index:100;" class="f24"></div> 
+		<div class="ditumap_part" id="r-result">
+			<input type="text" id="suggestId" class="ditu_search_text f24" placeholder="输入地点搜索" />
+		</div>
+		<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+		<div style="border:none;" id="l-map"></div>
+	</div>-->
+</section>
+<!--省市区-->
+<section id="areaLayer" class="express-area-box" style="display:none;">
+	<header>
+		<h3>选择地区</h3>
+		<a id="backUp" class="back" href="javascript:void(0)" title="返回" style="display: none;"></a>
+		<a id="closeArea" class="close" href="javascript:void(0)" title="关闭"></a>
+	</header>
+	<article id="areaBox">
+		<ul id="areaList" class="area-list"></ul>
+	</article>
+</section> 
+<div id="allmap"></div> 
+<!--<div id="areaMask" class="mask"></div>-->
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript" src="public/static/common/js/jquery.area.js"></script>
+<script type="text/javascript" src="public/static/common/js/uploadImgToTemp.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Fimtwu6FDRrHWvg3oq44YCw0c0YonNpv"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+<script type="text/javascript"> 
+ var map = new BMap.Map("allmap");   
+    var point = new BMap.Point(116.709684,39.89778); 
+    //map.centerAndZoom(point, 16);   
+    map.enableScrollWheelZoom();  
+   
+    var myIcon = new BMap.Icon("myicon.png",new BMap.Size(30,30),{ 
+        anchor: new BMap.Size(10,10)     
+    }); 
+   
+    var marker=new BMap.Marker(point,{icon: myIcon});   
+    map.addOverlay(marker);   
+   
+    var geolocation = new BMap.Geolocation(); 
+    geolocation.getCurrentPosition(function(r){ 
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){ 
+            var mk = new BMap.Marker(r.point); 
+            map.addOverlay(mk); 
+            //map.panTo(r.point);//地图中心点移到当前位置 
+            var latCurrent = r.point.lat; 
+            var lngCurrent = r.point.lng; 
+            alert('我的位置：'+ latCurrent + ',' + lngCurrent);
+   
+            location.href="http://api.map.baidu.com/direction?origin="+latCurrent+","+lngCurrent+"&destination=39.89778,116.709684&mode=driving&region=北京&output=html"; 
+   
+        } 
+        else { 
+            alert('failed'+this.getStatus()); 
+        }         
+    },{enableHighAccuracy: true}) 
+   
+   
+    map.addOverlay(marker);   
+    var licontent="<b>健龙森羽毛球馆</b><br>";   
+        licontent+="<span><strong>地址：</strong>北京市通州区滨河中路108号</span><br>";   
+        licontent+="<span><strong>电话：</strong>(010)81556565 / 6969</span><br>";           
+    var opts = {  
+        width : 200, 
+        height: 80, 
+    };          
+    var  infoWindow = new BMap.InfoWindow(licontent, opts);   
+    marker.openInfoWindow(infoWindow);   
+    marker.addEventListener('click',function(){ 
+        marker.openInfoWindow(infoWindow); 
+    });   
+</script>
+</body>
+
+</html>

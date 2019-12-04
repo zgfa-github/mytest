@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>客服聊天</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<!--对话框列表模板-->
+<section id="chatListTpl" style="display:none;">
+    <li class="me">
+        <div class="avatar">
+            <img src="public/static/common/img/default/no_pic_40.jpg">
+        </div>
+        <div class="content">
+            <p class="author">马蓉(小猫咪)</p>
+            <div class="msg"></div>
+        </div>
+    </li>
+</section>
+<article class="f24">
+    <div class="mod_selection chat_selection">
+        <div class="nav">
+            <!--<div class="mod_selection_more">
+                <div class="tab-arrow"></div>
+            </div>-->
+            <ul class="mod_selection_nav">
+                <li>新对话</li>
+                <li class="">新对话</li>
+                <li class="active">新对话</li>
+                <!--<li>新对话</li>
+                <li>新对话</li>
+                <li>新对话</li>
+                <li>新对话</li>-->
+            </ul>
+        </div>
+    </div>
+    <section class="f24 account-content-wrapper chat_content_wrapper">
+        <div class="ws_chatMsg-panel flex1">
+            <div class="chatMsg-ct">
+                <ul class="clearfix chat_item">
+                   
+                </ul>
+                 <ul class="clearfix chat_item hide">
+                </ul>
+                <ul class="clearfix chat_item hide">
+                    
+                </ul>
+            </div>
+        </div>
+    </section>
+</article>
+<section class="bottom_nav_fixed">
+    <div class="bottom_flex">
+        <input class="send_out_text" type="text" name="" value="">
+        <input class="send_btn" type="button" value="发送">
+    </div>
+</section>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript"> 
+    $(function(){
+         $(".mod_selection_nav li").click(function(){
+              var index=$(this).index();
+              var moveX = $(this).offset().left+$(this).parent().scrollLeft();
+              var pageX = document.documentElement.clientWidth;//设备的宽度
+              var blockWidth = $(this).width();
+              var left = moveX-(pageX/2)+(blockWidth/2);
+              $(".mod_selection_nav").animate({scrollLeft:left},400);
+              $(this).addClass("active").siblings().removeClass("active");
+              $('.chatMsg-ct .chat_item').hide().eq(index).show();
+         });
+
+        var chatListTpl=$('#chatListTpl').html();
+        $('.send_btn').on('click',function(){
+            var index=$(".mod_selection_nav li.active").index();
+            var text=$(this).prev().val();
+            $('.chat_item').eq(index).append(chatListTpl);
+            $('.chat_item').eq(index).find('li:last').find('.msg').text(text);
+        })
+    })
+</script>
+</body>
+
+</html>

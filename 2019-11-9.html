@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>测试拖拽碰撞</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <!--<link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">-->
+    <style>
+    ul{
+        width:366px;
+        height:366px;
+        padding:10px;
+        border:5px solid #000;
+        margin:50px auto;
+    }
+    li{
+        float:left;
+        width:100px;
+        height:100px;
+        line-height:100px;
+        margin:10px;
+        background:#0066cc;
+        text-align: center;
+    }
+    .box2{
+        position:absolute;
+        left:900px;
+        top:480px;
+        width:100px;
+        height:50px;
+        background:#000;
+        z-index:-1;
+        color:#fff;
+    }
+    .scale{
+        transform:scale(2);
+
+    }
+    </style>
+</head>
+<body>
+    <button id="button">随机按钮</button>
+    <ul id='ul'>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+    </ul>
+    <div id="box2" class="box2" >拖拽碰撞到我就删除</div>
+
+<!--<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>-->
+</body>
+<script type="text/javascript">
+    /**总结如下
+    *1,document和拖拽对象触发事件
+    2,坐标 clientX,clientY
+    3,边界判断归属于数学问题(4个方向不碰撞，剩下的情况都是碰撞了)
+    4,原生js取dom元素的宽和高问题 offsetWidth,offsetHeight
+    **/
+    var ul=document.getElementById('ul');
+    var box2=document.getElementById('box2');
+    var button=document.getElementById('button');
+    var oLi=ul.children;
+    var aPos=[];
+    
+    for(var i=0;i<oLi.length;i++){
+        aPos[i]={left:oLi[i].offsetLeft,top:oLi[i].offsetTop};
+    }
+    //console.log(aPos);
+    for(var i=0;i<oLi.length;i++){
+        oLi[i].style.position='absolute';
+        oLi[i].style.left=aPos[i].left+'px';
+        oLi[i].style.top=aPos[i].top+'px';
+        oLi[i].style.margin=0;
+    }
+    button.onclick=function(){
+        //console.log(Math.random()*10);
+       //random(aPos);
+       console.log(aPos)
+       aPos.sort(function(){
+           return Math.random()-0.5
+       });
+       for(var i=0;i<oLi.length;i++){
+            oLi[i].style.position='absolute';
+            oLi[i].style.left=aPos[i].left+'px';
+            oLi[i].style.top=aPos[i].top+'px';
+            oLi[i].style.margin=0;
+            oLi[i].classList.add('scale');
+        }
+    }
+    for(var i=0;i<oLi.length;i++){
+        oLi[i].onmousedown=function(event){
+            var _this=this;
+            //console.log( window.getComputedStyle(content).height);
+            console.log(_this);
+            var event=event||window.event;
+
+            //event.preventDefault();
+            var t1X=event.clientX;
+            var t1Y=event.clientY;
+           
+            var X=t1X-this.offsetLeft;
+            var Y=t1Y-this.offsetTop;
+
+            console.log(this)
+            document.onmousemove=function(event){
+                var event=event||window.event;
+                var l1=_this.offsetLeft;
+                var t1=_this.offsetTop;
+                var r1=l1+_this.offsetWidth;
+                var b1=t1+_this.offsetHeight;
+
+                var l2=box2.offsetLeft;
+                var t2=box2.offsetTop;
+                var r2=l2+box2.offsetWidth;
+                var b2=t2+box2.offsetHeight;
+                console.log('t1:'+t1,'b2:'+b2);
+                if(b1<t2 || l1>r2 || t1>b2 || r1<l2){
+                    console.log(1111111);
+                    box2.style.backgroundColor='black';
+                }else{
+                    box2.style.backgroundColor='red';
+                    setTimeout(function(){
+                        ul.removeChild(_this);
+                    },1000)
+                    
+                }
+                _this.style.left=(event.clientX-X)+'px';
+                _this.style.top=(event.clientY-Y)+'px';
+            }
+
+            document.onmouseup=function(){
+                this.onmousedown=this.onmousemove=null;
+            }
+            return false;
+        }
+    }
+   
+</script>
+</html>

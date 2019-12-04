@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>账户授权</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<script>
+    var arr=[2,34,5];
+    ////常规写法
+    // Array.prototype.map=function(){
+    //     var newArr=[];
+    //     for(var i=0;i<this.length;i++){
+    //         console.log(typeof this[i]);
+    //         newArr.push(this[i]*2);
+    //     }
+    //     return newArr;
+    // }
+    Array.prototype.map=function(fn){
+        fn();
+    }
+    
+    console.log(arr.map(function(item){
+        return item*2;
+    }));
+   
+</script>
+</body>
+
+</html>

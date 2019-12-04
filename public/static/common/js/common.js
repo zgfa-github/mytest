@@ -318,13 +318,33 @@ function date(format, timestamp) {
 $.fn.serializeObject = function() {
     var o = {};
     var a = this.serializeArray();
+    // var temp={};
+    // var $radio = $('input[type=radio],input[type=checkbox]', this);
+    // var arr=[];
+    // $.each($radio, function () {
+    //     if (!temp.hasOwnProperty(this.name)) {
+    //         if ($("input[name='" + this.name + "']:checked").length == 0) {
+    //             temp[this.name] = "";
+    //             alert(1);
+    //             a.push({name: this.name, value: [0,0]});
+    //         }else{
+    //             //arr.push(1);
+    //             //alert(12345678);
+    //             //a.push({name: this.name, value:arr});
+    //         }
+    //     }
+    // });
     $.each(a, function() {
+        // alert(o[this.name]===false);
         if (o[this.name]) {
+            alert(o[this.name]);
             if (!o[this.name].push) {
                 o[this.name] = [ o[this.name] ];
             }
             o[this.name].push(this.value || '');
         } else {
+            // alert(this.value);
+            alert(2);
             o[this.name] = this.value || '';
         }
     });

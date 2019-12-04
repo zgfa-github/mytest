@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>测试拖拽碰撞</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <!--<link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">-->
+   <style>
+       .a1 {
+           color:red;
+        }
+        .a2 {
+           color:green;
+        }
+        .a3 {
+           color:yellow;
+        }
+        .a4 {
+           color:pink;
+        }
+   </style>
+</head>
+<body>
+   <p class="a2 a3 a4 a1">欢迎添加</p>
+</body>
+<script type="text/javascript">
+  
+// var num=100;
+// function fn(){
+//     console.log(num);
+//     var num=num+1;
+//     return num;
+// }
+// console.log(fn());
+// console.log(undefined+1)
+
+//----------------------代码分隔线-------------------------
+// var getFn=function(){
+//     var arrs=[];
+//     for(var i=0;i<3;i++){
+//         arrs.push(function(){
+//             return i;
+//         })
+//     }
+//     return arrs;
+// }
+// var fns=getFn();
+// console.log(fns);
+// console.log(fns[0]);
+// console.log(fns[0]());
+// console.log(fns[0]()+fns[1]());
+//------------------------代码分隔线-----------------------
+
+function fn(min,max,n){
+    var arrs=[];
+    var range=max-min;
+    var f;
+    for(var i=0;i<n;i++){
+        var rand=Math.random();
+        f=min+Math.round(rand*range);
+        if(arrs.indexOf(f)==-1){
+            arrs.push(f);
+        }else{
+            i=i-1;
+        }
+        
+    }
+    //var abs=Math.floor(Math.random()*10+23);
+    //console.log(abs)
+    return arrs;
+}
+console.log(fn(2,32,5));
+//console.log(fn(3));
+// console.log(Math.floor(5.1))
+// console.log(Math.floor(5.5))
+// console.log(Math.floor(5.9))
+</script>
+</html>

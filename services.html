@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>供应商订单客服</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
+</head>
+<body>
+<article class="f24">
+    <div class="top_header">
+        <section class="top_nav_fixed top_nav_store">
+                <div class="top_bar top-switch-bar columns_flex l-r-sides">
+                    <!--<div class="">
+                        <a class="home top_icon" href="/store/Index/index.html">首页</a>
+                    </div>-->
+                    <div class="top_left_f">
+                        <img id="" class="left store-logo-img" src="http://msy.meishangyun.com/uploads/factory_record/2018092516061665977.jpeg">
+                        <span class="store-name">订单</span>
+                    </div>
+                    <div class="">
+                        <div class="columns_flex">
+                            <a href="javascript:void(0);" class="shopping_cart top_icon"></a>
+                            <a href="javascript:void(0);" class="personal_center top_icon"></a>
+                            <a href="/store/Index/index.html" class="home top_icon"></a>
+                        </div>
+                        <a href="javascript:void(0);" class="switch-factory ">切换美容店家账号&gt;</a>
+                    </div>
+                </div>
+        </section>
+        <section class="specific_type store_deploy_nav">
+            <div class="columns_flex f20 l-r-sides store_deploy_bar">
+                <a href="" class="current">售前</a>
+                <a href="">打单</a>
+                <a href="">出仓</a>
+                <a href="">发货/服务</a>
+                <a href="">填单</a>
+                <a href="">售后</a>
+            </div>
+        </section>
+	</div>
+    <section class="f24 account-content-wrapper">
+         <div class="content-top ">
+              <div class="ws__chatMsg-panel flex1">
+                  <div class="chatMsg-ct">
+                      <ul class="clearfix" id="J__chatMsgList">
+                            <li class="time"><span>2018-06-12 12:30:55</span></li>
+                            <!--别人-->
+                            <li class="others">
+                                <div class="avatar">
+                                    <img src="public/static/common/img/default/no_pic_40.jpg" />
+                                </div>
+                                <div class="content">
+                                    <p class="author">马云(老子天下第一)</p>
+                                    <div class="msg">
+                                        <div class="plain">
+                                            大家好，不要潜水啦，都出来聊天吧，给你们发红包噢~~ <img class="face" src="img/wei-scene/emotion/77.gif"><img class="face" src="img/wei-scene/emotion/77.gif"><img class="face" src="img/wei-scene/emotion/77.gif">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--自己-->
+                            <li class="me">
+                                <div class="avatar">
+                                    <img src="public/static/common/img/default/no_pic_40.jpg" />
+                                </div>
+                                <div class="content">
+                                    <p class="author">马蓉(小猫咪)</p>
+                                    <div class="msg">
+                                        <div class="plain">
+                                            好诶，好期待马总的红包！
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="others">
+                                <div class="avatar">
+                                    <img src="public/static/common/img/default/no_pic_40.jpg" />
+                                </div>
+                                <div class="content">
+                                    <p class="author">马云(老子天下第一)</p>
+                                    <div class="msg">
+                                        <div class="plain">
+                                            最近了解到您们的XXX项目很火啊，用户量蹭蹭往上长，我想详细了解下这个项目，看能否有收购的可能？？
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="me">
+                                <div class="avatar">
+                                    <img src="public/static/common/img/default/no_pic_40.jpg" />
+                                </div>
+                                <div class="content">
+                                    <p class="author">马蓉(小猫咪)</p>
+                                    <div class="msg">
+                                        <div class="plain">
+                                            是的，如果想要了解更多的话，可以去我们的微官网看看~~~ <br />
+                                            <a href="http://www.xxx.com">http://www.xxx.com</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                      </ul>
+                  </div>
+              </div>
+         </div>
+    </section>
+</article>
+<section class="bottom_nav_fixed">
+    <div class="bottom_flex">
+        <input class="send_out_text" type="text" name="" value="">
+        <input class="send_btn" type="button" value="发送">
+    </div>
+</section>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/public.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
+<script type="text/javascript" src="public/static/common/js/dialog.js"></script>
+<script type="text/javascript" src="public/static/common/js/layer.mobile/layer.js"></script>
+<script type="text/javascript"> 
+    $(function(){
+        //收货人信息
+		$('body').on('click','.submit',function(){
+			var postData={};
+			var  content ='';
+            postData=$('.consignee_info_form').serializeObject();
+			if(!register.phoneCheck(postData.mobile_phone)){
+				content='请填写手机号码';
+			}else if(!postData.provinces){
+				content='请选择所在地区';
+			}else if(!postData.detail_name){
+				content='请填写地区详细地址';
+			}
+			if(content){
+				dialog.error(content);
+				return false;
+			}
+			var _this = $(this);
+			_this.addClass("nodisabled");//防止重复提交
+			$.ajax({
+				url:controller + "edit",
+				type:'post',
+				data:postData,
+				dataType:'json',
+				success:function (data) {
+					_this.removeClass("nodisabled");
+
+				   if(data.status == 0){
+						dialog.error(data.info);
+						return false;
+					}else if(data.status == 1){
+						dialog.success(data.info,controller+'preview');
+					}
+				},
+				error:function (xhr) {
+					dialog.error('Ajax错误'+xhr.status);
+				},
+			})
+		})
+    })
+</script>
+</body>
+
+</html>

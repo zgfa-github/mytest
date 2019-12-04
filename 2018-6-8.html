@@ -10,19 +10,43 @@
     <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">
 </head>
 <body>
-<div>a</div>
+<!--<div>a</div>
 <div>b</div>
-<div>c</div>
+<div>c</div>-->
+<!--<input class="abc" type="checkbox" name="abc" value="" checked="checked" />1111-->
+<form id="form">
+    a<input type="text" name="a" value="" style="border:1px solid #d9d9d9;">
+    b<input type="text" name="b" value="" style="border:1px solid #d9d9d9;">
+    bbb<input type="text" name="b" value="" style="border:1px solid #d9d9d9;">
+    c<input type="text" name="c" value="" style="border:1px solid #d9d9d9;">
+    <div>
+        d<input type="checkbox" name="d" value="1" style="-webkit-appearance: checkbox;">
+        e<input type="checkbox" name="d" value="2" style="-webkit-appearance: checkbox;">
+    </div>
+</form>
+<a href="javascript:;" class="btn">按钮</a>
+<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="public/static/common/js/common.js"></script>
 <script>
     //i 全局变量
-    var es=document.getElementsByTagName('div');
-    for(var i=0;i<es.length;i++){
-        console.log(i);
-        es[i].onclick=function(){
-            alert(i);
-        }
-    }
+    // var es=document.getElementsByTagName('div');
+    // for(var i=0;i<es.length;i++){
+    //     console.log(i);
+    //     es[i].onclick=function(){
+    //         alert(i);
+    //     }
+    // }
+    $(function(){
+        $('.btn').on('click',function(){
+            var form=$('#form').serializeObject();
+            console.log(form);
+            // if(!form.d){
+               
+            // }
+        })
+    })
 </script>
+
 <!--<script type="text/javascript" src="public/static/common/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="public/static/common/js/public.js"></script>
 <script type="text/javascript" src="public/static/common/js/common.js"></script>

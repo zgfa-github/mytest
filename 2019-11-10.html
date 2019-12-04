@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>测试拖拽碰撞</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <!--<link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">-->
+   <style>
+       .welcome {
+            word-break: normal;
+            width: 100px;
+            font-size: 16px;
+            line-height: 10px;
+            letter-spacing: -6px;
+        }
+   </style>
+</head>
+<body>
+   <p class="welcome">欢迎添加</p>
+</body>
+<script type="text/javascript">
+  
+   for(var i=0;i<5;i++){  
+	var btn=document.createElement('button');
+  	btn.appendChild(document.createTextNode('button'+i));
+  	btn.addEventListener('click',function(){console.log(i);});
+  	document.body.appendChild(btn);
+    }
+    for(let i=0;i<5;i++){
+	var btn=document.createElement('button');
+  	btn.appendChild(document.createTextNode('button'+i));
+  	btn.addEventListener('click',function(){console.log(i);});
+  	document.body.appendChild(btn);
+    }
+</script>
+</html>

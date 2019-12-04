@@ -7,7 +7,12 @@
 (function($){
     var deviceWidth=document.documentElement.clientWidth;
     var html =document.getElementsByTagName('html')[0];
-    html.style.fontSize=deviceWidth/6.4+'px';
+    if(deviceWidth>640){
+        deviceWidth=640;
+        html.style.fontSize=640/6.4+'px';
+    }else{
+        html.style.fontSize=deviceWidth/7.5+'px';
+    }
 
     $.fn.moreText = function(options){
         var defaults = {
@@ -64,7 +69,7 @@
             var star=opts.star;
             var starRed=opts.starRed;
             var starValue=parseInt(getFractionValue);
-
+            console.log(starValue);
             starBox.each(function(index){
                 	
 				var prompt=['1分','2分','3分','4分','5分'];	//评价分数
@@ -141,6 +146,35 @@
 			});
         });
     };
+    //楼层
+    $.fn.scrollFloor=function(options){
+            var defaults={
+                floorNavMenu:'nav-floor',
+                floorContent:'floor-content',
+                floorContentChild:'floor',
+                activeClass:'active'
+            };
+            var settings=$.extend(defaults,options);
+            $(document).scroll(function(){
+                 
+                var parentHeight=$('.'+settings.floorContent).height(),
+                    parentOffsetTop=$('.'+settings.floorContent)[0].offsetTop,
+                    childHeight=$('.'+settings.floorContentChild).outerHeight(true),
+                    docScrollTop=$(window).scrollTop();
+                    result=docScrollTop-parentOffsetTop;
+                    n=Math.floor(result/childHeight);
+                    console.log(n);
+                    if(result>=0){
+                        
+                        $('.'+settings.floorNavMenu).children().removeClass(settings.activeClass).eq(n).addClass(settings.activeClass);
+                    }
+            });
+            $('.'+settings.floorNavMenu).children().on('click',function(){
+                var i=$(this).index();
+                var scrollFloorH=$('.'+settings.floorContent)[0].offsetTop+$('.'+settings.floorContentChild).outerHeight(true)*i;
+                $('body,html').animate({'scrollTop':scrollFloorH+'px'},800);
+            })
+        }
 })(jQuery);
 
 //限制input、textarea字数
@@ -169,6 +203,9 @@ $('.top_menu_list a').on('click',function(){
             dialog.error('功能正在开发中,暂未上线,敬请期待');
         }
 })
+$.fn.isEmptyArray=function(options){
+    return options.length?true:false;
+}
 //选项卡切换和对应内容显示
 function tab_down(tab_k, tab_con, tab_dz) {
     // alert(tab_k);
@@ -252,7 +289,7 @@ function swipe(elemObj){
 }
 function swiper(elemObj){
     var swiper = new Swiper(elemObj, {
-        slidesPerView: 5,
+        slidesPerView:8,
         spaceBetween: 50,
         // init: false,
         pagination: {

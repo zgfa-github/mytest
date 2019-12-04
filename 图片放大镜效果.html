@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>测试拖拽碰撞</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <!--<link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">-->
+   <style>
+	 *{
+		margin:0;
+		padding:0;
+   }
+	#box,#boxTwo {
+		width:350px;
+		height:350px;
+		border:1px solid black;
+		float:left;
+		margin:15px;
+	}
+	#boxTwo {
+		display:none;
+		overflow:hidden;
+		position:relative;
+	}
+	#box img {
+		width:350px;
+		height:350px;
+	}
+	#boxTwo img {
+		position:absolute;
+		width:700px;
+		height:700px;
+	}
+	#box {
+		position:relative;
+	}
+	#mark {
+		width:175px;
+		height:175px;
+		position:absolute;
+		cursor:move;
+		background:rgba(0,0,0,0.3);
+	}
+</style>
+<body>
+	<div id="box">
+		<img src="./public/static/store/img/store_purchase_type.png" alt="">
+	</div>
+	<div id="boxTwo">
+		<img src="./public/static/store/img/store_purchase_type.png" alt="">
+	</div>
+</body>
+
+<script type="text/javascript">
+	var oBox = document.getElementById("box");
+	var bigBox = document.getElementById("boxTwo");
+	var bigImg = document.getElementsByTagName("img")[1];
+	var mark;
+	 //当鼠标划上时，创建小盒子；把小盒子放进页面；让大盒子显示；
+	 oBox.onmouseenter = function() {
+         
+	     mark = document.createElement("div");
+	     mark.id = "mark";
+	     oBox.appendChild(mark);
+	     bigBox.style.display = "block";
+	 };
+	  // 当鼠标移动时，让小盒子移动，并且让大盒子中的图片跟着鼠标移动而移动；比例值是1:2;并且方向相反；
+ oBox.onmousemove = function(e) {
+     var minL = 0;
+     var maxL = oBox.offsetWidth - mark.offsetWidth - 2;
+     console.log(maxL);
+     // offsetWidth: 为元素的width+元素的padding+边框的宽度
+     var minT = 0;
+     var maxT = oBox.offsetHeight - mark.offsetHeight - 2;
+     console.log(maxT);
+     var curL = e.clientX - oBox.offsetLeft - mark.offsetWidth / 2;
+     console.log("我是curl的值:"+curL)
+    // e.clientX设置或获取鼠标指针位置相对于当前窗口的 x 坐标，其中客户区域不包括窗口自身的控件和滚动条
+     // 在父元素均不设置position属性时，在Chrome，opera和IE浏览器中offsetLeft是元素边框外侧到浏览器窗口内侧的距离
+     var curT = e.clientY - oBox.offsetTop - mark.offsetHeight / 2;
+     console.log("我是curT的值:"+curT)
+     if (curL <= minL) {
+         curL = minL;
+     }
+     if (curL >= maxL) {
+         curL = maxL;
+     }
+     if (curT <= minT) {
+         curT = minT;
+     }
+     if (curT >= maxT) {
+         curT = maxT;
+     }
+     mark.style.left = curL + "px";
+     mark.style.top = curT + "px";
+     // mark 和大图片移动距离存在2倍的关系；
+     bigImg.style.left = -2 * curL + "px";
+     bigImg.style.top = -2 * curT + "px";
+ }
+ // 当鼠标移出，小盒子消失大盒子也消失；
+ oBox.onmouseleave = function() {
+     oBox.removeChild(mark);
+     bigBox.style.display = "none";
+ }
+</script>
+</html>
