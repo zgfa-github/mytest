@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>测试拖拽碰撞</title>
+    <link rel="stylesheet" href="public/static/common/css/base.css">
+    <!--<link rel="stylesheet" href="public/static/common/css/public.css">
+    <link rel="stylesheet" href="public/static/factory/css/main.css">
+    <link rel="stylesheet" href="public/static/common/js/layer.mobile/need/layer.css">-->
+   <style>
+      
+   </style>
+</head>
+<body>
+   <p class="welcome">算法排序哈哈哈哈哈哈哈哈</p>
+</body>
+<script type="text/javascript">
+var arr1=[5,13,5,200,45,2,100]
+//现成封装好的方法
+//var newArr=arr.sort()
+//var newArr=arr.sort((a,b)=>{return a-b})
+
+
+
+
+
+//排序大于号，从大排到小，反之
+// function handleSort(arr){
+//     var temp;
+//     for(var i=0;i<arr.length;i++){
+//         for(var j=arr.length-1;j>i;j--){
+//             if(arr[j]<arr[i]){
+                
+//                 temp=arr[i]
+//                 arr[i]=arr[j]
+//                 arr[j]=temp;
+//             }
+//         }
+//     }
+//     return arr
+// }
+// var newArr=handleSort(arr1)
+// console.log(newArr)
+
+
+Array.prototype.sort=function(arr){
+    var temp;
+    for(var i=0;i<arr.length;i++){
+        for(var j=arr.length-1;j>i;j--){
+            if(arr[j]<arr[i]){
+                
+                temp=arr[i]
+                arr[i]=arr[j]
+                arr[j]=temp;
+            }
+        }
+    }
+    return arr
+}
+var newArr=arr1.sort(arr1)
+console.log(newArr)
+
+</script>
+</html>
