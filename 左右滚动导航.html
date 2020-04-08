@@ -331,3 +331,69 @@
 </body>
 
 </html>
+ let aaa=new Vue({
+            el:'#nav-box',
+            data:function(){
+				return {
+                    menuList:<?php echo json_encode($catelist);?>,
+                    param
+                }
+            
+			},created:function(){
+                console.log(this.menuList)
+                //this.getJsonListParam.active=100;
+                let _thisVue = this;
+				
+                
+				
+            },methods:{
+               
+                getJsonListCallBack:function(data){
+                    console.log(data)
+                    console.log('=======')
+					if(data.status==0){
+						dialog.error(data.info);
+						return false;
+					}
+					let _this = this;
+					$.each(data.data.data,function(i,o){
+                        //console.log(o)
+						_this.productList.push(o);
+					});
+				},
+                wathChildEvent:function(index,id,url){
+                    console.log(id)
+                     let _thisVue = this;
+                    //_thisVue.getJsonListParam.active=id
+                    this.param.getJsonListParam.postData.active=id
+                    console.log(this.param.getJsonListParam.postData.active)
+                    console.log(this.param.getJsonListParam.url)
+                    _thisVue.param.getJsonListParam.callBack = _thisVue.getJsonListCallBack;
+                    vueVersionGetJsonList(_thisVue);
+                }
+            }
+        });
+
+
+$(".mod_selection_nav li").click(function(){
+            //console.log($(this).position().left);
+            //console.log($(this).parent().scrollLeft());
+ var moveX = $(this).offset().left+$(this).parent().scrollLeft();
+ var pageX = document.documentElement.clientWidth;//设备的宽度
+ var blockWidth = $(this).width();
+var left = moveX-(pageX/2)+(blockWidth/2);
+$(".mod_selection_nav").animate({scrollLeft:left},400);
+$(this).addClass("active").siblings().removeClass("active");
+            if($(this).hasClass('active')){
+                var categoryId=$(this).attr('typeid');
+                
+                param.getJsonListParam.postData.active=categoryId;
+                console.log(param.getJsonListParam.postData.active)
+                vueVersionGetJsonList(param);
+
+            }
+// $('div').eq(index).show().siblings("div").hide();
+})
+
+
+
